@@ -1,0 +1,494 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations tasks API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: tasks
+  description: Operations about tasks
+paths:
+  /v1/tasks/{id}/comment:
+    post:
+      description: Add a comment to a task
+      parameters:
+      - in: path
+        name: id
+        description: Task identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1TasksIdComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1TasksIdComment'
+        required: true
+      responses:
+        '201':
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - tasks
+      operationId: postV1TasksIdComment
+      summary: Add a comment to a task
+  /v1/tasks/{id}/mark_completed:
+    patch:
+      description: Mark a task as completed
+      parameters:
+      - in: path
+        name: id
+        description: Task identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patchV1TasksIdMarkCompleted'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/patchV1TasksIdMarkCompleted'
+        required: true
+      responses:
+        '200':
+          description: Task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - tasks
+      operationId: patchV1TasksIdMarkCompleted
+      summary: Mark a task as completed
+  /v1/tasks/{id}/unmark_completed:
+    patch:
+      description: Unmark a task as completed
+      parameters:
+      - in: path
+        name: id
+        description: Task identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1PaymentPlansIdApprove'
+      responses:
+        '200':
+          description: Task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - tasks
+      operationId: patchV1TasksIdUnmarkCompleted
+      summary: Unmark a task as completed
+  /v1/tasks/{id}:
+    get:
+      description: Get administration task by id
+      parameters:
+      - in: path
+        name: id
+        description: Task identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - tasks
+      operationId: getV1TasksId
+      summary: Get administration task by id
+  /v1/tasks:
+    get:
+      description: Get administration tasks
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter tasks with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_TasksPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - tasks
+      operationId: getV1Tasks
+      summary: Get administration tasks
+components:
+  schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    patchV1TasksIdMarkCompleted:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        fields:
+          type: string
+          description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        completed_status:
+          type: string
+          description: Completion status of the task (succeeded, failed, cleaned_up)
+        completed_status_message:
+          type: string
+          description: Message explaining the completion status
+        comment:
+          type: string
+          description: Comment to add when completing the task
+        resume_dossiers:
+          type: boolean
+          description: Whether to resume blocked dossiers associated with the task
+      required:
+      - administration_id
+      description: Mark a task as completed
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_TasksPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+          description: Task
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_TasksPageEntity model
+    CustomerApi_V1_TaskEntity:
+      type: object
+      properties:
+        assigned_to_user:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
+          description: User the task is assigned to
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        credit_case_id:
+          type: string
+          description: Associated credit_case identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        id:
+          type: string
+          description: Unique identifier
+        invoice_id:
+          type: string
+          description: Associated invoice identifier
+        description:
+          type: string
+          description: Description of the task
+        subject:
+          type: string
+          description: Subject of the task
+        expiry_date:
+          type: string
+          description: Expiry date of the task
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_CommentEntity'
+          description: Comments (request with the 'fields' parameter)
+        completed_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the task was completed
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the task was last updated
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the task was created
+      required:
+      - administration_id
+      - id
+      - expiry_date
+      - updated_at
+      - created_at
+      description: CustomerApi_V1_TaskEntity model
+    postV1TasksIdComment:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        comment:
+          type: string
+          description: Comment to add to the task
+      required:
+      - administration_id
+      - comment
+      description: Add a comment to a task
+    CustomerApi_V1_CommentEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        content:
+          type: string
+          description: Content of the comment
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the comment was created
+      required:
+      - id
+      - content
+      - created_at
+  requestBodies:
+    patchV1PaymentPlansIdApprove:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              administration_id:
+                description: Administration identifier
+                type: string
+              fields:
+                description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+                type: string
+            required:
+            - administration_id
+      required: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

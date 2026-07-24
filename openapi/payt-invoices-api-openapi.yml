@@ -1,0 +1,1215 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations invoices API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: invoices
+  description: Operations about invoices
+paths:
+  /v1/invoices/block:
+    patch:
+      description: Block invoices
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1InvoicesBlock'
+      responses:
+        '200':
+          description: Invoices blocked
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: patchV1InvoicesBlock
+      summary: Block invoices
+  /v1/invoices:
+    post:
+      description: Upsert invoices in bulk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1Invoices'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1Invoices'
+        required: true
+      responses:
+        '201':
+          description: List of created invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: postV1Invoices
+      summary: Upsert invoices in bulk
+    patch:
+      description: Update administration invoices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patchV1Invoices'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/patchV1Invoices'
+        required: true
+      responses:
+        '200':
+          description: Invoices updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: patchV1Invoices
+      summary: Update administration invoices
+    get:
+      description: Get administration invoices
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: paid
+        description: Whether returned invoices should be paid/unpaid
+        required: false
+        schema:
+          type: boolean
+      - in: query
+        name: book_amount_total_lte
+        description: Filter invoices with book_amount_total less than or equal to the provided amount
+        required: false
+        schema:
+          type: number
+          format: float
+      - in: query
+        name: book_amount_total_gte
+        description: Filter invoices with book_amount_total greater than or equal to the provided amount
+        required: false
+        schema:
+          type: number
+          format: float
+      - in: query
+        name: ids
+        description: Filter invoices with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_numbers
+        description: Filter invoices with a comma separated list of invoice numbers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_identifiers
+        description: Filter invoices with a comma separated list of invoice identifiers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_ids
+        description: Filter invoices with a comma separated list of internal debtor ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_numbers
+        description: Filter invoices with a comma separated list of debtor numbers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_identifiers
+        description: Filter invoices with a comma separated list of debtor identifiers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: credit_case_ids
+        description: Filter invoices with a comma separated list of internal credit case ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: order
+        description: Order the list of invoices
+        required: false
+        schema:
+          type: string
+          enum:
+          - invoice_date_asc
+          - invoice_date_desc
+          - due_date_asc
+          - due_date_desc
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_InvoicesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: getV1Invoices
+      summary: Get administration invoices
+  /v1/invoices/deleted:
+    get:
+      description: Get invoices deleted in the last 90 days
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: deleted_after
+        description: ISO8601 UTC Timestamp to filter records deleted after it
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: deleted_before
+        description: ISO8601 UTC Timestamp to filter records deleted before it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: List of deleted invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_DeletedInvoicesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: getV1InvoicesDeleted
+      summary: Get invoices deleted in the last 90 days
+  /v1/invoices/resume:
+    patch:
+      description: Resume invoices that are blocked through the API
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1InvoicesBlock'
+      responses:
+        '200':
+          description: Invoices resumed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: patchV1InvoicesResume
+      summary: Resume invoices that are blocked through the API
+  /v1/invoices/{id}:
+    get:
+      description: Get administration invoice by id
+      parameters:
+      - in: path
+        name: id
+        description: Invoice identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: identifier_type
+        description: Type of invoice identifier to use (can be 'invoice_number', 'invoice_identifier' or left blank to use internal id)
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_InvoiceEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - invoices
+      operationId: getV1InvoicesId
+      summary: Get administration invoice by id
+components:
+  schemas:
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
+    CustomerApi_V1_InvoiceEntity:
+      type: object
+      properties:
+        category:
+          type: string
+          description: Category
+        currency_code:
+          type: string
+          description: Currency code in ISO 4217 format
+        description:
+          type: string
+          description: Description
+        public_url:
+          type: string
+          description: Link to the debtor portal (request with the 'fields' parameter)
+        deeplink_url:
+          type: string
+          description: URL to the invoice in the debtor management interface (request with the 'fields' parameter)
+        flow_code:
+          type: string
+          description: Code of current flow (request with the 'fields' parameter)
+        document_url:
+          type: string
+          description: URL to the invoice document (request with the 'fields' parameter)
+        ubl_document_url:
+          type: string
+          description: URL to the UBL invoice document (request with the 'fields' parameter)
+        internal_note_email_address:
+          type: string
+          description: Internal note email address (request with the 'fields' parameter)
+        invoice_number:
+          type: string
+          description: Invoice number
+        invoice_lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_InvoiceLineEntity'
+          description: Invoice lines (request with the 'fields' parameter)
+        purchase_order_number:
+          type: string
+          description: Purchase order number
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_LabelEntity'
+          description: Labels (request with the 'fields' parameter)
+        order_number:
+          type: string
+          description: Order number
+        invoice_identifier:
+          type: string
+          description: Invoice identifier from accounting software
+        payment_method:
+          type: string
+          enum:
+          - bank_transfer
+          - direct_debit
+          - cash
+          - none
+          - unknown
+          description: The method of payment as intended, not necessarily the actual method of payment
+        peppol_identifier:
+          type: string
+          description: Peppol identifier (request with the 'fields' parameter)
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        credit_case_id:
+          type: string
+          description: DEPRECATED, use active_credit_case_id instead
+        active_credit_case_id:
+          type: string
+          description: Associated active credit case.
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+        debtor_number:
+          type: string
+          description: Number of the debtor
+        id:
+          type: string
+          description: Unique identifier
+        payment_plan_id:
+          type: string
+          description: DEPRECATED, use active_payment_plan_id instead
+        active_payment_plan_id:
+          type: string
+          description: Associated active payment plan.
+        payment_date:
+          type: string
+          description: Date the invoice was fully paid
+        due_date:
+          type: string
+          description: Due date
+        invoice_date:
+          type: string
+          description: Invoice date
+        administration_costs_total:
+          type: string
+          description: Total administration costs amount in invoice currency
+        administration_costs_open:
+          type: string
+          description: Open administration costs amount in invoice currency
+        total_amount:
+          type: string
+          description: Total amount in invoice currency
+        open_amount:
+          type: string
+          description: Open amount in invoice currency
+        book_open_amount:
+          type: string
+          description: Open amount in administration currency
+        book_total_amount:
+          type: string
+          description: Total amount in administration currency
+        paused_by_user:
+          type: boolean
+          description: Whether the invoice was paused by a user
+        bailiff_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the invoice was forwarded to a bailiff
+        collectable_at:
+          type: string
+          format: date-time
+          description: Timestamp after which the invoice became ready for debt collection
+        debt_collection_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the invoice was sent to debt collection
+        end_of_service_announcement_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the end of service was announced
+        end_of_service_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the service was ended
+        final_reminder_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the final reminder was sent
+        pre_reminder_at:
+          type: string
+          format: date-time
+          description: 'Timestamp at which the pre_reminder was sent.
+
+            This is a reminder sent on or before the due_date and is not considered a true reminder.
+
+            '
+        first_reminder_at:
+          type: string
+          format: date-time
+          description: 'DEPRECATED: use `reminder_1_at` instead'
+        reminder_1_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the first reminder was sent
+        reminder_2_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the second reminder was sent
+        reminder_3_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the third reminder was sent
+        reminder_4_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the fourth reminder was sent
+        latest_reminder_at:
+          type: string
+          format: date-time
+          description: 'Timestamp at which the latest reminder was sent.
+
+            This value will be higher than the highest reminder_X_at when the invoice is mentioned in a final reminder, or when more than 4 bundled reminders have been sent.
+
+            A pre_reminder is not considered a true reminder so sending one will not result in the latest_reminder_at being set.
+
+            '
+        latest_summons_at:
+          type: string
+          format: date-time
+          description: 'Timestamp at which the latest summons was sent.
+
+            This value will be higher than the highest summons_X_at when the credit_case of the invoice is mentioned in a notice of default.
+
+            '
+        notice_of_default_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the notice of default was sent
+        paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the invoice was paused
+        pre_judicial_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the pre-judicial phase started
+        pre_summons_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the debt collection notice was performed
+        sent_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the invoice was sent to the debtor
+        first_summons_at:
+          type: string
+          format: date-time
+          description: 'DEPRECATED: use `summons_1_at` instead'
+        summons_1_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the first summons was sent
+        summons_2_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the second summons was sent
+        summons_3_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the third summons was sent
+        summons_4_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the fourth summons was sent
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the invoice was last updated
+      required:
+      - currency_code
+      - invoice_number
+      - payment_method
+      - administration_id
+      - debtor_id
+      - id
+      - due_date
+      - invoice_date
+      - administration_costs_total
+      - administration_costs_open
+      - total_amount
+      - open_amount
+      - book_open_amount
+      - book_total_amount
+      - updated_at
+      description: CustomerApi_V1_InvoiceEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    patchV1Invoices:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        invoices:
+          type: array
+          items:
+            type: object
+            properties:
+              invoice_number:
+                type: string
+                description: Unique number from your invoicing software that is communicated to the debtor
+              invoice_date:
+                type: string
+                description: Date at which the invoice becomes payable
+              amount_open:
+                type: string
+                description: Open amount in the currency of the invoice
+              amount_total:
+                type: string
+                description: Total amount in the currency of the invoice
+              book_amount_open:
+                type: string
+                description: Open amount in the currency of the administration
+              book_amount_total:
+                type: string
+                description: Total amount in the currency of the administration
+              category:
+                type: string
+                description: Category of the invoice
+              currency_code:
+                type: string
+                description: Currency code of the invoice
+              debtor_number:
+                type: string
+                description: Number of the debtor
+              debtor_identifier:
+                type: string
+                description: Identifier of the debtor
+              description:
+                type: string
+              due_date:
+                type: string
+                description: Date at which the invoice must have been paid
+              invoice_identifier:
+                type: string
+                description: Unique database identifier from your invoicing software
+              order_number:
+                type: string
+                description: Order number of the invoice
+              peppol_identifier:
+                type: string
+                description: Peppol identifier of the invoice
+              contact_identifier:
+                type: string
+                description: Identifier of the invoice contact, when not provided the debtor contact is used
+              payment_condition:
+                type: string
+                description: Payment condition of the invoice
+              payment_method:
+                type: string
+                description: Payment method of the invoice
+                enum:
+                - bank_transfer
+                - direct_debit
+                - cash
+                - none
+                - unknown
+              sent_at:
+                type: string
+                format: date-time
+                description: ISO8601 UTC Timestamp when the invoice was sent. If provided the invoice will not be sent to the debtor, can only be changed if the invoice is not sent yet
+              labels:
+                type: array
+                description: Labels of the invoice. If labels are provided then all must be provided, any labels not in the request are removed from the invoice.
+                items:
+                  type: string
+              payment_term:
+                type: integer
+                format: int32
+                description: Payment term of the invoice
+              document:
+                type: object
+                description: Invoice PDF document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              ubl_document:
+                type: object
+                description: UBL document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              payments:
+                type: array
+                description: If payments are provided then all payments for an invoice must be provided and these must be ordered chronological with the oldest first. If the open_amount of the invoice is changed, but no payments are  provided, then Payt will create a payment for the changed amount.
+                items:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the invoice.
+                    origin_identifier:
+                      type: string
+                      description: Origin identifier of the payment, should be unique in the administration
+                    cost_type:
+                      type: string
+                      description: Indicates whether payment is for the principal amount of the invoice of for one of the cost types added by Payt
+                      enum:
+                      - principal
+                      - administration_costs
+                      - interest_costs
+                      - debt_collection_costs
+                      default: principal
+                    payment_date:
+                      type: string
+                      description: Date of the payment. If not provided the current date is used.
+                    transaction_type:
+                      type: string
+                      description: Indicates whether it was an actual payment or if there was a different reason to change the open amount of the invoice.
+                      enum:
+                      - credit
+                      - payment
+                      - reversal
+                      - revaluation
+                      - settlement
+                      - write_off
+                      - ''
+                    book_amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the administration. If not provided the book_amount is calculated based on the exchange rate of the invoice.
+                    description:
+                      type: string
+                      description: Description of the payment
+                    payment_method:
+                      type: string
+                      description: The method that was used to perform the payment. This is only relevant when the transaction_type is `payment`.
+                    reversal_code:
+                      type: string
+                      description: The code provided by the bank which indicates the reason why the direct debit transaction was reversed. This is only relevant when the transaction_type is `reversal`
+                  required:
+                  - amount
+                  - origin_identifier
+            required:
+            - invoice_number
+      required:
+      - administration_id
+      - invoices
+      description: Update administration invoices
+    CustomerApi_V1_InvoiceLineEntity:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description
+        product_unit:
+          type: string
+          description: Product unit
+        vat_percentage:
+          type: string
+          description: VAT percentage
+        vat_rate_code:
+          type: string
+          description: VAT rate code
+        product_quantity:
+          type: string
+          description: Product quantity
+        line_order:
+          type: integer
+          format: int32
+          description: Line order
+        product_price:
+          type: string
+          description: Product price
+        total_excl_tax_amount:
+          type: string
+          description: Total excl tax amount
+        total_incl_tax_amount:
+          type: string
+          description: Total incl tax amount
+        vat_amount:
+          type: string
+          description: Product tax amount
+      required:
+      - description
+      - product_unit
+      - vat_percentage
+      - vat_rate_code
+      - product_quantity
+      - line_order
+      - product_price
+      - total_excl_tax_amount
+      - total_incl_tax_amount
+      - vat_amount
+    CustomerApi_V1_DeletedInvoiceEntity:
+      type: object
+      properties:
+        invoice_number:
+          type: string
+          description: Invoice number
+        origin_identifier:
+          type: string
+          description: Invoice identifier from accounting software
+        id:
+          type: string
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated internal debtor identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+      required:
+      - invoice_number
+      - origin_identifier
+      - id
+      - administration_id
+      - debtor_id
+      - deleted_at
+    postV1Invoices:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        invoices:
+          type: array
+          items:
+            type: object
+            properties:
+              currency_code:
+                type: string
+                description: Currency code of the invoice
+              invoice_number:
+                type: string
+                description: Unique number from your invoicing software that is communicated to the debtor
+              invoice_date:
+                type: string
+                description: Date at which the invoice becomes payable
+              invoice_identifier:
+                type: string
+                description: Unique database identifier from your invoicing software
+              debtor_number:
+                type: string
+                description: Number of the debtor
+              debtor_identifier:
+                type: string
+                description: Identifier of the debtor
+              order_number:
+                type: string
+                description: Order number of the invoice
+              peppol_identifier:
+                type: string
+                description: Peppol identifier of the invoice
+              description:
+                type: string
+              category:
+                type: string
+                description: Category of the invoice
+              contact_identifier:
+                type: string
+                description: Identifier of the invoice contact, when not provided the debtor contact is used
+              payment_condition:
+                type: string
+                description: Payment condition of the invoice
+              due_date:
+                type: string
+                description: Date at which the invoice must have been paid
+              book_amount_total:
+                type: string
+                description: Total amount in the currency of the administration
+              book_amount_open:
+                type: string
+                description: Open amount in the currency of the administration
+              amount_open:
+                type: string
+                description: Open amount in the currency of the invoice
+              amount_total:
+                type: string
+                description: Total amount in the currency of the invoice
+              payment_method:
+                type: string
+                description: Payment method of the invoice
+                enum:
+                - bank_transfer
+                - direct_debit
+                - cash
+                - none
+                - unknown
+              sent_at:
+                type: string
+                format: date-time
+                description: ISO8601 UTC Timestamp when the invoice was sent. If provided the invoice will not be sent to the debtor, can only be changed if the invoice is not sent yet
+              labels:
+                type: array
+                description: Labels of the invoice. If labels are provided then all must be provided, any labels not in the request are removed from the invoice.
+                items:
+                  type: string
+              payment_term:
+                type: integer
+                format: int32
+                description: Payment term of the invoice
+              document:
+                type: object
+                description: Invoice PDF document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              ubl_document:
+                type: object
+                description: UBL document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              payments:
+                type: array
+                description: If payments are provided then all payments for an invoice must be provided and these must be ordered chronological with the oldest first. If the open_amount of the invoice is changed, but no payments are  provided, then Payt will create a payment for the changed amount.
+                items:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the invoice.
+                    origin_identifier:
+                      type: string
+                      description: Origin identifier of the payment, should be unique in the administration
+                    cost_type:
+                      type: string
+                      description: Indicates whether payment is for the principal amount of the invoice of for one of the cost types added by Payt
+                      enum:
+                      - principal
+                      - administration_costs
+                      - interest_costs
+                      - debt_collection_costs
+                      default: principal
+                    payment_date:
+                      type: string
+                      description: Date of the payment. If not provided the current date is used.
+                    transaction_type:
+                      type: string
+                      description: Indicates whether it was an actual payment or if there was a different reason to change the open amount of the invoice.
+                      enum:
+                      - credit
+                      - payment
+                      - reversal
+                      - revaluation
+                      - settlement
+                      - write_off
+                      - ''
+                    book_amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the administration. If not provided the book_amount is calculated based on the exchange rate of the invoice.
+                    description:
+                      type: string
+                      description: Description of the payment
+                    payment_method:
+                      type: string
+                      description: The method that was used to perform the payment. This is only relevant when the transaction_type is `payment`.
+                    reversal_code:
+                      type: string
+                      description: The code provided by the bank which indicates the reason why the direct debit transaction was reversed. This is only relevant when the transaction_type is `reversal`
+                  required:
+                  - amount
+                  - origin_identifier
+              invoice_lines:
+                type: array
+                description: If invoice lines are provided then all lines for an invoice must be provided.
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      description: Text that describes the product or service that is invoiced.
+                    vat_rate_code:
+                      type: string
+                      description: The code of the vat rate applied to the invoice line. This vat rate must be present in the administration.
+                    total_excl_tax_amount:
+                      type: string
+                      description: The amount invoiced excluding VAT. If this amount is absent it will be calculated from the total_incl_tax_amount and vat_amount. Either total_excl_tax_amount, total_incl_tax_amount or both must be provided.
+                    total_incl_tax_amount:
+                      type: string
+                      description: The amount invoiced including VAT. If this amount is absent it will be calculated from the total_excl_tax_amount and vat_amount. Either total_incl_tax_amount, total_excl_tax_amount or both must be provided.
+                    product_price:
+                      type: string
+                      description: The price for a single unit of product.
+                    product_unit:
+                      type: string
+                      description: The unit in which the quantity of the invoiced products are counted. Default value is "piece".
+                    product_quantity:
+                      type: string
+                      description: The amount of product that is invoiced, in the unit as provided in product_unit. Default value is "1".
+                    vat_percentage:
+                      type: string
+                      description: The percentage of VAT applied. This percentage must match the percentage that is associated with the vat_rate_code. If not supplied the percentage that is associated with the vat_rate_code is used.
+                    vat_amount:
+                      type: string
+                      description: The amount of VAT charged. If not provided it is calculated from the other values.
+                    line_order:
+                      type: integer
+                      format: int32
+                      description: The position of the invoice_line within the set of invoice_lines of the invoice. If the line_order is not provided than the order in which the lines are provided will be used. If line_order is provided than each invoice_line must have a unique integer.
+                  required:
+                  - description
+                  - vat_rate_code
+            required:
+            - currency_code
+            - invoice_number
+            - invoice_date
+            - due_date
+            - book_amount_total
+            - book_amount_open
+            - amount_open
+            - amount_total
+      required:
+      - administration_id
+      - invoices
+      description: Upsert invoices in bulk
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_InvoicesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_InvoiceEntity'
+          description: Invoice
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_InvoicesPageEntity model
+    CustomerApi_DeletedInvoicesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedInvoiceEntity'
+          description: Deleted Invoice
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedInvoicesPageEntity model
+  requestBodies:
+    patchV1InvoicesBlock:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              administration_id:
+                description: Administration identifier
+                type: string
+              fields:
+                description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+                type: string
+              invoice_numbers:
+                description: Unique number from your invoicing software that is communicated to the debtor
+                type: array
+                maxItems: 1000
+                items:
+                  type: string
+              invoice_identifiers:
+                description: Unique database identifier from your invoicing software
+                type: array
+                maxItems: 1000
+                items:
+                  type: string
+            required:
+            - administration_id
+      required: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

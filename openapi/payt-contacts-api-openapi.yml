@@ -1,0 +1,348 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations contacts API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: contacts
+  description: Operations about contacts
+paths:
+  /v1/contacts:
+    post:
+      description: Create or update administration contacts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1Contacts'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1Contacts'
+        required: true
+      responses:
+        '201':
+          description: Create or update administration contacts
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - contacts
+      operationId: postV1Contacts
+      summary: Create or update administration contacts
+    get:
+      description: Get administration contacts
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter contacts with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: contact_identifiers
+        description: Filter contacts with a comma separated list of contact identifiers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_numbers
+        description: Filter contacts with a comma separated list of debtor numbers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ContactsPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - contacts
+      operationId: getV1Contacts
+      summary: Get administration contacts
+components:
+  schemas:
+    CustomerApi_V1_ContactEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        contact_identifier:
+          type: string
+          description: Unique external code used to identify contact
+        call_phone_number:
+          type: string
+          description: Phone number used for calls
+        debtor_numbers:
+          type: array
+          items:
+            type: string
+          description: Associated debtor numbers
+        default_email_address:
+          type: string
+          description: Default email address
+        firstname:
+          type: string
+          description: First name
+        gender:
+          type: string
+          description: Gender
+        infix:
+          type: string
+          description: Name infix
+        invoice_email_address:
+          type: string
+          description: Email address used for invoicing
+        invoice_cc_email_address:
+          type: string
+          description: CC email address used for invoicing
+        invoice_bcc_email_address:
+          type: string
+          description: BCC email address used for invoicing
+        lastname:
+          type: string
+          description: Last name
+        middlename:
+          type: string
+          description: Middle name
+        postal_address_street_1:
+          type: string
+          description: Street address
+        postal_address_street_2:
+          type: string
+          description: Street address (Second line)
+        postal_address_postal_code:
+          type: string
+          description: Postal Code
+        postal_address_city:
+          type: string
+          description: City
+        postal_address_country_code:
+          type: string
+          description: Country Code
+        postal_address_region:
+          type: string
+          description: Region
+        prefix:
+          type: string
+          description: Name prefix
+        reminder_email_address:
+          type: string
+          description: Email address used for reminders
+        reminder_cc_email_address:
+          type: string
+          description: CC email address used for reminders
+        reminder_bcc_email_address:
+          type: string
+          description: BCC email address used for reminders
+        sms_phone_number:
+          type: string
+          description: Phone number used for sms
+        validation_errors:
+          type: object
+          description: Validation errors
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the contact was last updated
+      required:
+      - id
+      - validation_errors
+      - updated_at
+    CustomerApi_ContactsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_ContactEntity'
+          description: Contact
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_ContactsPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    postV1Contacts:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        contacts:
+          type: array
+          items:
+            type: object
+            properties:
+              contact_identifier:
+                type: string
+                description: Unique external code used to identify contact
+              id:
+                type: string
+                description: Internal identifier used to identify contact
+              birth_date:
+                type: string
+                description: Birth date of the contact
+              call_phone_number:
+                type: string
+                description: Phone number used for calls
+              default_email_address:
+                type: string
+                description: Default email address
+              firstname:
+                type: string
+                description: First name
+              gender:
+                type: string
+                description: Gender
+                enum:
+                - - female
+                  - male
+                  - male_female
+              infix:
+                type: string
+                description: Infix of the contact name
+              invoice_email_address:
+                type: string
+                description: Email address used for invoicing
+              invoice_cc_email_address:
+                type: string
+                description: CC Email address used for invoicing
+              invoice_bcc_email_address:
+                type: string
+                description: BCC Email address used for invoicing
+              lastname:
+                type: string
+                description: Last name of contact
+              middlename:
+                type: string
+                description: Middle name of contact
+              postal_address_street_1:
+                type: string
+                description: Street address
+              postal_address_street_2:
+                type: string
+                description: Street address (Second line)
+              postal_address_postal_code:
+                type: string
+                description: Postal Code
+              postal_address_city:
+                type: string
+                description: City
+              postal_address_country_code:
+                type: string
+                description: Country Code
+              postal_address_region:
+                type: string
+                description: Region
+              prefix:
+                type: string
+                description: Prefix of the contact name
+              reminder_email_address:
+                type: string
+                description: Email address used for reminders
+              reminder_cc_email_address:
+                type: string
+                description: CC Email address used for reminders
+              reminder_bcc_email_address:
+                type: string
+                description: BCC Email address used for reminders
+              sms_phone_number:
+                type: string
+                description: Phone number used for sms
+      required:
+      - administration_id
+      - contacts
+      description: Create or update administration contacts
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

@@ -1,0 +1,414 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations payments API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: payments
+  description: Operations about payments
+paths:
+  /v1/payments/deleted:
+    get:
+      description: Get payments deleted in the last 90 days
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: deleted_after
+        description: ISO8601 UTC Timestamp to filter records deleted after it
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: deleted_before
+        description: ISO8601 UTC Timestamp to filter records deleted before it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: List of deleted payments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_DeletedPaymentsPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payments
+      operationId: getV1PaymentsDeleted
+      summary: Get payments deleted in the last 90 days
+  /v1/payments:
+    get:
+      description: Get administration payments
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter payments with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_identifiers
+        description: Filter payments with a comma separated list of invoice identifiers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_numbers
+        description: Filter payments with a comma separated list of invoice numbers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: credit_case_ids
+        description: Filter payments with a comma separated list of internal credit case ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: credit_case_numbers
+        description: Filter payments with a comma separated list of credit case numbers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Get administration payments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_PaymentsPageEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payments
+      operationId: getV1Payments
+      summary: Get administration payments
+components:
+  schemas:
+    CustomerApi_V1_DeletedPaymentEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        origin_identifier:
+          type: string
+          description: External identifier
+        invoice_id:
+          type: string
+          description: Associated internal invoice identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+      required:
+      - id
+      - administration_id
+      - origin_identifier
+      - invoice_id
+      - deleted_at
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_DeletedPaymentsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedPaymentEntity'
+          description: Deleted Payment
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedPaymentsPageEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_PaymentEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Unique identifier
+        cost_type:
+          type: string
+          description: Cost type
+        description:
+          type: string
+          description: Description
+        reason:
+          type: string
+          description: Reason
+        reversal_code:
+          type: string
+          description: Reversal code
+        transaction_type:
+          type: string
+          description: Transaction type
+        invoice_id:
+          type: string
+          description: Internal unique invoice identifier
+        payment_method:
+          type: string
+          description: Payment method
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment was last updated
+        total_amount:
+          type: string
+          description: Total amount in invoice currency
+        total_book_amount:
+          type: string
+          description: Total amount in administration currency
+        payment_date:
+          type: string
+          description: Date the payment was made
+        psp_transaction:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_PspTransactionEntity'
+          description: The psp transaction associated with the payment (request with the 'fields' parameter)
+        bank_transaction:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_BankTransactionEntity'
+          description: The bank transaction associated with the payment (request with the 'fields' parameter)
+      required:
+      - administration_id
+      - id
+      - invoice_id
+      - updated_at
+      - total_amount
+      - total_book_amount
+      - payment_date
+    CustomerApi_PaymentsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PaymentEntity'
+          description: Payment
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_PaymentsPageEntity model
+    CustomerApi_V1_PspTransactionEntity:
+      type: object
+      properties:
+        bank_account_name:
+          type: string
+          description: Name of bank account holder
+        bank_account_number:
+          type: string
+          description: Bank account number
+        currency_code:
+          type: string
+          description: Currency code in ISO 4217 format
+        invoice_ids:
+          type: array
+          items:
+            type: string
+          description: Associated invoice identifiers
+        payment_method:
+          type: string
+          description: Transaction payment method
+        reversal_code:
+          type: string
+          description: Reversal code
+        status:
+          type: string
+          description: Transaction status (cancelled|charged_back|failed|paid|pending|processing|refunded)
+        amount:
+          type: string
+          description: Amount in invoice currency
+        book_amount:
+          type: string
+          description: Amount in administration currency
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        id:
+          type: string
+          description: Unique identifier
+        paid_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the PSP transaction was paid
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the psp_transaction was last updated
+      required:
+      - currency_code
+      - invoice_ids
+      - payment_method
+      - status
+      - amount
+      - book_amount
+      - administration_id
+      - debtor_id
+      - id
+      - updated_at
+      description: CustomerApi_V1_PspTransactionEntity model
+    CustomerApi_V1_BankTransactionEntity:
+      type: object
+      properties:
+        bank_account_name:
+          type: string
+          description: Name of bank account holder
+        bank_account_number:
+          type: string
+          description: Bank account number
+        description:
+          type: string
+          description: Description of the bank transaction
+        currency_code:
+          type: string
+          description: Currency code in ISO 4217 format
+        exchange_rate:
+          type: string
+          description: Exchange rate applied to convert from bank transaction currency to administration currency
+        payment_method:
+          type: string
+          description: Transaction payment method
+        amount:
+          type: string
+          description: Amount in invoice currency
+        book_amount:
+          type: string
+          description: Amount in administration currency
+        id:
+          type: string
+          description: Unique identifier
+        book_date:
+          type: string
+          description: Date at which the bank transaction was booked
+      required:
+      - currency_code
+      - exchange_rate
+      - amount
+      - book_amount
+      - id
+      - book_date
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

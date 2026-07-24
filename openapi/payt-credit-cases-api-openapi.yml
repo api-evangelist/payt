@@ -1,0 +1,409 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations credit_cases API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: credit_cases
+  description: Operations about credit_cases
+paths:
+  /v1/credit_cases/deleted:
+    get:
+      description: Get credit cases deleted in the last 90 days
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: deleted_after
+        description: ISO8601 UTC Timestamp to filter records deleted after it
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: deleted_before
+        description: ISO8601 UTC Timestamp to filter records deleted before it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: List of deleted credit_cases
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_DeletedCreditCasesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - credit_cases
+      operationId: getV1CreditCasesDeleted
+      summary: Get credit cases deleted in the last 90 days
+  /v1/credit_cases:
+    get:
+      description: Get administration credit_cases
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter credit cases with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of credit cases
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_CreditCasesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - credit_cases
+      operationId: getV1CreditCases
+      summary: Get administration credit_cases
+  /v1/credit_cases/{id}:
+    get:
+      description: Get administration credit case by id
+      parameters:
+      - in: path
+        name: id
+        description: Credit case identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit case
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_CreditCaseEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - credit_cases
+      operationId: getV1CreditCasesId
+      summary: Get administration credit case by id
+components:
+  schemas:
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
+    CustomerApi_V1_CreditCaseEntity:
+      type: object
+      properties:
+        labels:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_LabelEntity'
+          description: Labels (request with the 'fields' parameter)
+        case_number:
+          type: string
+          description: Case number
+        public_url:
+          type: string
+          description: Link to the debtor portal (request with the 'fields' parameter)
+        deeplink_url:
+          type: string
+          description: URL to the credit case in the debtor management interface (request with the 'fields' parameter)
+        credit_case_number:
+          type: string
+          description: Formatted credit case number
+        currency_code:
+          type: string
+          description: Currency code
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debt_collection_costs:
+          type: string
+          description: Debt collection costs
+        open_interest_and_collection_costs:
+          type: string
+          description: Open interest and collection costs (request with the 'fields' parameter)
+        total_amount:
+          type: string
+          description: Total amount of the credit case
+        open_amount:
+          type: string
+          description: Total open amount of the credit case
+        id:
+          type: string
+          description: Unique identifier
+        interest_costs:
+          type: string
+          description: Interest
+        internal_note_email_address:
+          type: string
+          description: Internal note email address (request with the 'fields' parameter)
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        payment_plan_id:
+          type: string
+          description: DEPRECATED, use active_payment_plan_id instead
+        active_payment_plan_id:
+          type: string
+          description: Associated active payment plan.
+        forwarded_to_bailiff_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the credit case was forwarded to a bailiff
+        latest_summons_at:
+          type: string
+          format: date-time
+          description: 'Timestamp at which the latest summons was sent.
+
+            This value will be higher than the highest summons_X_at when the credit_case is mentioned in a notice of default.
+
+            '
+        notice_of_default_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the notice of default was sent
+        pre_judicial_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the pre-judicial phase started
+        pre_summons_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the debt collection notice was performed
+        paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the credit case was last paused
+        deactivated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the credit case was deactivated
+        first_summons_at:
+          type: string
+          format: date-time
+          description: 'DEPRECATED: use `summons_1_at` instead'
+        summons_1_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the first summons was sent
+        summons_2_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the second summons was sent
+        summons_3_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the third summons was sent
+        summons_4_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the fourth summons was sent
+        started_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the credit case was started
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the credit case was last updated
+      required:
+      - case_number
+      - credit_case_number
+      - currency_code
+      - administration_id
+      - debt_collection_costs
+      - total_amount
+      - open_amount
+      - id
+      - interest_costs
+      - debtor_id
+      - started_at
+      - updated_at
+      description: CustomerApi_V1_CreditCaseEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_CreditCasesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_CreditCaseEntity'
+          description: Credit case
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_CreditCasesPageEntity model
+    CustomerApi_DeletedCreditCasesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedCreditCaseEntity'
+          description: Deleted Credit Case
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedCreditCasesPageEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_DeletedCreditCaseEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated internal debtor identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+      required:
+      - id
+      - administration_id
+      - debtor_id
+      - deleted_at
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

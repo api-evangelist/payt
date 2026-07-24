@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations files API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: files
+  description: Operations about files
+paths:
+  /v1/files:
+    post:
+      description: Create files to upload
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1Files'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1Files'
+        required: true
+      responses:
+        '201':
+          description: Files created, with URLs to upload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_UploadableFileEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - files
+      operationId: postV1Files
+      summary: Create files to upload
+components:
+  schemas:
+    CustomerApi_V1_UploadableFileEntity:
+      type: object
+      properties:
+        checksum:
+          type: string
+          description: File checksum
+        url:
+          type: string
+          description: URL to upload the file to
+        expires_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the URL expires
+      required:
+      - checksum
+      - url
+      - expires_at
+      description: CustomerApi_V1_UploadableFileEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    postV1Files:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              byte_size:
+                type: integer
+                format: int32
+                description: Size of file in bytes
+              checksum:
+                type: string
+                description: Checksum of file hashed with SHA3-512 algorithm and encoded in base64
+              content_type:
+                type: string
+                description: Type of content
+            required:
+            - byte_size
+            - checksum
+            - content_type
+      required:
+      - administration_id
+      - files
+      description: Create files to upload
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

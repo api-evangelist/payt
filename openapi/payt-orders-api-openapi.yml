@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations orders API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: orders
+  description: Operations about orders
+paths:
+  /v1/orders:
+    post:
+      description: Create an order
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                administration_id:
+                  description: Administration identifier
+                  type: string
+                order[file]:
+                  description: Multipart file containing order details
+                  type: string
+                  format: binary
+              required:
+              - administration_id
+              - order[file]
+        required: true
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_OrderEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validations errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - orders
+      operationId: postV1Orders
+      summary: Create an order
+components:
+  schemas:
+    CustomerApi_V1_OrderEntity:
+      type: object
+      properties:
+        deeplink_url:
+          type: string
+          description: URL to the order in the debtor management interface
+      description: CustomerApi_V1_OrderEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

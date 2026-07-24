@@ -1,0 +1,244 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations order_lines API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: order_lines
+  description: Operations about order_lines
+paths:
+  /v1/order_lines:
+    get:
+      description: Get administration order lines
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: created_before
+        description: ISO8601 UTC Timestamp to filter records created before it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: created_after
+        description: ISO8601 UTC Timestamp to filter records created after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: order_line_identifiers
+        description: Filter order lines with a comma separated list of order line identifiers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter order lines with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: claim_status
+        description: Filter order lines by claim status
+        required: false
+        schema:
+          type: string
+          enum:
+          - action_required
+          - auto_resubmit
+          - draft
+          - failed
+          - processed
+          - submitted
+      - in: query
+        name: invoice_identifiers
+        description: Filter order lines with a comma separated list of invoice identifiers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of order lines
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_OrderLinesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - order_lines
+      operationId: getV1OrderLines
+      summary: Get administration order lines
+components:
+  schemas:
+    CustomerApi_V1_OrderLineEntity:
+      type: object
+      properties:
+        claim:
+          type: boolean
+          description: Whether to claim the order line amount
+        claim_status:
+          type: string
+          description: Status of the claim
+        claim_response_codes:
+          type: array
+          items:
+            type: string
+          description: The response codes from the claim request
+        deeplink_url:
+          type: string
+          description: URL to the order line in the debtor management interface (request with the 'fields' parameter)
+        customer:
+          type: object
+          properties:
+            email_address:
+              type: string
+          required:
+          - email_address
+          description: Customer  (request with the 'fields' parameter)
+        product_identifier:
+          type: string
+          description: Product identifier (request with the 'fields' parameter)
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Unique identifier
+        order_line_identifier:
+          type: string
+          description: The unique order line identifier
+        invoice_identifier:
+          type: string
+          description: The invoice identifier in the accounting system
+        credit_invoice_identifier:
+          type: string
+          description: The invoice identifier of the credit invoice in the accounting system
+        amount:
+          type: string
+          description: The total amount
+        credited_amount:
+          type: string
+          description: The total amount that is credited
+        credited_reimbursed_amount:
+          type: string
+          description: The total reimbursed amount that is credited
+        rejected_amount:
+          type: string
+          description: The amount that is rejected and not invoiced
+        reimbursed_amount:
+          type: string
+          description: The amount that is reimbursed
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the order line was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the order line was last updated
+      required:
+      - claim
+      - claim_status
+      - administration_id
+      - id
+      - order_line_identifier
+      - amount
+      - credited_amount
+      - credited_reimbursed_amount
+      - rejected_amount
+      - created_at
+      - updated_at
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_OrderLinesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_OrderLineEntity'
+          description: Order line
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_OrderLinesPageEntity model
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

@@ -1,0 +1,588 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations payment_plans API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: payment_plans
+  description: Operations about payment_plans
+paths:
+  /v1/payment_plans/{id}/approve:
+    patch:
+      description: Approve a proposed payment plan
+      parameters:
+      - in: path
+        name: id
+        description: Payment plan identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1PaymentPlansIdApprove'
+      responses:
+        '200':
+          description: Approve a proposed payment plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: patchV1PaymentPlansIdApprove
+      summary: Approve a proposed payment plan
+  /v1/payment_plans/{id}/deactivate:
+    patch:
+      description: Deactivate an active payment plan
+      parameters:
+      - in: path
+        name: id
+        description: Payment plan identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1PaymentPlansIdApprove'
+      responses:
+        '200':
+          description: Deactivate an active payment plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: patchV1PaymentPlansIdDeactivate
+      summary: Deactivate an active payment plan
+  /v1/payment_plans/{id}/reject:
+    patch:
+      description: Reject a proposed payment plan
+      parameters:
+      - in: path
+        name: id
+        description: Payment plan identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        $ref: '#/components/requestBodies/patchV1PaymentPlansIdApprove'
+      responses:
+        '200':
+          description: Reject a proposed payment plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: patchV1PaymentPlansIdReject
+      summary: Reject a proposed payment plan
+  /v1/payment_plans/{id}:
+    get:
+      description: Get administration payment plan by id
+      parameters:
+      - in: path
+        name: id
+        description: Payment plan identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get administration payment plan by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: getV1PaymentPlansId
+      summary: Get administration payment plan by id
+  /v1/payment_plans:
+    post:
+      description: Create an approved payment plan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1PaymentPlans'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1PaymentPlans'
+        required: true
+      responses:
+        '201':
+          description: Created payment plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: postV1PaymentPlans
+      summary: Create an approved payment plan
+    get:
+      description: Get administration payment plans
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter payment plans with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_numbers
+        description: Filter payment plans with a comma separated list of debtor numbers
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_identifiers
+        description: Filter payment plans with a comma separated list of debtor identifiers from your accounting software
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Get administration payment plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_PaymentPlansPageEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: getV1PaymentPlans
+      summary: Get administration payment plans
+  /v1/payment_plans/deleted:
+    get:
+      description: Get payment_plans deleted in the last 90 days
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: deleted_after
+        description: ISO8601 UTC Timestamp to filter records deleted after it
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: deleted_before
+        description: ISO8601 UTC Timestamp to filter records deleted before it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: List of deleted payment plans
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_Deleted_PaymentPlansPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_plans
+      operationId: getV1PaymentPlansDeleted
+      summary: Get payment_plans deleted in the last 90 days
+components:
+  schemas:
+    postV1PaymentPlans:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        cc_email_address:
+          type: string
+          description: Email address to send a copy of the payment plan
+        invoice_numbers:
+          type: array
+          description: List of invoices by invoice_number to include in the payment plan
+          items:
+            type: string
+        invoice_identifiers:
+          type: array
+          description: List of invoices by invoice_identifier to include
+          items:
+            type: string
+        credit_case_numbers:
+          type: array
+          description: List of credit cases by credit_case_number to include
+          items:
+            type: string
+        terms:
+          type: array
+          description: List of terms for payment plan
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+                format: double
+                description: Amount to pay
+              due_date:
+                type: string
+                format: date
+                description: Due date of the payment
+            required:
+            - amount
+            - due_date
+      required:
+      - administration_id
+      - terms
+      description: Create an approved payment plan
+    CustomerApi_V1_PlannedPaymentEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        total_amount:
+          type: string
+          description: Total amount
+        amount_due:
+          type: string
+          description: Amount due
+        due_date:
+          type: string
+          description: Due date
+        payment_date:
+          type: string
+          description: Date the payment term was fully paid
+      required:
+      - id
+      - total_amount
+      - amount_due
+      - due_date
+      - payment_date
+    CustomerApi_V1_PaymentPlanEntity:
+      type: object
+      properties:
+        payment_terms:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PlannedPaymentEntity'
+          description: Payment terms
+        active:
+          type: boolean
+          description: Whether the payment plan is active
+        auto_activated:
+          type: boolean
+          description: Whether the payment plan was auto-activated
+        reason:
+          type: string
+          description: Reason for proposing payment plan provided by debtor
+        rejected_by_user:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
+          description: User who rejected the proposed payment plan
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        id:
+          type: string
+          description: Unique identifier
+        approved_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment plan was approved
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment plan was created
+        deactivated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment plan was deactivated
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment_plan was last updated
+        proposed_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment plan was proposed
+        rejected_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment plan was rejected
+        public_url:
+          type: string
+          description: Link to the debtor portal (request with the 'fields' parameter)
+      required:
+      - auto_activated
+      - administration_id
+      - debtor_id
+      - id
+      - created_at
+      - updated_at
+      description: CustomerApi_V1_PaymentPlanEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_V1_Deleted_PaymentPlanEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Internal identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+      required:
+      - administration_id
+      - id
+      - deleted_at
+      - debtor_id
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_Deleted_PaymentPlansPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PaymentPlanEntity'
+          description: Deleted payment plan
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_Deleted_PaymentPlansPageEntity model
+    CustomerApi_PaymentPlansPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+          description: Payment plan
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_PaymentPlansPageEntity model
+  requestBodies:
+    patchV1PaymentPlansIdApprove:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              administration_id:
+                description: Administration identifier
+                type: string
+              fields:
+                description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+                type: string
+            required:
+            - administration_id
+      required: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

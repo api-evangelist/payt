@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations payment_conditions API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: payment_conditions
+  description: Operations about payment_conditions
+paths:
+  /v1/payment_conditions:
+    post:
+      description: Create payment conditions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1PaymentConditions'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1PaymentConditions'
+        required: true
+      responses:
+        '201':
+          description: Payment conditions created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - payment_conditions
+      operationId: postV1PaymentConditions
+      summary: Create payment conditions
+components:
+  schemas:
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    postV1PaymentConditions:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        payment_conditions:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Code of the payment condition
+              name:
+                type: string
+                description: Name of the payment condition
+            required:
+            - code
+            - name
+      required:
+      - administration_id
+      - payment_conditions
+      description: Create payment conditions
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

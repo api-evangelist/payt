@@ -1,0 +1,207 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations notes API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: notes
+  description: Operations about notes
+paths:
+  /v1/notes:
+    get:
+      description: Get administration notes
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter notes with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_ids
+        description: Filter notes with a comma separated list of debtor internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_ids
+        description: Filter notes with a comma separated list of invoice internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: credit_case_ids
+        description: Filter notes with a comma separated list of credit case internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Get administration notes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_NotesPageEntity'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - notes
+      operationId: getV1Notes
+      summary: Get administration notes
+components:
+  schemas:
+    CustomerApi_NotesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_NoteEntity'
+          description: Note
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_NotesPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_NoteEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        credit_case_id:
+          type: string
+          description: Associated credit_case identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        from_email_address:
+          type: string
+          description: Email address the note originated from
+        id:
+          type: string
+          description: Unique identifier
+        invoice_id:
+          type: string
+          description: Associated invoice identifier
+        content:
+          type: string
+          description: The content of the note
+        user:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
+          description: User who created the note
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the note was created
+        completed_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the note was marked as completed
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the note was last updated
+      required:
+      - administration_id
+      - id
+      - content
+      - created_at
+      - updated_at
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

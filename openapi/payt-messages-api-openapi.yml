@@ -1,0 +1,447 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations messages API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: messages
+  description: Operations about messages
+paths:
+  /v1/messages:
+    post:
+      description: Send a message to a debtor
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1Messages'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1Messages'
+        required: true
+      responses:
+        '200':
+          description: Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - messages
+      operationId: postV1Messages
+      summary: Send a message to a debtor
+    patch:
+      description: Update messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patchV1Messages'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/patchV1Messages'
+        required: true
+      responses:
+        '200':
+          description: Messages updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_SuccessEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - messages
+      operationId: patchV1Messages
+      summary: Update messages
+    get:
+      description: Get administration messages
+      parameters:
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: ids
+        description: Filter messages with a comma separated list of internal ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: debtor_ids
+        description: Filter messages with a comma separated list of internal debtor ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: invoice_ids
+        description: Filter messages with a comma separated list of internal invoice ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: credit_case_ids
+        description: Filter messages with a comma separated list of internal credit_case ids
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: updated_after
+        description: ISO8601 UTC Timestamp to filter records updated after it
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_MessagesPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - messages
+      operationId: getV1Messages
+      summary: Get administration messages
+  /v1/messages/{id}:
+    get:
+      description: Get administration message by id
+      parameters:
+      - in: path
+        name: id
+        description: Message identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: administration_id
+        description: Administration identifier
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - messages
+      operationId: getV1MessagesId
+      summary: Get administration message by id
+components:
+  schemas:
+    postV1Messages:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        debtor_number:
+          type: string
+          description: Number of the debtor to send a message to
+        debtor_identifier:
+          type: string
+          description: Identifier of the debtor to send a message to
+        invoice_number:
+          type: string
+          description: Number of the invoice to send a message to
+        invoice_identifier:
+          type: string
+          description: Identifier of the invoice to send a message to
+        credit_case_number:
+          type: string
+          description: Number of the credit case to send a message to
+        message:
+          type: object
+          properties:
+            body:
+              type: string
+              description: Message body
+            subject:
+              type: string
+              description: Subject of message
+            email:
+              type: string
+              description: "Email address the message is sent to. When not provided,\n                                                               the message will be sent to the debtor email address,\n                                                               if present"
+            cc_email:
+              type: string
+              description: CC email addresses separated by commas
+            bcc_email:
+              type: string
+              description: BCC email addresses separated by commas
+            attachments:
+              type: array
+              description: Multipart files containing message attachments
+              items:
+                type: string
+                format: binary
+          required:
+          - body
+          - subject
+      required:
+      - administration_id
+      - message
+      description: Send a message to a debtor
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    CustomerApi_V1_MessageEntity:
+      type: object
+      properties:
+        sender_type:
+          type: string
+          description: Sender type (creditor|debtor)
+        subject:
+          type: string
+          description: Message subject
+        read_by_user:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
+          description: User who marked the message as read
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        credit_case_id:
+          type: string
+          description: Associated credit_case identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        id:
+          type: string
+          description: Unique identifier
+        invoice_id:
+          type: string
+          description: Associated invoice identifier
+        content:
+          type: string
+          description: The content of the message (request with the 'fields' parameter)
+        sent_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was sent
+        received_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was received
+        read_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was first read (please note that for some mail clients this field is not filled when an email is read)
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was last updated
+      required:
+      - sender_type
+      - administration_id
+      - id
+      - updated_at
+      description: CustomerApi_V1_MessageEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    patchV1Messages:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Message identifier
+              read:
+                type: boolean
+                description: Whether the message is read
+            required:
+            - id
+            - read
+      required:
+      - administration_id
+      - messages
+      description: Update messages
+    CustomerApi_MessagesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
+          description: Message
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_MessagesPageEntity model
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

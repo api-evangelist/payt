@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations sign_up API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: sign_up
+  description: Operations about sign_ups
+paths:
+  /v1/sign_up:
+    post:
+      summary: Sign up a new Payt account
+      description: '**NOTE:** This endpoint uses Basic authentication, just as the [token endpoints](https://docs.paytsoftware.com/authentication/tokens).
+
+
+        Creates a Payt account containing a user, company and administration.
+
+
+        An OAuth authorization_code will be returned with which the first access_token can be created. This means that in order to complete the API authorization the confirm step must be made [as described here](https://docs.paytsoftware.com/authentication/authorization).
+
+
+        If connection parameters are given then these are added to the newly created administration and are validated during the signup. If the connection parameters are invalid a validation error will be returned.'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                administration[city]:
+                  description: Part of the administration address
+                  type: string
+                administration[commercial_registration_number]:
+                  description: Offical national commercial registration number
+                  type: string
+                administration[country_code]:
+                  description: ISO 3166 Alpha-2 country code, Part of the administration address
+                  type: string
+                administration[email_address]:
+                  description: Email address of the administration
+                  type: string
+                administration[house_number]:
+                  description: Part of the administration address
+                  type: string
+                administration[name]:
+                  description: Name of the administration
+                  type: string
+                administration[phone_number]:
+                  description: Phone number of the administration
+                  type: string
+                administration[postal_code]:
+                  description: Part of the administration address
+                  type: string
+                administration[street_name]:
+                  description: Part of the administration address
+                  type: string
+                administration[sender_email_address]:
+                  description: Sender email address which will be used for outgoing communication
+                  type: string
+                administration[bank_account_bic]:
+                  description: BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.
+                  type: string
+                administration[bank_account_name]:
+                  description: Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.
+                  type: string
+                administration[bank_account_number]:
+                  description: Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.
+                  type: string
+                administration[contact_name]:
+                  description: The name of the contact person for this administration
+                  type: string
+                administration[currency_code]:
+                  description: The accounting or reporting currency, ISO 4217
+                  type: string
+                  default: EUR
+                administration[timezone]:
+                  description: Timezone in which the administration primarily operates, canonical tz name
+                  type: string
+                  default: Europe/Amsterdam
+                administration[vat_number]:
+                  description: VAT number of the administration
+                  type: string
+                user[first_name]:
+                  description: First name of the user
+                  type: string
+                user[last_name]:
+                  description: Last name of the user
+                  type: string
+                user[email_address]:
+                  description: Email address the user will use to login into Payt
+                  type: string
+                user[locale]:
+                  description: Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE).
+                  type: string
+                  default: en-GB
+                connection[resource_label]:
+                  description: Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.
+                  type: string
+                connection[resource_identifier]:
+                  description: The unique identifier of the connected resource. This identifier will be used to query your API.
+                  type: string
+                connection[credentials_label]:
+                  description: Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.
+                  type: string
+              required:
+              - administration[city]
+              - administration[commercial_registration_number]
+              - administration[country_code]
+              - administration[email_address]
+              - administration[house_number]
+              - administration[name]
+              - administration[phone_number]
+              - administration[postal_code]
+              - administration[street_name]
+              - user[first_name]
+              - user[last_name]
+              - user[email_address]
+              - connection[resource_label]
+              - connection[resource_identifier]
+        required: true
+      responses:
+        '201':
+          description: Payt account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_SignUpEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validations errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - sign_up
+      operationId: postV1SignUp
+components:
+  schemas:
+    CustomerApi_V1_SignUpUserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+        sign_up_token:
+          type: string
+          description: One time token used for in-app sign up
+        sign_up_url:
+          type: string
+          description: The url the user can be redirected to in order to complete the sign up.
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_SignUpEntity:
+      type: object
+      properties:
+        administration:
+          $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+        company:
+          $ref: '#/components/schemas/CustomerApi_V1_CompanyEntity'
+        user:
+          $ref: '#/components/schemas/CustomerApi_V1_SignUpUserEntity'
+        access_grant:
+          $ref: '#/components/schemas/CustomerApi_V1_AccessGrantEntity'
+      required:
+      - administration
+      - company
+      - user
+      - access_grant
+      description: CustomerApi_V1_SignUpEntity model
+    CustomerApi_V1_AdministrationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - deleted
+          - implementation
+          description: Status
+        email_address:
+          type: string
+          description: Email address of the administration
+        contact_name:
+          type: string
+          description: The name of the contact person for this administration
+        commercial_registration_number:
+          type: string
+          description: Offical national commercial registration number
+        country_code:
+          type: string
+          description: ISO 3166 Alpha-2 country code, Part of the administration address
+        city:
+          type: string
+          description: Part of the administration address
+        house_number:
+          type: string
+          description: Part of the administration address
+        internal_name:
+          type: string
+          description: Internal name
+        street_name:
+          type: string
+          description: Part of the administration address
+        postal_code:
+          type: string
+          description: Part of the administration address
+        bank_account_name:
+          type: string
+          description: Name of the bank account holder
+        bank_account_number:
+          type: string
+          description: Number of the bank account
+        bank_account_bic:
+          type: string
+          description: BIC of the bank
+        vat_number:
+          type: string
+          description: VAT number of the administration
+        timezone:
+          type: string
+          description: Timezone in which the administration primarily operates, canonical tz name
+        currency_code:
+          type: string
+          description: The accounting or reporting currency, ISO 4217
+        administration_url:
+          type: string
+          description: The url to the administration in the Payt interface
+        import_origin_identifier:
+          type: string
+          description: The identifier which is used for importing from origin (request with the 'fields' parameter)
+        last_successful_import_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last successful import (request with the 'fields' parameter)
+        paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the administration was paused
+        reminding_paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which sending reminders for the administration was paused
+      required:
+      - id
+      - name
+      - status
+      - email_address
+      - contact_name
+      - commercial_registration_number
+      - country_code
+      - city
+      - house_number
+      - internal_name
+      - street_name
+      - postal_code
+      - timezone
+      - currency_code
+      - administration_url
+      description: CustomerApi_V1_AdministrationEntity model
+    CustomerApi_V1_CompanyEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        status:
+          type: string
+          enum:
+          - active
+          - implementation
+          - inactive
+          - deleted
+          - unconfirmed
+          description: Status
+        trial_ends_on:
+          type: string
+          description: The date at which the trial ends
+        trial:
+          type: boolean
+          description: Whether the Company is still in the trial period.
+      required:
+      - id
+      - name
+      - status
+      - trial_ends_on
+      - trial
+      description: CustomerApi_V1_CompanyEntity model
+    CustomerApi_V1_AccessGrantEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The code that can be used to created the first access_token.
+        expires_in:
+          type: integer
+          format: int32
+          description: The number of seconds the access_grant is valid.
+        created_at:
+          type: string
+          description: The UNIX time at which the token was created.
+        grant_type:
+          type: string
+          description: The OAuth flow the code can be used for, will always be 'authorization_code'.
+      required:
+      - code
+      - expires_in
+      - created_at
+      - grant_type
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.

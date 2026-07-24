@@ -1,0 +1,365 @@
+openapi: 3.0.0
+info:
+  title: API Endpoints administrations API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  version: 1.0.0
+servers:
+- url: https://api.paytsoftware.com
+  description: Production
+- url: https://demo-api.paytsoftware.com
+  description: Demo / testing
+security:
+- bearerAuth: []
+tags:
+- name: administrations
+  description: Operations about administrations
+paths:
+  /v1/administrations/{administration_id}:
+    get:
+      description: Get administration by id
+      parameters:
+      - in: path
+        name: administration_id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Administration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - administrations
+      operationId: getV1AdministrationsAdministrationId
+      summary: Get administration by id
+  /v1/administrations:
+    post:
+      description: Creates an administration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postV1Administrations'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/postV1Administrations'
+        required: true
+      responses:
+        '201':
+          description: Administration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '422':
+          description: Validations errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - administrations
+      operationId: postV1Administrations
+      summary: Creates an administration
+    get:
+      description: Get administrations
+      parameters:
+      - in: query
+        name: fields
+        description: 'JSON object defining fields to receive (e.g {"only": ["field1", {"field2": ["field3"]}]})'
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: cursor
+        description: The record identifier after which to start the page
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: per_page
+        description: How many records will be returned per page, (1..500), defaults to 100
+        required: false
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 500
+          default: 100
+      responses:
+        '200':
+          description: Paginated list of administrations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_AdministrationsPageEntity'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+        '403':
+          description: Access not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerApi_ErrorEntity'
+      tags:
+      - administrations
+      operationId: getV1Administrations
+      summary: Get administrations
+components:
+  schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_AdministrationEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          - deleted
+          - implementation
+          description: Status
+        email_address:
+          type: string
+          description: Email address of the administration
+        contact_name:
+          type: string
+          description: The name of the contact person for this administration
+        commercial_registration_number:
+          type: string
+          description: Offical national commercial registration number
+        country_code:
+          type: string
+          description: ISO 3166 Alpha-2 country code, Part of the administration address
+        city:
+          type: string
+          description: Part of the administration address
+        house_number:
+          type: string
+          description: Part of the administration address
+        internal_name:
+          type: string
+          description: Internal name
+        street_name:
+          type: string
+          description: Part of the administration address
+        postal_code:
+          type: string
+          description: Part of the administration address
+        bank_account_name:
+          type: string
+          description: Name of the bank account holder
+        bank_account_number:
+          type: string
+          description: Number of the bank account
+        bank_account_bic:
+          type: string
+          description: BIC of the bank
+        vat_number:
+          type: string
+          description: VAT number of the administration
+        timezone:
+          type: string
+          description: Timezone in which the administration primarily operates, canonical tz name
+        currency_code:
+          type: string
+          description: The accounting or reporting currency, ISO 4217
+        administration_url:
+          type: string
+          description: The url to the administration in the Payt interface
+        import_origin_identifier:
+          type: string
+          description: The identifier which is used for importing from origin (request with the 'fields' parameter)
+        last_successful_import_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last successful import (request with the 'fields' parameter)
+        paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the administration was paused
+        reminding_paused_at:
+          type: string
+          format: date-time
+          description: Timestamp at which sending reminders for the administration was paused
+      required:
+      - id
+      - name
+      - status
+      - email_address
+      - contact_name
+      - commercial_registration_number
+      - country_code
+      - city
+      - house_number
+      - internal_name
+      - street_name
+      - postal_code
+      - timezone
+      - currency_code
+      - administration_url
+      description: CustomerApi_V1_AdministrationEntity model
+    postV1Administrations:
+      type: object
+      properties:
+        administration:
+          type: object
+          properties:
+            city:
+              type: string
+              description: Part of the administration address
+            commercial_registration_number:
+              type: string
+              description: Official national commercial registration number
+            contact_name:
+              type: string
+              description: The name of the contact person for this administration
+            country_code:
+              type: string
+              description: ISO 3166 Alpha-2 country code, Part of the administration address
+            email_address:
+              type: string
+              description: Email address of the administration
+            house_number:
+              type: string
+              description: Part of the administration address
+            name:
+              type: string
+              description: Name of the administration
+            postal_code:
+              type: string
+              description: Part of the administration address
+            street_name:
+              type: string
+              description: Part of the administration address
+            sender_email_address:
+              type: string
+              description: Sender email address which will be used for outgoing communication
+            bank_account_bic:
+              type: string
+              description: BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.
+            bank_account_name:
+              type: string
+              description: Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.
+            bank_account_number:
+              type: string
+              description: Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.
+            currency_code:
+              type: string
+              description: The accounting or reporting currency, ISO 4217
+              default: EUR
+            timezone:
+              type: string
+              description: Timezone in which the administration primarily operates, canonical tz name
+              default: Europe/Amsterdam
+            vat_number:
+              type: string
+              description: VAT number of the administration
+          required:
+          - city
+          - commercial_registration_number
+          - contact_name
+          - country_code
+          - email_address
+          - house_number
+          - name
+          - postal_code
+          - street_name
+        connection:
+          type: object
+          properties:
+            resource_label:
+              type: string
+              description: Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.
+            resource_identifier:
+              type: string
+              description: The unique identifier of the connected resource. This identifier will be used to query your API.
+            credentials:
+              type: object
+              description: All keys and/or tokens required to establish a connection back to your application for the newly created administration. Which parameters are required depends on your application. Send a request and check the validation error messages to find out which parameters are expected.
+            credentials_label:
+              type: string
+              description: Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.
+          required:
+          - resource_label
+          - resource_identifier
+      required:
+      - administration
+      description: Creates an administration
+    CustomerApi_AdministrationsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+          description: Administration
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_AdministrationsPageEntity model
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.
