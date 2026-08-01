@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for the Payt Customer API
+  version: 1.0.0
+  x-generated: '2026-07-20'
+  x-method: generated
+  x-source: >-
+    Captures API Evangelist enrichments over openapi/payt-openapi-original.json,
+    grounded in docs.paytsoftware.com. Extends, never mutates, the original spec.
+extends: ../openapi/payt-openapi-original.json
+actions:
+- target: $.info
+  description: Annotate top-level API metadata and cross-cutting conventions.
+  update:
+    x-base-url: https://api.paytsoftware.com
+    x-demo-base-url: https://demo-api.paytsoftware.com
+    x-rate-limit: 10 requests/second per access token (429 on exceed; imports 3 files/second)
+    x-pagination: cursor-based (cursor param, pagination.cursor field) with updated_after sync
+    x-error-format: custom {code, message} + write-result {success, count, errors, warnings}; not RFC 9457
+    x-docs: https://docs.paytsoftware.com
+    x-status-page: https://status.paytsoftware.com
+- target: $.components.securitySchemes.bearerAuth
+  description: Document the OAuth 2.0 flow behind the single bearer scheme declared in the spec.
+  update:
+    x-oauth2-flow: authorizationCode
+    x-authorization-url: https://app.paytsoftware.com/oauth/authorize
+    x-token-url: https://api.paytsoftware.com/oauth/token
+    x-scopes-model: '<resource>:<action> (read|write), space-separated'
+    x-static-token-fallback: true
+- target: $
+  description: Attach the documented webhook (event) surface, which is absent from the spec.
+  update:
+    x-webhooks-doc: https://docs.paytsoftware.com/webhooks/overview
+    x-webhooks-signature: HMAC-SHA256 over raw body in X-PAYT-SIGNATURE
+    x-webhooks-catalog: ../webhooks/payt-webhooks.yml

@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/authentication/permissions
+docs: https://docs.paytsoftware.com/authentication/permissions
+model:
+  standard: oauth2
+  naming: '<resource>:<action>'
+  actions:
+  - read
+  - write
+  delimiter: space
+  notes: >-
+    Payt permissions are implemented as OAuth 2.0 scopes (RFC 6749 section 3.3);
+    the words "permission" and "scope" are used interchangeably. Scopes are
+    requested via the scope parameter on the authorize URL (space-separated) and
+    the granted set is returned on every token create and on token introspection.
+    Acting on a resource without its scope returns 403 with a body naming the
+    missing permission, e.g. {"code":"forbidden","message":"Missing permission:
+    invoices:write"}. The full, current list of scopes is published only on the
+    application create/edit form inside the Payt UI (Connections page), not in the
+    public docs, so the list below captures the scopes explicitly evidenced in the
+    documentation plus the resource families exposed by the API.
+confirmed_scopes:
+- scope: debtors:read
+  evidence: authorize-URL example and webhook payload scoping note
+- scope: invoices:read
+  evidence: authorize-URL / token-response example (scope "invoices:read debtors:read")
+- scope: invoices:write
+  evidence: '403 error example (Missing permission: invoices:write)'
+resource_families:
+  note: >-
+    Each API resource family below is a candidate scope prefix under the
+    <resource>:read / <resource>:write model. Only the three scopes in
+    confirmed_scopes are documented verbatim; the rest are inferred from the API
+    surface and MUST be confirmed against the in-app application form before use.
+  prefixes:
+  - administrations
+  - companies
+  - contacts
+  - credit_cases
+  - debtors
+  - files
+  - invoices
+  - messages
+  - notes
+  - notifications
+  - order_lines
+  - orders
+  - payment_conditions
+  - payment_plans
+  - payments
+  - psp_mandates
+  - psp_transactions
+  - tasks
+  - vat_rates
+lifecycle:
+  add: >-
+    Adding a scope to an application does not retroactively grant it; users must
+    re-authorize to grant newly requested scopes.
+  remove: >-
+    Removing a scope immediately invalidates it across all existing tokens; those
+    endpoints then return 403 even for previously valid tokens.

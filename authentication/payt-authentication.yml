@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/authentication/authorization
+docs: https://docs.paytsoftware.com/authentication/authorization
+summary:
+  types:
+  - oauth2
+  - http
+  primary: oauth2
+  notes: >-
+    Payt authorizes API requests with an OAuth 2.0 Authorization Code flow (the
+    recommended path) or, as a less-secure fallback, a static API token. In both
+    cases the resulting access token is presented as an HTTP Bearer token. The
+    OpenAPI declares only the bearerAuth HTTP bearer scheme; the OAuth 2.0
+    machinery (authorize + token endpoints, scopes, refresh tokens) is documented
+    in the auth guide rather than the spec.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: >-
+    OAuth 2.0 access token or static API token, sent as Authorization: Bearer <token>
+    on almost all endpoints.
+  sources:
+  - openapi/payt-openapi-original.json
+  - https://docs.paytsoftware.com/authentication/tokens
+- name: oauth2_authorization_code
+  type: oauth2
+  flow: authorizationCode
+  authorizationUrl: https://app.paytsoftware.com/oauth/authorize
+  tokenUrl: https://api.paytsoftware.com/oauth/token
+  refresh: true
+  description: >-
+    OAuth 2.0 Authorization Code flow. The user authorizes an application, selecting
+    which administrations to grant and which scopes (permissions) to allow. The
+    authorization code expires after 10 minutes; access tokens live 2 hours and are
+    renewed with a rotating refresh token that lasts 90 days from last use.
+  sources:
+  - https://docs.paytsoftware.com/authentication/authorization
+  - https://docs.paytsoftware.com/authentication/tokens
+- name: basic_client_credentials
+  type: http
+  scheme: basic
+  description: >-
+    HTTP Basic (base64 client_id:client_secret, RFC 4648) is required only on the
+    token endpoints (/oauth/token) and the sign_up endpoint - used to obtain or
+    refresh tokens, not to call resource endpoints.
+  sources:
+  - https://docs.paytsoftware.com/authentication/basic-authorization
+- name: static_api_token
+  type: http
+  scheme: bearer
+  description: >-
+    Static API token fallback for clients unable to implement OAuth 2.0. Presented
+    as a Bearer token like an OAuth access token. Documented as the less-secure option.
+  sources:
+  - https://docs.paytsoftware.com/authentication/authorization
+mtls:
+  note: >-
+    Payt supports mutual TLS (mTLS) for webhook delivery: consumers may verify Payt's
+    client certificate (payt_mtls_certificate_2026.crt, valid until 2027-01-03),
+    downloadable from backend.paytsoftware.com. This is inbound webhook mTLS, not
+    required on outbound API calls.
+  source: https://docs.paytsoftware.com/webhooks/overview

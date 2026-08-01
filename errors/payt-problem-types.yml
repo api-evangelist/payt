@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/payt-openapi-original.json
+enriched_from:
+- https://docs.paytsoftware.com/api/responses
+- https://docs.paytsoftware.com/api/rate-limits
+- https://docs.paytsoftware.com/authentication/permissions
+format: custom
+format_note: >-
+  Payt does NOT use RFC 9457 (application/problem+json). Errors use a compact
+  JSON envelope {"code": "...", "message": "..."}. Write endpoints additionally
+  return a per-record {success, count, errors, warnings} result. Codes below are
+  the HTTP statuses declared across the OpenAPI operations plus the rate-limit
+  status documented separately.
+envelope:
+  auth: '{"code": "forbidden", "message": "Missing permission: invoices:write"}'
+  write: '{"success": true, "count": 10, "errors": {"not_found": ["..."]}, "warnings": {}}'
+problem_types:
+- status: 401
+  title: Unauthorized
+  meaning: Authentication is missing or the access token is invalid/expired.
+  remediation: Obtain or refresh a valid Bearer access token; re-authorize if the refresh token expired.
+- status: 403
+  code: forbidden
+  title: Forbidden
+  meaning: The token lacks the OAuth scope (permission) required for the resource/action.
+  remediation: >-
+    Read the message field for the missing permission name and prompt the user to
+    grant that scope; handle scope revocation gracefully.
+- status: 404
+  title: Not Found
+  meaning: The requested record does not exist (or is not visible to this authorization).
+  remediation: Verify ids and administration scope. For webhooks, 404 signals Payt to retry later.
+- status: 422
+  title: Unprocessable Entity
+  meaning: >-
+    The request could not be processed at all (malformed body, missing required
+    parameters). No records are processed.
+  remediation: Fix the request payload/parameters and resend.
+- status: 429
+  title: Too Many Requests
+  meaning: >-
+    Rate limit exceeded - 10 requests/second per token, or 3 files/second on import
+    endpoints. No data is returned.
+  remediation: Back off with increasing delays (exponential backoff) before retrying.
+partial_failures:
+  note: >-
+    On write endpoints a 2xx with success:true can still carry a non-empty errors
+    object (e.g. {"not_found": ["invoice_number"]}). Always inspect errors; an empty
+    object means every record was processed. warnings appears only for partial
+    processing.

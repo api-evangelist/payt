@@ -1,0 +1,73 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/payt-openapi-original.json
+status: candidate
+official_server: none
+notes: >-
+  No official hosted or remote Payt MCP server was found. This is a DERIVED
+  candidate tool list mapping Payt Customer API v1 operations to MCP tools, for
+  building an MCP server. All tools require an OAuth 2.0 Bearer access token
+  scoped to the target administration. Read-heavy surface; writes are upserts.
+transport_suggestion: stdio or streamable-http wrapper over https://api.paytsoftware.com
+auth: OAuth 2.0 Bearer token (see authentication/payt-authentication.yml)
+tools:
+- name: list_administrations
+  operationId: getV1Administrations
+  method: GET
+  path: /v1/administrations
+- name: get_administration
+  operationId: getV1AdministrationsAdministrationId
+  method: GET
+  path: /v1/administrations/{administration_id}
+- name: list_debtors
+  operationId: getV1Debtors
+  method: GET
+  path: /v1/debtors
+- name: upsert_debtors
+  operationId: postV1Debtors
+  method: POST
+  path: /v1/debtors
+- name: list_invoices
+  operationId: getV1Invoices
+  method: GET
+  path: /v1/invoices
+- name: upsert_invoices
+  operationId: postV1Invoices
+  method: POST
+  path: /v1/invoices
+- name: block_invoices
+  operationId: patchV1InvoicesBlock
+  method: PATCH
+  path: /v1/invoices/block
+- name: resume_invoices
+  operationId: patchV1InvoicesResume
+  method: PATCH
+  path: /v1/invoices/resume
+- name: list_payments
+  operationId: getV1Payments
+  method: GET
+  path: /v1/payments
+- name: list_credit_cases
+  operationId: getV1CreditCases
+  method: GET
+  path: /v1/credit_cases
+- name: list_payment_plans
+  operationId: getV1PaymentPlans
+  method: GET
+  path: /v1/payment_plans
+- name: list_psp_transactions
+  operationId: getV1PspTransactions
+  method: GET
+  path: /v1/psp_transactions
+- name: send_message
+  operationId: postV1Messages
+  method: POST
+  path: /v1/messages
+- name: list_tasks
+  operationId: getV1Tasks
+  method: GET
+  path: /v1/tasks
+- name: complete_task
+  operationId: patchV1TasksIdMarkCompleted
+  method: PATCH
+  path: /v1/tasks/{id}/mark_completed

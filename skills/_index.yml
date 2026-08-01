@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/payt-openapi-original.json
+api: Payt Customer API v1
+note: >-
+  Agent Skills generated from real operationIds in the Payt OpenAPI, grounded in
+  the documented conventions (cursor pagination, updated_after sync, OAuth Bearer
+  auth, {success,count,errors} write results). No provider-published skills or
+  AGENTS.md were found.
+skills:
+- id: sync-receivables
+  file: payt-sync-receivables.md
+  description: Incrementally sync administrations, debtors and invoices into an external system.
+  operations:
+  - getV1Administrations
+  - getV1Debtors
+  - getV1Invoices
+  - getV1Payments
+- id: manage-collections
+  file: payt-manage-collections.md
+  description: Drive the collections workflow - block/resume invoices, message debtors, and work tasks.
+  operations:
+  - getV1Invoices
+  - patchV1InvoicesBlock
+  - patchV1InvoicesResume
+  - postV1Messages
+  - getV1Tasks
+  - patchV1TasksIdMarkCompleted

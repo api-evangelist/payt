@@ -1,0 +1,123 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/webhooks/overview
+type: Webhooks
+docs:
+  overview: https://docs.paytsoftware.com/webhooks/overview
+  events: https://docs.paytsoftware.com/webhooks/events
+  triggers: https://docs.paytsoftware.com/webhooks/triggers
+  verification: https://docs.paytsoftware.com/webhooks/verification
+  activation: https://docs.paytsoftware.com/webhooks/activation
+  changelog: https://docs.paytsoftware.com/webhooks/changelog
+summary: >-
+  Payt pushes real-time state changes for invoices, debtors, debt-collection
+  cases, payment plans and PSP transactions to a consumer HTTPS endpoint as
+  POST requests with a JSON body. There is no published AsyncAPI document; this
+  catalog is the machine-readable index of the documented event surface.
+delivery:
+  transport: https
+  method: POST
+  content_type: application/json
+  activation: Per administration, under Administration settings > Modules > Webhooks (all-at-once or per event).
+  timestamps: UTC, ISO 8601
+  timeout_seconds: 10
+  retries:
+    max_attempts: 10
+    backoff: increasing interval between attempts
+    on_exhaustion: webhook deactivated and notification email sent; reactivate manually
+  ordering: not guaranteed; events may arrive out of order (e.g. invoice_paid before invoice_created)
+  success_status: '200'
+  suggested_pattern: >-
+    Respond 404 for an event referencing an object you do not yet know; it will be
+    retried after the creating event (e.g. invoice_created) arrives.
+  mtls:
+    supported: true
+    certificate: https://backend.paytsoftware.com/certificates/payt_mtls_certificate_2026.crt
+    valid_until: '2027-01-03'
+  source_ips:
+  - 34.249.128.162
+headers:
+- name: X-PAYT-DELIVERY
+  description: UUID identifying the delivery attempt.
+- name: X-PAYT-ADMINISTRATION-IDENTIFIER
+  description: Payt internal identifier of the administration the event relates to.
+- name: X-PAYT-SIGNATURE
+  description: HMAC-SHA256 hex digest of the raw request body, keyed with the webhook secret.
+verification:
+  algorithm: HMAC-SHA256
+  encoding: hex
+  signed_over: raw request body (verify before JSON parsing)
+  header: X-PAYT-SIGNATURE
+  secret_source: webhook settings page (shown once on generation; rotatable)
+  compare: constant-time (timingSafeEqual)
+payload_notes:
+  - Every payload contains a debtor and an administration object for identification.
+  - OAuth apps only receive fields their granted scopes permit (e.g. no debtors:read means debtor details omitted).
+  - Event context may be an invoice, debtor, credit_case, payment_plan, or planned payment.
+  - Match on Payt database id, not invoice number alone (numbers are unique only within an administration).
+idempotency:
+  note: >-
+    Deliveries may occur more than once and out of order; every event carries a
+    unique id for dedupe. Consumers MUST process idempotently.
+events:
+  general:
+  - bundled_reminder_email_bounced
+  - bundled_reminder_letter_returned
+  - bundled_reminder_sent
+  - bundled_reminder_invoice_performed
+  - case_created
+  - case_email_bounced
+  - case_invoice_amount_paid
+  - case_letter_returned
+  - case_new_comment
+  - case_paid
+  - case_reopened
+  - case_step_performed
+  - case_to_bailiff
+  - credit_limit_exceeded
+  - debtor_new_comment
+  - debtor_email_address_provided
+  - debtor_email_address_removed
+  - email_bounced
+  - incoming_ubl_received
+  - invoice_blocked
+  - invoice_call_reminder_performed
+  - invoice_closed
+  - invoice_created
+  - invoice_email_bounced
+  - invoice_letter_returned
+  - invoice_new_comment
+  - invoice_paid
+  - invoice_paused
+  - invoice_payment_created
+  - invoice_reopened
+  - invoice_resumed
+  - invoice_sms_failed
+  - invoice_step_performed
+  - invoice_to_debt_collection
+  - invoice_ubl_failed
+  - label_added
+  - label_removed
+  - payment_plan_created
+  - payment_plan_deactivated
+  - payment_plan_finished
+  - payment_plan_term_expired
+  - payment_plan_updated
+  - psp_mandate_created
+  - psp_mandate_revoked
+  - psp_transaction_charged_back
+  - psp_transaction_successful
+  - psp_transaction_refunded
+  - todo_list_item_created
+  - todo_list_item_updated
+  - todo_list_item_deleted
+  conditional:
+  - event: creditworthiness_changed
+    requires: creditworthiness monitoring enabled for the administration
+  case_step_names:
+  - summons
+  - summons_reminder
+  - second_summons
+  - second_summons_reminder
+  - notice_of_default
+  - prejudiciary

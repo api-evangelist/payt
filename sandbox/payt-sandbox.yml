@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/api/testing
+docs: https://docs.paytsoftware.com/api/testing
+summary: >-
+  Payt provides a fully separate demo environment for testing. It mirrors
+  production exactly except for two subdomains; accounts, tokens, applications
+  and data do not carry over between demo and production.
+environments:
+- name: production
+  app: https://app.paytsoftware.com
+  api: https://api.paytsoftware.com
+- name: demo
+  app: https://demo.paytsoftware.com
+  api: https://demo-api.paytsoftware.com
+  signup: Create a free account via the regular sign up on demo.paytsoftware.com.
+  isolation: >-
+    Demo and production are fully separate; tokens, applications and data from one
+    do not work in the other.
+test_credentials:
+  note: >-
+    No published static test cards, bank accounts, or hosted test tokens - Payt is
+    an accounts-receivable/collections platform, and testing is done by creating a
+    free demo account and driving real (sandboxed) records. No test values are
+    invented here.
+tooling:
+  postman:
+    run_in_postman: https://app.getpostman.com/run-collection/3632280-9fea4bff-cf10-4b58-ab7f-fcf38bfb7576?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D3632280-9fea4bff-cf10-4b58-ab7f-fcf38bfb7576%26entityType%3Dcollection%26workspaceId%3D8830f8ca-b754-4c55-b91f-c082749d1809
+    workspace_id: 8830f8ca-b754-4c55-b91f-c082749d1809
+    collection_id: 3632280-9fea4bff-cf10-4b58-ab7f-fcf38bfb7576
+    note: Fork the Payt API collection into your workspace; setup docs are on the collection's Edit tab.
+  power_bi:
+    docs: https://docs.paytsoftware.com/api/powerbi-templates
+    note: Pre-built Power BI templates connect directly to the Payt API for AR reporting.
+test_clocks: not documented

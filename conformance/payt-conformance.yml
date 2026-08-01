@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/authentication/authorization
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    OAuth 2.0 Authorization Code flow (RFC 6749 section 4.1) with authorize
+    (app.paytsoftware.com/oauth/authorize) and token (/oauth/token) endpoints,
+    rotating refresh tokens, and space-separated scopes.
+  docs: https://docs.paytsoftware.com/authentication/authorization
+- id: rfc6749
+  conforms: true
+  evidence: Explicitly cites RFC 6749 for the Authorization Code flow and scope handling.
+- id: rfc4648
+  conforms: true
+  evidence: HTTP Basic on token endpoints uses RFC 4648 base64 of client_id:client_secret.
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect discovery document or id_token; app.paytsoftware.com serves only the SPA shell at /.well-known/openid-configuration.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors use a custom {code, message} envelope and a {success, count, errors,
+    warnings} write-result shape, not application/problem+json.
+- id: rfc8594
+  conforms: false
+  evidence: Deprecations are announced only via the dated changelog; no Sunset/Deprecation HTTP headers.
+- id: pagination
+  conforms: true
+  evidence: Cursor-based pagination (cursor request param, pagination.cursor response field) plus updated_after incremental sync.
+- id: idempotency
+  conforms: partial
+  evidence: >-
+    No Idempotency-Key header; idempotency is structural (upsert endpoints keyed on
+    natural ids) and webhook consumers dedupe on unique event ids.
+- id: webhook_signing
+  conforms: true
+  evidence: HMAC-SHA256 signature over the raw body in X-PAYT-SIGNATURE, verified constant-time.
+- id: mtls
+  conforms: true
+  evidence: Mutual TLS supported for webhook delivery with a downloadable, annually-rotated Payt client certificate.
+- id: peppol
+  conforms: true
+  evidence: Debtor peppol_identifier field and UBL e-invoicing (incoming_ubl_received, invoice_ubl_failed events) support the Peppol e-invoicing network.
+- id: json:api
+  conforms: false
+  evidence: Responses use a plain {data, pagination} envelope, not the JSON:API media type or structure.

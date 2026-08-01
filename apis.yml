@@ -1,8 +1,14 @@
 aid: payt
 name: Payt
-description: 'Payt is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Applicative SaaS. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Payt (Payt B.V.) is a Netherlands-based accounts receivable management platform that automates
+  invoice follow-up and payment collection while keeping personal contact with customers. It syncs
+  invoices and debtor data from accounting and ERP systems, then runs the collections workflow:
+  automated reminders, flexible payment plans, debt-collection cases, creditworthiness checks,
+  electronic (UBL/Peppol) invoicing, a self-service debtor portal, and payment reconciliation.
+  Payt exposes a REST Customer API (api.paytsoftware.com, v1) with OAuth 2.0 authorization, cursor
+  pagination and incremental sync, a rich signed-webhook event surface, and bulk CSV/XML/JSON imports.
+  Surfaced as a portfolio company of Partech and enriched into the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/payt/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +16,420 @@ x-backed-by:
 - partech
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://paytsoftware.nl/wp-content/uploads/2024/06/Logo-background-white-1.png
 tags:
 - Company
-- Applicative Saas
-apis: []
+- Applicative SaaS
+- Accounts Receivable
+- Order to Cash
+- Invoicing
+- Debt Collection
+- Payments
+- Fintech
+- Credit Management
+- Netherlands
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: payt:payt-administrations-api
+  name: Payt administrations API
+  description: Operations about administrations
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - administrations
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-administrations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-companies-api
+  name: Payt companies API
+  description: Operations about companies
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - companies
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-companies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-contacts-api
+  name: Payt contacts API
+  description: Operations about contacts
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-credit-cases-api
+  name: Payt credit_cases API
+  description: Operations about credit_cases
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - credit_cases
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-credit-cases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-debtors-api
+  name: Payt debtors API
+  description: Operations about debtors
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - debtors
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-debtors-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-files-api
+  name: Payt files API
+  description: Operations about files
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - files
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-invoices-api
+  name: Payt invoices API
+  description: Operations about invoices
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-messages-api
+  name: Payt messages API
+  description: Operations about messages
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - messages
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-messages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-notes-api
+  name: Payt notes API
+  description: Operations about notes
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - notes
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-notes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-notifications-api
+  name: Payt notifications API
+  description: Operations about notifications
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-order-lines-api
+  name: Payt order_lines API
+  description: Operations about order_lines
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - order_lines
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-order-lines-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-orders-api
+  name: Payt orders API
+  description: Operations about orders
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - orders
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-payment-conditions-api
+  name: Payt payment_conditions API
+  description: Operations about payment_conditions
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - payment_conditions
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-payment-conditions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-payment-plans-api
+  name: Payt payment_plans API
+  description: Operations about payment_plans
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - payment_plans
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-payment-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-payments-api
+  name: Payt payments API
+  description: Operations about payments
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - payments
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-payments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-psp-mandates-api
+  name: Payt psp_mandates API
+  description: Operations about psp_mandates
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - psp_mandates
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-psp-mandates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-psp-transactions-api
+  name: Payt psp_transactions API
+  description: Operations about psp_transactions
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - psp_transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-psp-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-sign-up-api
+  name: Payt sign_up API
+  description: Operations about sign_ups
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - sign_up
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-sign-up-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-tasks-api
+  name: Payt tasks API
+  description: Operations about tasks
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-vat-rates-api
+  name: Payt vat_rates API
+  description: Operations about vat_rates
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - vat_rates
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-vat-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
 common:
+- type: AgenticAccess
+  url: agentic-access/payt-agentic-access.yml
+- type: DomainSecurity
+  url: security/payt-domain-security.yml
+- type: Authentication
+  url: authentication/payt-authentication.yml
+- type: OAuthScopes
+  url: scopes/payt-scopes.yml
+- type: Conventions
+  url: conventions/payt-conventions.yml
+- type: Idempotency
+  url: conventions/payt-conventions.yml
+- type: ErrorCatalog
+  url: errors/payt-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/payt-lifecycle.yml
+- type: StatusPage
+  url: https://status.paytsoftware.com
+- type: Deprecation
+  url: lifecycle/payt-lifecycle.yml
+- type: ChangeLog
+  url: changelog/payt-changelog.yml
+- type: Conformance
+  url: conformance/payt-conformance.yml
+- type: DataModel
+  url: data-model/payt-data-model.yml
+- type: Webhooks
+  url: webhooks/payt-webhooks.yml
+- type: MCPServer
+  url: mcp/payt-mcp.yml
+- type: LLMsTxt
+  url: llms/payt-llms.txt
+- type: Sandbox
+  url: sandbox/payt-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DeveloperPortal
+  url: https://docs.paytsoftware.com
+- type: Documentation
+  url: https://docs.paytsoftware.com
+- type: APIReference
+  url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+- type: Support
+  url: https://support.paytsoftware.com
+- type: Blog
+  url: https://paytsoftware.com/blogs/
+- type: Pricing
+  url: https://paytsoftware.com/pricing/
+- type: SignUp
+  url: https://app.paytsoftware.com
+- type: Postman
+  url: https://app.getpostman.com/run-collection/3632280-9fea4bff-cf10-4b58-ab7f-fcf38bfb7576?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D3632280-9fea4bff-cf10-4b58-ab7f-fcf38bfb7576%26entityType%3Dcollection%26workspaceId%3D8830f8ca-b754-4c55-b91f-c082749d1809
+- type: TermsOfService
+  url: https://paytsoftware.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://paytsoftware.com/privacy-and-cookies/
 - type: Website
   url: https://www.paytsoftware.com/
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

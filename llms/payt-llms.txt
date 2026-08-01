@@ -1,0 +1,99 @@
+# Payt
+
+## Docs
+
+- [Creates an administration](https://docs.paytsoftware.com/api-reference/administrations/creates-an-administration.md): Creates an administration
+- [Get administration by id](https://docs.paytsoftware.com/api-reference/administrations/get-administration-by-id.md): Get administration by id
+- [Get administrations](https://docs.paytsoftware.com/api-reference/administrations/get-administrations.md): Get administrations
+- [Get companies connected to your application](https://docs.paytsoftware.com/api-reference/companies/get-companies-connected-to-your-application.md): **NOTE:** This endpoint uses [Basic authentication](https://docs.paytsoftware.com/authentication/basic-authorization).
+- [Get company by id](https://docs.paytsoftware.com/api-reference/companies/get-company-by-id.md): **NOTE:** This endpoint uses [Basic authentication](https://docs.paytsoftware.com/authentication/basic-authorization).
+- [Create or update administration contacts](https://docs.paytsoftware.com/api-reference/contacts/create-or-update-administration-contacts.md): Create or update administration contacts
+- [Get administration contacts](https://docs.paytsoftware.com/api-reference/contacts/get-administration-contacts.md): Get administration contacts
+- [Get administration credit case by id](https://docs.paytsoftware.com/api-reference/credit_cases/get-administration-credit-case-by-id.md): Get administration credit case by id
+- [Get administration credit_cases](https://docs.paytsoftware.com/api-reference/credit_cases/get-administration-credit_cases.md): Get administration credit_cases
+- [Get credit cases deleted in the last 90 days](https://docs.paytsoftware.com/api-reference/credit_cases/get-credit-cases-deleted-in-the-last-90-days.md): Get credit cases deleted in the last 90 days
+- [Create or update administration debtors](https://docs.paytsoftware.com/api-reference/debtors/create-or-update-administration-debtors.md): Create or update administration debtors
+- [Get administration debtor by id](https://docs.paytsoftware.com/api-reference/debtors/get-administration-debtor-by-id.md): Get administration debtor by id
+- [Get administration debtors](https://docs.paytsoftware.com/api-reference/debtors/get-administration-debtors.md): Get administration debtors
+- [Create files to upload](https://docs.paytsoftware.com/api-reference/files/create-files-to-upload.md): Create files to upload
+- [Block invoices](https://docs.paytsoftware.com/api-reference/invoices/block-invoices.md): Block invoices
+- [Get administration invoice by id](https://docs.paytsoftware.com/api-reference/invoices/get-administration-invoice-by-id.md): Get administration invoice by id
+- [Get administration invoices](https://docs.paytsoftware.com/api-reference/invoices/get-administration-invoices.md): Get administration invoices
+- [Get invoices deleted in the last 90 days](https://docs.paytsoftware.com/api-reference/invoices/get-invoices-deleted-in-the-last-90-days.md): Get invoices deleted in the last 90 days
+- [Resume invoices that are blocked through the API](https://docs.paytsoftware.com/api-reference/invoices/resume-invoices-that-are-blocked-through-the-api.md): Resume invoices that are blocked through the API
+- [Update administration invoices](https://docs.paytsoftware.com/api-reference/invoices/update-administration-invoices.md): Update administration invoices
+- [Upsert invoices in bulk](https://docs.paytsoftware.com/api-reference/invoices/upsert-invoices-in-bulk.md): Upsert invoices in bulk
+- [Get administration message by id](https://docs.paytsoftware.com/api-reference/messages/get-administration-message-by-id.md): Get administration message by id
+- [Get administration messages](https://docs.paytsoftware.com/api-reference/messages/get-administration-messages.md): Get administration messages
+- [Send a message to a debtor](https://docs.paytsoftware.com/api-reference/messages/send-a-message-to-a-debtor.md): Send a message to a debtor
+- [Update messages](https://docs.paytsoftware.com/api-reference/messages/update-messages.md): Update messages
+- [Get administration notes](https://docs.paytsoftware.com/api-reference/notes/get-administration-notes.md): Get administration notes
+- [Get administration notification by id](https://docs.paytsoftware.com/api-reference/notifications/get-administration-notification-by-id.md): Get administration notification by id
+- [Get administration notifications](https://docs.paytsoftware.com/api-reference/notifications/get-administration-notifications.md): Get administration notifications
+- [Get administration order lines](https://docs.paytsoftware.com/api-reference/order_lines/get-administration-order-lines.md): Get administration order lines
+- [Create an order](https://docs.paytsoftware.com/api-reference/orders/create-an-order.md): Create an order
+- [Create payment conditions](https://docs.paytsoftware.com/api-reference/payment_conditions/create-payment-conditions.md): Create payment conditions
+- [Approve a proposed payment plan](https://docs.paytsoftware.com/api-reference/payment_plans/approve-a-proposed-payment-plan.md): Approve a proposed payment plan
+- [Create an approved payment plan](https://docs.paytsoftware.com/api-reference/payment_plans/create-an-approved-payment-plan.md): Create an approved payment plan
+- [Deactivate an active payment plan](https://docs.paytsoftware.com/api-reference/payment_plans/deactivate-an-active-payment-plan.md): Deactivate an active payment plan
+- [Get administration payment plan by id](https://docs.paytsoftware.com/api-reference/payment_plans/get-administration-payment-plan-by-id.md): Get administration payment plan by id
+- [Get administration payment plans](https://docs.paytsoftware.com/api-reference/payment_plans/get-administration-payment-plans.md): Get administration payment plans
+- [Get payment_plans deleted in the last 90 days](https://docs.paytsoftware.com/api-reference/payment_plans/get-payment_plans-deleted-in-the-last-90-days.md): Get payment_plans deleted in the last 90 days
+- [Reject a proposed payment plan](https://docs.paytsoftware.com/api-reference/payment_plans/reject-a-proposed-payment-plan.md): Reject a proposed payment plan
+- [Get administration payments](https://docs.paytsoftware.com/api-reference/payments/get-administration-payments.md): Get administration payments
+- [Get payments deleted in the last 90 days](https://docs.paytsoftware.com/api-reference/payments/get-payments-deleted-in-the-last-90-days.md): Get payments deleted in the last 90 days
+- [Create signed psp mandates, these need to be verified before creating](https://docs.paytsoftware.com/api-reference/psp_mandates/create-signed-psp-mandates-these-need-to-be-verified-before-creating.md): Create signed psp mandates, these need to be verified before creating
+- [Delete PSP mandates](https://docs.paytsoftware.com/api-reference/psp_mandates/delete-psp-mandates.md): Deactivate PSP mandates and schedule their revocation.
+- [Get administration PSP mandates](https://docs.paytsoftware.com/api-reference/psp_mandates/get-administration-psp-mandates.md): Get administration PSP mandates
+- [Get PSP mandates deleted in the last 90 days](https://docs.paytsoftware.com/api-reference/psp_mandates/get-psp-mandates-deleted-in-the-last-90-days.md): Get PSP mandates deleted in the last 90 days
+- [Get administration PSP transaction by id](https://docs.paytsoftware.com/api-reference/psp_transactions/get-administration-psp-transaction-by-id.md): Get administration PSP transaction by id
+- [Get administration PSP transactions](https://docs.paytsoftware.com/api-reference/psp_transactions/get-administration-psp-transactions.md): Get administration PSP transactions
+- [Sign up a new Payt account](https://docs.paytsoftware.com/api-reference/sign_up/sign-up-a-new-payt-account.md): **NOTE:** This endpoint uses Basic authentication, just as the [token endpoints](https://docs.paytsoftware.com/authentication/tokens).
+- [Add a comment to a task](https://docs.paytsoftware.com/api-reference/tasks/add-a-comment-to-a-task.md): Add a comment to a task
+- [Get administration task by id](https://docs.paytsoftware.com/api-reference/tasks/get-administration-task-by-id.md): Get administration task by id
+- [Get administration tasks](https://docs.paytsoftware.com/api-reference/tasks/get-administration-tasks.md): Get administration tasks
+- [Mark a task as completed](https://docs.paytsoftware.com/api-reference/tasks/mark-a-task-as-completed.md): Mark a task as completed
+- [Unmark a task as completed](https://docs.paytsoftware.com/api-reference/tasks/unmark-a-task-as-completed.md): Unmark a task as completed
+- [Create or update vat rates](https://docs.paytsoftware.com/api-reference/vat_rates/create-or-update-vat-rates.md): Create or update vat rates
+- [Get administration vat rates](https://docs.paytsoftware.com/api-reference/vat_rates/get-administration-vat-rates.md): Get administration vat rates
+- [Changelog](https://docs.paytsoftware.com/api/changelog.md): API version history: endpoints, fields, and webhook events added over time.
+- [Overview](https://docs.paytsoftware.com/api/overview.md): Fetch invoices and debtors from api.paytsoftware.com in a paginated fashion.
+- [Pagination & syncing](https://docs.paytsoftware.com/api/pagination-and-syncing.md): Page through large result sets and sync only records that changed since the last run.
+- [Power BI templates](https://docs.paytsoftware.com/api/powerbi-templates.md): Pre-built Power BI templates that connect directly to the Payt API to visualize your accounts receivable data.
+- [Rate limits](https://docs.paytsoftware.com/api/rate-limits.md): The Payt API allows 10 requests per second per access token.
+- [Responses](https://docs.paytsoftware.com/api/responses.md): How create and update endpoints (POST/PATCH) report success, partial failures, and fatal errors.
+- [Testing](https://docs.paytsoftware.com/api/testing.md): Try the Payt API against the demo environment and get started quickly with Postman.
+- [Applications](https://docs.paytsoftware.com/authentication/applications.md): Create and manage OAuth applications on the Connections page in the company settings menu.
+- [Authorization](https://docs.paytsoftware.com/authentication/authorization.md): Authorize your app using the OAuth2 Authorization Code flow, or fall back to a static API token.
+- [Basic Authorization](https://docs.paytsoftware.com/authentication/basic-authorization.md): Almost all API endpoints require the access_token to be sent as a Bearer token. The token endpoints and the sign_up endpoint require the Basic token.
+- [Permissions](https://docs.paytsoftware.com/authentication/permissions.md): Permissions define which Payt resources your app can access. They are implemented as OAuth2 scopes.
+- [Tokens](https://docs.paytsoftware.com/authentication/tokens.md): How Payt's access and refresh tokens work, and how to create, introspect, and use them.
+- [CSV](https://docs.paytsoftware.com/imports/csv.md): Information about the outstanding items can be provided in a CSV file. In this chapter you can read how to build the CSV file, how the file is processed.
+- [JSON](https://docs.paytsoftware.com/imports/json.md): Submitting the data as JSON is preferable to CSV. The JSON format allows for stricter client side validation, and does not require the repetition of data.
+- [Imports](https://docs.paytsoftware.com/imports/overview.md): Bulk-import invoices and debtors into Payt by submitting data files, declaration files, and PDFs through the import endpoints.
+- [XML](https://docs.paytsoftware.com/imports/xml.md): Submitting the data as XML is preferable to CSV. The XML format allows for strict client side validation and does not require the repetition of data.
+- [Payt Developer Documentation](https://docs.paytsoftware.com/index.md): Integrate with Payt: sync invoices and debtors through the REST API, receive real-time webhook events, and bulk-import data.
+- [Accounting software](https://docs.paytsoftware.com/integrations/accounting-software.md): The accounting software packages Payt connects with.
+- [AFAS](https://docs.paytsoftware.com/integrations/afas.md): Set up the connectors in AFAS to exchange data with Payt.
+- [Create administration](https://docs.paytsoftware.com/integrations/in-app/create-administration.md): Let users create additional administrations after sign up with their existing access token.
+- [In-app integration](https://docs.paytsoftware.com/integrations/in-app/overview.md): Integrate your app with Payt so users can create and connect a Payt account without leaving your product.
+- [Sign up](https://docs.paytsoftware.com/integrations/in-app/sign-up.md): Let users create a Payt account from within your app via the sign_up endpoint.
+- [Integrations](https://docs.paytsoftware.com/integrations/overview.md): Connect Payt with your accounting software or embed Payt account creation inside your own app.
+- [Administration](https://docs.paytsoftware.com/models/administration.md): Administration model: statuses, pause behavior, and what each state means.
+- [Company](https://docs.paytsoftware.com/models/company.md): Company model: statuses, trial behavior, and what each state means.
+- [File](https://docs.paytsoftware.com/models/file.md): Upload files via checksums and presigned upload URLs before attaching them to invoices.
+- [Invoice](https://docs.paytsoftware.com/models/invoice.md): Recommended flow for creating invoices, and how files, payments, and sent_at behave.
+- [Notification](https://docs.paytsoftware.com/models/notification.md): Notification types and what triggers them.
+- [Models](https://docs.paytsoftware.com/models/overview.md): Explanation of API properties that need more context than the endpoint reference provides.
+- [What is Payt?](https://docs.paytsoftware.com/product/what-is-payt.md): Payt is an accounts receivable management platform that automates invoice follow-up and payment collection.
+- [IP addresses](https://docs.paytsoftware.com/reference/ip-addresses.md): The fixed IP addresses Payt uses for outbound communication, so you can allowlist them in firewalls.
+- [Activation](https://docs.paytsoftware.com/webhooks/activation.md): How to activate webhooks for an administration in Payt.
+- [Changelog](https://docs.paytsoftware.com/webhooks/changelog.md): History of changes to webhook events and payloads.
+- [Events](https://docs.paytsoftware.com/webhooks/events.md): All webhook event types Payt can send, with example payloads.
+- [Webhooks](https://docs.paytsoftware.com/webhooks/overview.md): Receive changes in the state of invoices, debtors, and debt collection cases in your own system.
+- [Triggers](https://docs.paytsoftware.com/webhooks/triggers.md): Several actions within Payt can trigger multiple webhook events.
+- [Verification](https://docs.paytsoftware.com/webhooks/verification.md): Verify the X-PAYT-SIGNATURE header to confirm a webhook request was sent by Payt and has not been modified.
+
+## OpenAPI Specs
+
+- [openapi3](https://docs.paytsoftware.com/openapi3.json)

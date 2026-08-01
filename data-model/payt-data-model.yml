@@ -1,0 +1,143 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/payt-openapi-original.json
+enriched_from: https://docs.paytsoftware.com/models/overview
+summary: >-
+  Entity-relationship graph derived from the Payt Customer API v1 OpenAPI: id
+  fields (administration_id, debtor_id, invoice_id, credit_case_id,
+  payment_plan_id) that reference other entities were resolved into relationships.
+  The administration is the tenant/root: nearly every record belongs to one.
+root_entity: administration
+entities:
+- name: administration
+  description: The bookkeeping/tenant unit; owns all debtors, invoices and related records.
+  belongs_to:
+  - via: company (an administration belongs to a company account)
+- name: company
+  description: Top-level account; groups administrations. Some company endpoints use Basic auth.
+- name: debtor
+  belongs_to:
+  - entity: administration
+    via: administration_id
+- name: contact
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  note: Linked to debtors via debtor_numbers.
+- name: invoice
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+  has_one:
+  - entity: credit_case
+    via: active_credit_case_id (credit_case_id deprecated)
+  - entity: payment_plan
+    via: active_payment_plan_id (payment_plan_id)
+  has_many:
+  - entity: payment
+    via: invoice_id
+- name: credit_case
+  description: Debt-collection case.
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+  has_one:
+  - entity: payment_plan
+    via: active_payment_plan_id
+- name: payment
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: invoice
+    via: invoice_id
+- name: payment_plan
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+- name: payment_condition
+  belongs_to:
+  - entity: administration
+    via: administration_id
+- name: psp_mandate
+  description: Payment service provider mandate (e.g. Mollie).
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+- name: psp_transaction
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+- name: message
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  - entity: debtor
+    via: debtor_id
+  references:
+  - entity: invoice
+    via: invoice_id
+  - entity: credit_case
+    via: credit_case_id
+- name: note
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  references:
+  - entity: debtor
+    via: debtor_id
+  - entity: invoice
+    via: invoice_id
+  - entity: credit_case
+    via: credit_case_id
+- name: notification
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  references:
+  - entity: debtor
+    via: debtor_id
+  - entity: invoice
+    via: invoice_id
+  - entity: credit_case
+    via: credit_case_id
+- name: task
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  references:
+  - entity: debtor
+    via: debtor_id
+  - entity: invoice
+    via: invoice_id
+  - entity: credit_case
+    via: credit_case_id
+- name: order
+  belongs_to:
+  - entity: administration
+    via: administration_id
+  has_many:
+  - entity: order_line
+    via: order
+- name: order_line
+  belongs_to:
+  - entity: administration
+    via: administration_id
+- name: file
+  description: Uploadable file (via checksum + presigned URL) attached to invoices.
+  belongs_to:
+  - entity: administration
+    via: administration_id
+- name: vat_rate
+  belongs_to:
+  - entity: administration
+    via: administration_id

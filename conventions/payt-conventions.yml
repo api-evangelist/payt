@@ -1,0 +1,71 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/api/overview
+docs:
+- https://docs.paytsoftware.com/api/overview
+- https://docs.paytsoftware.com/api/pagination-and-syncing
+- https://docs.paytsoftware.com/api/rate-limits
+- https://docs.paytsoftware.com/api/responses
+api: Payt Customer API v1
+base_url: https://api.paytsoftware.com
+demo_base_url: https://demo-api.paytsoftware.com
+auth:
+  style: OAuth 2.0 Authorization Code (or static token), Bearer in Authorization header
+  see: authentication/payt-authentication.yml
+  requirements: TLS 1.2+; all requests over HTTPS
+versioning:
+  style: URI path prefix (/v1/...)
+  current: v1
+  see: lifecycle/payt-lifecycle.yml
+idempotency:
+  supported: true
+  mechanism: >-
+    No Idempotency-Key request header is documented. Idempotency is achieved
+    structurally: create/update endpoints are upserts keyed on the record's
+    natural identifier (e.g. invoice_number), so re-sending the same record
+    updates rather than duplicates it. Webhook consumers must dedupe on the
+    unique event id (deliveries may repeat and arrive out of order).
+  upsert_endpoints:
+  - postV1Invoices (upsert invoices in bulk)
+  - postV1Debtors (create or update debtors)
+  - postV1Contacts (create or update contacts)
+  - postV1VatRates (create or update vat rates)
+  see: webhooks/payt-webhooks.yml
+pagination:
+  style: cursor
+  request_param: cursor
+  response_field: pagination.cursor
+  data_field: data
+  notes: >-
+    Set cursor to the pagination.cursor returned by the previous page. Use index
+    endpoints (not repeated show calls) when fetching many records.
+sparse_fields:
+  supported: true
+  param: fields
+  notes: Some fields are returned only when explicitly requested via the fields parameter.
+syncing:
+  param: updated_after
+  strategy: >-
+    Request only records changed since a timestamp. Store the updated_at of the
+    most-recently-updated record from the last page and use it as the next
+    updated_after. If a page is empty, reuse the previous timestamp (do not advance).
+data_formats:
+  monetary_values: strings with two decimals
+  timestamps: UTC, ISO 8601
+error_envelope:
+  auth_errors: '{"code": "...", "message": "..."}'  # 401 / 403
+  write_results: '{"success": bool, "count": int, "errors": {...}, "warnings": {...}}'
+  notes: >-
+    POST/PATCH endpoints accept multiple records and report per-record outcomes;
+    success can be true with a non-empty errors object, so always inspect errors.
+    Malformed requests return 422 and process nothing.
+  see: errors/payt-problem-types.yml
+rate_limiting:
+  limit: 10 requests/second per access token
+  import_limit: 3 files/second (import endpoints)
+  exceeded_status: '429'
+  headers: none documented
+  guidance: exponential backoff on 429
+request_tracing:
+  api: none documented
+  webhooks: X-PAYT-DELIVERY (UUID per delivery attempt)

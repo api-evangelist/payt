@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.paytsoftware.com/api/changelog
+docs:
+- https://docs.paytsoftware.com/api/changelog
+- https://docs.paytsoftware.com/webhooks/changelog
+versioning:
+  scheme: URI path prefix
+  current: v1
+  spec_version: '1.0.0'
+  policy: >-
+    A single stable v1 surface evolved additively via a dated changelog; new
+    endpoints, fields, filters and webhook events are added without breaking bumps.
+deprecation:
+  policy: >-
+    Deprecations are announced in the dated API changelog and the field/endpoint
+    is marked deprecated while a replacement is provided; there is no documented
+    Sunset/Deprecation HTTP header (RFC 8594) mechanism.
+  examples:
+  - date: '2024-12-16'
+    change: credit_case_id marked deprecated on getV1Invoices; active_credit_case_id added as replacement.
+  - date: '2025-03-21'
+    change: flow_code removed from patchV1Invoices.
+  headers:
+    sunset: not documented
+    deprecation: not documented
+status_page:
+  url: https://status.paytsoftware.com
+  present: true
+sla:
+  documented: false
+support:
+  url: https://support.paytsoftware.com
+certificates:
+  mtls_rotation: >-
+    Webhook mTLS certificate is rotated annually (payt_mtls_certificate_2026.crt
+    valid until 2027-01-03); consumers are notified by email before renewal.
+retention:
+  deleted_records: >-
+    Deleted invoices, credit_cases, payments, payment_plans and psp_mandates remain
+    queryable for 90 days via dedicated /deleted endpoints.
