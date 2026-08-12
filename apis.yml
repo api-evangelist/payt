@@ -370,6 +370,8 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 common:
+- type: Overlay
+  url: overlays/payt-openapi-original-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/payt-agentic-access.yml
 - type: DomainSecurity
