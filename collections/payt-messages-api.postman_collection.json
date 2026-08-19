@@ -1,0 +1,1804 @@
+{
+  "item": [
+    {
+      "id": "a299df05-4c32-40a5-931e-ea4abae9b463",
+      "name": "messages",
+      "description": {
+        "content": "Operations about messages",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bbfc6e80-41a8-4afe-a380-6dbec6970dee",
+          "name": "Send a message to a debtor",
+          "request": {
+            "name": "Send a message to a debtor",
+            "description": {
+              "content": "Send a message to a debtor",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "body",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "subject",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "cc_email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bcc_email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "attachments",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_number",
+                  "value": "<string>",
+                  "description": "Number of the debtor to send a message to"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_identifier",
+                  "value": "<string>",
+                  "description": "Identifier of the debtor to send a message to"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_number",
+                  "value": "<string>",
+                  "description": "Number of the invoice to send a message to"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifier",
+                  "value": "<string>",
+                  "description": "Identifier of the invoice to send a message to"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_number",
+                  "value": "<string>",
+                  "description": "Number of the credit case to send a message to"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8b92ea8-24d6-45e0-92fe-be9bea8c94e6",
+              "name": "Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bcc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the credit case to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_number",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sender_type\": \"string\",\n  \"administration_id\": \"string\",\n  \"id\": \"string\",\n  \"updated_at\": \"1995-06-29T03:08:51.778Z\",\n  \"subject\": \"string\",\n  \"read_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"credit_case_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"content\": \"string\",\n  \"sent_at\": \"1997-03-04T15:38:07.535Z\",\n  \"received_at\": \"1963-11-10T10:46:42.972Z\",\n  \"read_at\": \"1964-02-25T12:38:35.470Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4e0797b-75ac-4ab6-8695-7b02f2b2c4a7",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bcc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the credit case to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_number",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3da2a4dd-2aa9-4f5f-a855-1ff362cd4cd2",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bcc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the credit case to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_number",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6c6c41f-d99d-4185-a1a7-e5042f6ca904",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bcc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the credit case to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_number",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2e6b85d-0646-42dd-91f4-e5d7cd85432c",
+              "name": "Validation errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "body",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "subject",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bcc_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "attachments",
+                      "value": "[\"<binary>\",\"<binary>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the debtor to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "debtor_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Identifier of the invoice to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the credit case to send a message to",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_number",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef0a4bf8-60b2-4140-b18b-4a405c128dd1",
+          "name": "Update messages",
+          "request": {
+            "name": "Update messages",
+            "description": {
+              "content": "Update messages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "messages",
+                  "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "messages",
+                  "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f655e12-69ca-4291-a3ee-d1a06eb19053",
+              "name": "Messages updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee607137-7e14-4392-829a-0acb914e663f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b113bc17-6b23-4f3d-bf7f-b90e2bcd0582",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "messages",
+                      "value": "{\"id\":\"<string>\",\"read\":\"<boolean>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cbbb500-e380-45e5-bee1-562ac56aedd5",
+          "name": "Get administration messages",
+          "request": {
+            "name": "Get administration messages",
+            "description": {
+              "content": "Get administration messages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter messages with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_ids",
+                  "value": "<string>",
+                  "description": "Filter messages with a comma separated list of internal debtor ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_ids",
+                  "value": "<string>",
+                  "description": "Filter messages with a comma separated list of internal invoice ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_ids",
+                  "value": "<string>",
+                  "description": "Filter messages with a comma separated list of internal credit_case ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83644632-643d-4e20-bf8b-d9c758667642",
+              "name": "Paginated list of messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"sender_type\": \"string\",\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"updated_at\": \"2021-03-16T10:27:08.533Z\",\n      \"subject\": \"string\",\n      \"read_by_user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"credit_case_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"content\": \"string\",\n      \"sent_at\": \"1961-01-28T07:04:41.584Z\",\n      \"received_at\": \"2023-01-16T19:10:46.134Z\",\n      \"read_at\": \"1965-01-13T01:16:32.507Z\"\n    },\n    {\n      \"sender_type\": \"string\",\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"updated_at\": \"1973-10-13T03:27:08.521Z\",\n      \"subject\": \"string\",\n      \"read_by_user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"credit_case_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"content\": \"string\",\n      \"sent_at\": \"1958-03-05T08:08:46.842Z\",\n      \"received_at\": \"1956-10-19T19:14:39.754Z\",\n      \"read_at\": \"1977-12-27T22:16:09.523Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00c9fb08-3255-4d46-bd27-c7d61f064453",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3399a0a-b2de-43f8-aef5-f176bf2cc85b",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ee22a68-e6c2-425a-9b4d-0b70ee325d89",
+          "name": "Get administration message by id",
+          "request": {
+            "name": "Get administration message by id",
+            "description": {
+              "content": "Get administration message by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Message identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03d1ce65-cfa3-4e56-a75f-8385b9191f18",
+              "name": "Message",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sender_type\": \"string\",\n  \"administration_id\": \"string\",\n  \"id\": \"string\",\n  \"updated_at\": \"1995-06-29T03:08:51.778Z\",\n  \"subject\": \"string\",\n  \"read_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"credit_case_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"invoice_id\": \"string\",\n  \"content\": \"string\",\n  \"sent_at\": \"1997-03-04T15:38:07.535Z\",\n  \"received_at\": \"1963-11-10T10:46:42.972Z\",\n  \"read_at\": \"1964-02-25T12:38:35.470Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29ed6f21-977a-4bfa-86af-90222f56505f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee9db2e7-ad5f-4092-9b3e-a6104a8860ed",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "13bea5e9-73d7-4daa-a224-ee24b5c45476",
+    "name": "API Endpoints administrations messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

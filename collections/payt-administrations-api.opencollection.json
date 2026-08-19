@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "administrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/administrations/:administration_id",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get administration by id"
+        },
+        {
+          "info": {
+            "name": "Get administrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/administrations",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administrations"
+        },
+        {
+          "info": {
+            "name": "Creates an administration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/administrations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an administration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

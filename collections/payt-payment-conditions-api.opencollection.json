@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations payment_conditions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "payment_conditions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create payment conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/payment_conditions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create payment conditions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

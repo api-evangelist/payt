@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations orders API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/orders",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "order[file]",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create an order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

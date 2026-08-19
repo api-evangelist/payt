@@ -1,0 +1,1286 @@
+{
+  "item": [
+    {
+      "id": "126203db-e66a-4622-96fc-b11fa5c152d4",
+      "name": "sign_up",
+      "description": {
+        "content": "Operations about sign_ups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44bb119c-2e94-4f3e-8685-2af4d3402be1",
+          "name": "Sign up a new Payt account",
+          "request": {
+            "name": "Sign up a new Payt account",
+            "description": {
+              "content": "**NOTE:** This endpoint uses Basic authentication, just as the [token endpoints](https://docs.paytsoftware.com/authentication/tokens).\n\nCreates a Payt account containing a user, company and administration.\n\nAn OAuth authorization_code will be returned with which the first access_token can be created. This means that in order to complete the API authorization the confirm step must be made [as described here](https://docs.paytsoftware.com/authentication/authorization).\n\nIf connection parameters are given then these are added to the newly created administration and are validated during the signup. If the connection parameters are invalid a validation error will be returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "sign_up"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration[city]",
+                  "value": "<string>",
+                  "description": "(Required) Part of the administration address"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[commercial_registration_number]",
+                  "value": "<string>",
+                  "description": "(Required) Offical national commercial registration number"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[country_code]",
+                  "value": "<string>",
+                  "description": "(Required) ISO 3166 Alpha-2 country code, Part of the administration address"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[email_address]",
+                  "value": "<string>",
+                  "description": "(Required) Email address of the administration"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[house_number]",
+                  "value": "<string>",
+                  "description": "(Required) Part of the administration address"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[name]",
+                  "value": "<string>",
+                  "description": "(Required) Name of the administration"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[phone_number]",
+                  "value": "<string>",
+                  "description": "(Required) Phone number of the administration"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[postal_code]",
+                  "value": "<string>",
+                  "description": "(Required) Part of the administration address"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[street_name]",
+                  "value": "<string>",
+                  "description": "(Required) Part of the administration address"
+                },
+                {
+                  "disabled": false,
+                  "key": "user[first_name]",
+                  "value": "<string>",
+                  "description": "(Required) First name of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "user[last_name]",
+                  "value": "<string>",
+                  "description": "(Required) Last name of the user"
+                },
+                {
+                  "disabled": false,
+                  "key": "user[email_address]",
+                  "value": "<string>",
+                  "description": "(Required) Email address the user will use to login into Payt"
+                },
+                {
+                  "disabled": false,
+                  "key": "connection[resource_label]",
+                  "value": "<string>",
+                  "description": "(Required) Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser."
+                },
+                {
+                  "disabled": false,
+                  "key": "connection[resource_identifier]",
+                  "value": "<string>",
+                  "description": "(Required) The unique identifier of the connected resource. This identifier will be used to query your API."
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[sender_email_address]",
+                  "value": "<string>",
+                  "description": "Sender email address which will be used for outgoing communication"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[bank_account_bic]",
+                  "value": "<string>",
+                  "description": "BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[bank_account_name]",
+                  "value": "<string>",
+                  "description": "Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[bank_account_number]",
+                  "value": "<string>",
+                  "description": "Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored."
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[contact_name]",
+                  "value": "<string>",
+                  "description": "The name of the contact person for this administration"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[currency_code]",
+                  "value": "EUR",
+                  "description": "The accounting or reporting currency, ISO 4217"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[timezone]",
+                  "value": "Europe/Amsterdam",
+                  "description": "Timezone in which the administration primarily operates, canonical tz name"
+                },
+                {
+                  "disabled": false,
+                  "key": "administration[vat_number]",
+                  "value": "<string>",
+                  "description": "VAT number of the administration"
+                },
+                {
+                  "disabled": false,
+                  "key": "user[locale]",
+                  "value": "en-GB",
+                  "description": "Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE)."
+                },
+                {
+                  "disabled": false,
+                  "key": "connection[credentials_label]",
+                  "value": "<string>",
+                  "description": "Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e1e7d4d-8bfc-449b-8c67-fa03678571df",
+              "name": "Payt account created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Offical national commercial registration number",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[commercial_registration_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ISO 3166 Alpha-2 country code, Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[country_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[house_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Phone number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[phone_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[postal_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[street_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) First name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[first_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Last name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[last_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address the user will use to login into Payt",
+                        "type": "text/plain"
+                      },
+                      "key": "user[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The unique identifier of the connected resource. This identifier will be used to query your API.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_identifier]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sender email address which will be used for outgoing communication",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[sender_email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_bic]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the contact person for this administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[contact_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The accounting or reporting currency, ISO 4217",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[currency_code]",
+                      "value": "EUR"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone in which the administration primarily operates, canonical tz name",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[timezone]",
+                      "value": "Europe/Amsterdam"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "VAT number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[vat_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE).",
+                        "type": "text/plain"
+                      },
+                      "key": "user[locale]",
+                      "value": "en-GB"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[credentials_label]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"administration\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"implementation\",\n    \"email_address\": \"string\",\n    \"contact_name\": \"string\",\n    \"commercial_registration_number\": \"string\",\n    \"country_code\": \"string\",\n    \"city\": \"string\",\n    \"house_number\": \"string\",\n    \"internal_name\": \"string\",\n    \"street_name\": \"string\",\n    \"postal_code\": \"string\",\n    \"timezone\": \"string\",\n    \"currency_code\": \"string\",\n    \"administration_url\": \"string\",\n    \"bank_account_name\": \"string\",\n    \"bank_account_number\": \"string\",\n    \"bank_account_bic\": \"string\",\n    \"vat_number\": \"string\",\n    \"import_origin_identifier\": \"string\",\n    \"last_successful_import_at\": \"1971-10-14T09:42:02.194Z\",\n    \"paused_at\": \"2026-02-21T04:06:18.139Z\",\n    \"reminding_paused_at\": \"1989-07-07T15:44:21.069Z\"\n  },\n  \"company\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"inactive\",\n    \"trial_ends_on\": \"string\",\n    \"trial\": true\n  },\n  \"user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\",\n    \"sign_up_token\": \"string\",\n    \"sign_up_url\": \"string\"\n  },\n  \"access_grant\": {\n    \"code\": \"string\",\n    \"expires_in\": 7685,\n    \"created_at\": \"string\",\n    \"grant_type\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22a36125-dbf3-42c3-ade5-753985f4b972",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Offical national commercial registration number",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[commercial_registration_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ISO 3166 Alpha-2 country code, Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[country_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[house_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Phone number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[phone_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[postal_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[street_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) First name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[first_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Last name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[last_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address the user will use to login into Payt",
+                        "type": "text/plain"
+                      },
+                      "key": "user[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The unique identifier of the connected resource. This identifier will be used to query your API.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_identifier]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sender email address which will be used for outgoing communication",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[sender_email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_bic]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the contact person for this administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[contact_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The accounting or reporting currency, ISO 4217",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[currency_code]",
+                      "value": "EUR"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone in which the administration primarily operates, canonical tz name",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[timezone]",
+                      "value": "Europe/Amsterdam"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "VAT number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[vat_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE).",
+                        "type": "text/plain"
+                      },
+                      "key": "user[locale]",
+                      "value": "en-GB"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[credentials_label]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd784014-b05a-46dd-889a-152194bfa709",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Offical national commercial registration number",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[commercial_registration_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ISO 3166 Alpha-2 country code, Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[country_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[house_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Phone number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[phone_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[postal_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[street_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) First name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[first_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Last name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[last_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address the user will use to login into Payt",
+                        "type": "text/plain"
+                      },
+                      "key": "user[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The unique identifier of the connected resource. This identifier will be used to query your API.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_identifier]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sender email address which will be used for outgoing communication",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[sender_email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_bic]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the contact person for this administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[contact_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The accounting or reporting currency, ISO 4217",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[currency_code]",
+                      "value": "EUR"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone in which the administration primarily operates, canonical tz name",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[timezone]",
+                      "value": "Europe/Amsterdam"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "VAT number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[vat_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE).",
+                        "type": "text/plain"
+                      },
+                      "key": "user[locale]",
+                      "value": "en-GB"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[credentials_label]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f66e61dd-a369-4b27-8ecb-33f968c11b6e",
+              "name": "Validations errors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sign_up"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[city]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Offical national commercial registration number",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[commercial_registration_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ISO 3166 Alpha-2 country code, Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[country_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[house_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Name of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Phone number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[phone_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[postal_code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Part of the administration address",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[street_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) First name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[first_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Last name of the user",
+                        "type": "text/plain"
+                      },
+                      "key": "user[last_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Email address the user will use to login into Payt",
+                        "type": "text/plain"
+                      },
+                      "key": "user[email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The unique identifier of the connected resource. This identifier will be used to query your API.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[resource_identifier]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Sender email address which will be used for outgoing communication",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[sender_email_address]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_bic]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[bank_account_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the contact person for this administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[contact_name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The accounting or reporting currency, ISO 4217",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[currency_code]",
+                      "value": "EUR"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Timezone in which the administration primarily operates, canonical tz name",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[timezone]",
+                      "value": "Europe/Amsterdam"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "VAT number of the administration",
+                        "type": "text/plain"
+                      },
+                      "key": "administration[vat_number]",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Locale in which the user will use Payt, 'ISO 639-1' + 'ISO 3166 Alpha-2 country code' (nl|de|en-GB|es|fr|nl-BE).",
+                        "type": "text/plain"
+                      },
+                      "key": "user[locale]",
+                      "value": "en-GB"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.",
+                        "type": "text/plain"
+                      },
+                      "key": "connection[credentials_label]",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "76e2743e-053d-4fb4-b5fa-a932cd0431b9",
+    "name": "API Endpoints administrations sign_up API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

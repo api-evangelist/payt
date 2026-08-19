@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations vat_rates API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vat_rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration vat rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/vat_rates",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration vat rates"
+        },
+        {
+          "info": {
+            "name": "Create or update vat rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/vat_rates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update vat rates"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

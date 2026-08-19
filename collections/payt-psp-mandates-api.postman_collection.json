@@ -1,0 +1,1202 @@
+{
+  "item": [
+    {
+      "id": "63f160f0-e030-423b-9cf4-1f7ca137afac",
+      "name": "psp_mandates",
+      "description": {
+        "content": "Operations about psp_mandates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11471a45-cc01-452e-a2f1-a89ff9c81adb",
+          "name": "Delete PSP mandates",
+          "request": {
+            "name": "Delete PSP mandates",
+            "description": {
+              "content": "Deactivate PSP mandates and schedule their revocation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "psp_mandates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "psp_mandate_ids",
+                  "value": "<string>,<string>",
+                  "description": "List of psp_mandate_ids to revoke"
+                },
+                {
+                  "disabled": false,
+                  "key": "mandate_identifiers",
+                  "value": "<string>,<string>",
+                  "description": "List of mandate identifiers to revoke"
+                },
+                {
+                  "disabled": false,
+                  "key": "mandate_references",
+                  "value": "<string>,<string>",
+                  "description": "List of mandate references to revoke"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_numbers",
+                  "value": "<string>,<string>",
+                  "description": "List of debtor numbers to revoke"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53d9e0df-d2bf-45a8-af58-bed255b52df8",
+              "name": "PSP mandates deactivated and revoke scheduled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "psp_mandate_ids",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_identifiers",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_references",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21abe0c6-abf3-4f7c-a43c-84c472ec3ad5",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "psp_mandate_ids",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_identifiers",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_references",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55e11d80-f107-49ac-9708-f93e0babb560",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "psp_mandate_ids",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_identifiers",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "mandate_references",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>,<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88b2ab6f-c9dd-49c4-a7dd-1a9a164782c8",
+          "name": "Create signed psp mandates, these need to be verified before creating",
+          "request": {
+            "name": "Create signed psp mandates, these need to be verified before creating",
+            "description": {
+              "content": "Create signed psp mandates, these need to be verified before creating",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "psp_mandates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "psp_mandates",
+                  "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "psp_mandates",
+                  "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4df8c246-3750-4a3d-b0bf-7fc3b2f33b78",
+              "name": "Create signed psp mandates, these need to be verified before creating",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})",
+                        "type": "text/plain"
+                      },
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"administration_id\": \"string\",\n  \"bank_account_name\": \"string\",\n  \"bank_account_number\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"mandate_identifier\": \"string\",\n  \"provider\": \"string\",\n  \"updated_at\": \"1982-07-15T04:49:02.052Z\",\n  \"mandate_reference\": \"string\",\n  \"debtor_number\": \"string\",\n  \"deactivated_at\": \"1991-07-06T14:19:41.309Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c5371bb-a6c2-4beb-9ec3-0d9a49b3b68e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})",
+                        "type": "text/plain"
+                      },
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3edef9b0-6c76-4579-91d6-a5914e2d5971",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "psp_mandates",
+                      "value": "{\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"provider_code\":\"<string>\",\"mandate_identifier\":\"<string>\",\"debtor_code\":\"<string>\",\"debtor_id\":\"<string>\",\"customer_identifier\":\"<string>\",\"mandate_reference\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})",
+                        "type": "text/plain"
+                      },
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4919fd6-e552-4aee-8c9f-983e804a3302",
+          "name": "Get administration PSP mandates",
+          "request": {
+            "name": "Get administration PSP mandates",
+            "description": {
+              "content": "Get administration PSP mandates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "psp_mandates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter PSP mandates with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_ids",
+                  "value": "<string>",
+                  "description": "Filter PSP mandates with a comma separated list of internal debtor ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_numbers",
+                  "value": "<string>",
+                  "description": "Filter PSP mandates with a comma separated list of debtor numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cf50449-61a0-4626-9f58-4e326329e835",
+              "name": "Get administration PSP mandates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"administration_id\": \"string\",\n      \"bank_account_name\": \"string\",\n      \"bank_account_number\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"mandate_identifier\": \"string\",\n      \"provider\": \"string\",\n      \"updated_at\": \"1973-05-03T23:39:04.251Z\",\n      \"mandate_reference\": \"string\",\n      \"debtor_number\": \"string\",\n      \"deactivated_at\": \"2004-05-07T03:17:28.736Z\"\n    },\n    {\n      \"administration_id\": \"string\",\n      \"bank_account_name\": \"string\",\n      \"bank_account_number\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"mandate_identifier\": \"string\",\n      \"provider\": \"string\",\n      \"updated_at\": \"2003-10-20T16:44:38.666Z\",\n      \"mandate_reference\": \"string\",\n      \"debtor_number\": \"string\",\n      \"deactivated_at\": \"1974-06-14T23:02:43.509Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be43302-ffad-44eb-9e35-a296abb2f152",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "308a1d30-0aa0-4cfd-b0c1-ae21824638bc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32f09d6e-64bf-4c4e-a2dc-95d20787c973",
+          "name": "Get PSP mandates deleted in the last 90 days",
+          "request": {
+            "name": "Get PSP mandates deleted in the last 90 days",
+            "description": {
+              "content": "Get PSP mandates deleted in the last 90 days",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "psp_mandates",
+                "deleted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_after",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO8601 UTC Timestamp to filter records deleted after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_before",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a59b640c-c4c5-44c7-944b-5606f9f900f3",
+              "name": "List of deleted PSP mandates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"deleted_at\": \"1973-10-01T19:33:48.188Z\",\n      \"debtor_id\": \"string\",\n      \"mandate_identifier\": \"string\",\n      \"provider\": \"string\"\n    },\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"deleted_at\": \"1999-11-20T07:11:24.154Z\",\n      \"debtor_id\": \"string\",\n      \"mandate_identifier\": \"string\",\n      \"provider\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d8b4933-eef2-4ed1-9eca-cbee99bd4bc1",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa6a277c-fd5e-4474-8c0b-3917b6ed4a38",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "psp_mandates",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1daf058c-585e-4170-b953-8e4794a45716",
+    "name": "API Endpoints administrations psp_mandates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

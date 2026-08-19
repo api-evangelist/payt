@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "6c471c11-bd92-410a-80e3-a78aee3c2676",
+      "name": "payment_conditions",
+      "description": {
+        "content": "Operations about payment_conditions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7e374a3-d847-4cf7-8766-6cb4b887836d",
+          "name": "Create payment conditions",
+          "request": {
+            "name": "Create payment conditions",
+            "description": {
+              "content": "Create payment conditions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_conditions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_conditions",
+                  "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_conditions",
+                  "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e59d4f84-d0bf-4e07-a2b7-bb9014be9e19",
+              "name": "Payment conditions created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7eeb6327-74b5-4702-9fe5-ecfd4dba2d8b",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6dfec09-26d7-4969-9c77-3e5baae1307f",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_conditions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "payment_conditions",
+                      "value": "{\"code\":\"<string>\",\"name\":\"<string>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2f04ef8-43a6-4de4-b83c-feef4d82da19",
+    "name": "API Endpoints administrations payment_conditions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

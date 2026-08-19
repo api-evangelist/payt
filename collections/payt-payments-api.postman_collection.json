@@ -1,0 +1,657 @@
+{
+  "item": [
+    {
+      "id": "9b8af7c3-4140-470b-8b0d-4e88cc216a31",
+      "name": "payments",
+      "description": {
+        "content": "Operations about payments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1abfcc19-c043-48c9-b8dd-659a0c8b9552",
+          "name": "Get payments deleted in the last 90 days",
+          "request": {
+            "name": "Get payments deleted in the last 90 days",
+            "description": {
+              "content": "Get payments deleted in the last 90 days",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                "deleted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_after",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO8601 UTC Timestamp to filter records deleted after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_before",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70848b29-7cd5-4330-96d9-90ab64663bb0",
+              "name": "List of deleted payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"administration_id\": \"string\",\n      \"origin_identifier\": \"string\",\n      \"invoice_id\": \"string\",\n      \"deleted_at\": \"1954-02-12T05:22:11.337Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"administration_id\": \"string\",\n      \"origin_identifier\": \"string\",\n      \"invoice_id\": \"string\",\n      \"deleted_at\": \"2025-08-13T23:24:16.242Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0e6eddd-8992-42d4-8f31-1206ee0c7078",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb81206a-f619-4a19-be5c-d9da885e246f",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3111e9c-2b23-4298-ae36-56f2d98c4781",
+          "name": "Get administration payments",
+          "request": {
+            "name": "Get administration payments",
+            "description": {
+              "content": "Get administration payments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter payments with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Filter payments with a comma separated list of invoice identifiers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Filter payments with a comma separated list of invoice numbers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_ids",
+                  "value": "<string>",
+                  "description": "Filter payments with a comma separated list of internal credit case ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_numbers",
+                  "value": "<string>",
+                  "description": "Filter payments with a comma separated list of credit case numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95d42893-4105-40cc-8cc7-388c95477fed",
+              "name": "Get administration payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"updated_at\": \"1976-05-13T18:26:14.022Z\",\n      \"total_amount\": \"string\",\n      \"total_book_amount\": \"string\",\n      \"payment_date\": \"string\",\n      \"cost_type\": \"string\",\n      \"description\": \"string\",\n      \"reason\": \"string\",\n      \"reversal_code\": \"string\",\n      \"transaction_type\": \"string\",\n      \"payment_method\": \"string\",\n      \"psp_transaction\": {\n        \"currency_code\": \"string\",\n        \"invoice_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"payment_method\": \"string\",\n        \"status\": \"string\",\n        \"amount\": \"string\",\n        \"book_amount\": \"string\",\n        \"administration_id\": \"string\",\n        \"debtor_id\": \"string\",\n        \"id\": \"string\",\n        \"updated_at\": \"1992-06-17T16:07:00.671Z\",\n        \"bank_account_name\": \"string\",\n        \"bank_account_number\": \"string\",\n        \"reversal_code\": \"string\",\n        \"paid_at\": \"1979-10-23T14:52:13.980Z\"\n      },\n      \"bank_transaction\": {\n        \"currency_code\": \"string\",\n        \"exchange_rate\": \"string\",\n        \"amount\": \"string\",\n        \"book_amount\": \"string\",\n        \"id\": \"string\",\n        \"book_date\": \"string\",\n        \"bank_account_name\": \"string\",\n        \"bank_account_number\": \"string\",\n        \"description\": \"string\",\n        \"payment_method\": \"string\"\n      }\n    },\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"invoice_id\": \"string\",\n      \"updated_at\": \"1985-01-29T05:37:29.452Z\",\n      \"total_amount\": \"string\",\n      \"total_book_amount\": \"string\",\n      \"payment_date\": \"string\",\n      \"cost_type\": \"string\",\n      \"description\": \"string\",\n      \"reason\": \"string\",\n      \"reversal_code\": \"string\",\n      \"transaction_type\": \"string\",\n      \"payment_method\": \"string\",\n      \"psp_transaction\": {\n        \"currency_code\": \"string\",\n        \"invoice_ids\": [\n          \"string\",\n          \"string\"\n        ],\n        \"payment_method\": \"string\",\n        \"status\": \"string\",\n        \"amount\": \"string\",\n        \"book_amount\": \"string\",\n        \"administration_id\": \"string\",\n        \"debtor_id\": \"string\",\n        \"id\": \"string\",\n        \"updated_at\": \"1994-09-05T12:27:48.870Z\",\n        \"bank_account_name\": \"string\",\n        \"bank_account_number\": \"string\",\n        \"reversal_code\": \"string\",\n        \"paid_at\": \"1971-11-18T17:13:16.860Z\"\n      },\n      \"bank_transaction\": {\n        \"currency_code\": \"string\",\n        \"exchange_rate\": \"string\",\n        \"amount\": \"string\",\n        \"book_amount\": \"string\",\n        \"id\": \"string\",\n        \"book_date\": \"string\",\n        \"bank_account_name\": \"string\",\n        \"bank_account_number\": \"string\",\n        \"description\": \"string\",\n        \"payment_method\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91c2fcda-483c-456d-a331-907b47fac8f5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5da2a9ab-21ba-436d-af73-c083442865fe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "48cbcd25-68ee-45d5-9163-5eb605f867ea",
+    "name": "API Endpoints administrations payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

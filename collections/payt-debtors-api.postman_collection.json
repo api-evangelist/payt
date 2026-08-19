@@ -1,0 +1,907 @@
+{
+  "item": [
+    {
+      "id": "a5e63a5f-dc1b-48ab-b270-6adef0bd222a",
+      "name": "debtors",
+      "description": {
+        "content": "Operations about debtors",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3bbbb3ff-78a0-45ba-8cdc-6f17e36f745b",
+          "name": "Create or update administration debtors",
+          "request": {
+            "name": "Create or update administration debtors",
+            "description": {
+              "content": "Create or update administration debtors",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "debtors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtors",
+                  "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "debtors",
+                  "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b62ee41d-7314-4132-baf0-dd81c78d4aaf",
+              "name": "Debtors created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df3ee7ab-3c76-4ffe-8190-4e45c4e85ef4",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "401b411f-40d1-4c23-8af9-7657e9c1058b",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "debtors",
+                      "value": "{\"debtor_number\":\"<string>\",\"name\":\"<string>\",\"debtor_identifier\":\"<string>\",\"bank_account_name\":\"<string>\",\"bank_account_number\":\"<string>\",\"category\":\"<string>\",\"coc_number\":\"<string>\",\"contact_identifier\":\"<string>\",\"country_code\":\"<string>\",\"language_code\":\"<string>\",\"oin_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"relation_manager\":\"<string>\",\"remark\":\"<string>\",\"vat_number\":\"<string>\",\"is_company\":\"<boolean>\",\"peppol_enabled\":\"<boolean>\",\"labels\":[\"<string>\",\"<string>\"]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d596421a-2182-417e-b1b8-81058c151087",
+          "name": "Get administration debtors",
+          "request": {
+            "name": "Get administration debtors",
+            "description": {
+              "content": "Get administration debtors",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "debtors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter debtors with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_numbers",
+                  "value": "<string>",
+                  "description": "Filter debtors with a comma separated list of debtor numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_identifiers",
+                  "value": "<string>",
+                  "description": "Filter debtors with a comma separated list of debtor identifiers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7b0a8b6-6e33-40ba-a6d3-bb06a7dfa79b",
+              "name": "Paginated list of debtors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"debtor_number\": \"string\",\n      \"name\": \"string\",\n      \"debtor_identifier\": \"string\",\n      \"postal_address\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"postal_code\": \"string\",\n        \"region\": \"string\",\n        \"street_1\": \"string\",\n        \"street_2\": \"string\"\n      },\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"updated_at\": \"2019-04-20T02:11:22.527Z\",\n      \"book_open_amount\": \"string\",\n      \"call_phone_number\": \"string\",\n      \"coc_number\": \"string\",\n      \"autogenerated_credit_limit_amount\": \"string\",\n      \"credit_limit_amount\": \"string\",\n      \"external_credit_limit_amount\": \"string\",\n      \"external_credit_limit_currency_code\": \"string\",\n      \"debtor_provided_email_address\": \"string\",\n      \"public_url\": \"string\",\n      \"deeplink_url\": \"string\",\n      \"primary_email_address\": \"string\",\n      \"invoice_bcc_email_address\": \"string\",\n      \"invoice_cc_email_address\": \"string\",\n      \"invoice_email_address\": \"string\",\n      \"internal_note_email_address\": \"string\",\n      \"labels\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"language_code\": \"string\",\n      \"payment_behaviour\": 7720,\n      \"peppol_identifier\": \"string\",\n      \"relation_manager\": \"string\",\n      \"remark\": \"string\",\n      \"reminder_bcc_email_address\": \"string\",\n      \"reminder_cc_email_address\": \"string\",\n      \"reminder_email_address\": \"string\",\n      \"sms_phone_number\": \"string\",\n      \"vat_number\": \"string\",\n      \"peppol_enabled\": true,\n      \"paused_at\": \"2020-12-06T04:12:33.492Z\",\n      \"reminding_paused_at\": \"2024-03-31T10:02:24.442Z\"\n    },\n    {\n      \"debtor_number\": \"string\",\n      \"name\": \"string\",\n      \"debtor_identifier\": \"string\",\n      \"postal_address\": {\n        \"city\": \"string\",\n        \"country_code\": \"string\",\n        \"postal_code\": \"string\",\n        \"region\": \"string\",\n        \"street_1\": \"string\",\n        \"street_2\": \"string\"\n      },\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"updated_at\": \"1976-10-19T11:42:43.828Z\",\n      \"book_open_amount\": \"string\",\n      \"call_phone_number\": \"string\",\n      \"coc_number\": \"string\",\n      \"autogenerated_credit_limit_amount\": \"string\",\n      \"credit_limit_amount\": \"string\",\n      \"external_credit_limit_amount\": \"string\",\n      \"external_credit_limit_currency_code\": \"string\",\n      \"debtor_provided_email_address\": \"string\",\n      \"public_url\": \"string\",\n      \"deeplink_url\": \"string\",\n      \"primary_email_address\": \"string\",\n      \"invoice_bcc_email_address\": \"string\",\n      \"invoice_cc_email_address\": \"string\",\n      \"invoice_email_address\": \"string\",\n      \"internal_note_email_address\": \"string\",\n      \"labels\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"language_code\": \"string\",\n      \"payment_behaviour\": 3837,\n      \"peppol_identifier\": \"string\",\n      \"relation_manager\": \"string\",\n      \"remark\": \"string\",\n      \"reminder_bcc_email_address\": \"string\",\n      \"reminder_cc_email_address\": \"string\",\n      \"reminder_email_address\": \"string\",\n      \"sms_phone_number\": \"string\",\n      \"vat_number\": \"string\",\n      \"peppol_enabled\": true,\n      \"paused_at\": \"1975-10-02T23:56:05.330Z\",\n      \"reminding_paused_at\": \"1994-04-28T00:56:01.045Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c088911-6813-4813-9426-f76d694de4d1",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "384f2d36-5d59-48a9-b329-616ab1e01cbb",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0244aec4-9801-45f6-a760-427275a26619",
+          "name": "Get administration debtor by id",
+          "request": {
+            "name": "Get administration debtor by id",
+            "description": {
+              "content": "Get administration debtor by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "debtors",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier_type",
+                  "value": "<string>",
+                  "description": "Type of debtor identifier to use (can be 'debtor_number', 'debtor_identifier' or left blank to use internal id)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Debtor identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3424b31f-8ab1-480e-b3b3-db9f5d2d8fc6",
+              "name": "Debtor",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Debtor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"debtor_number\": \"string\",\n  \"name\": \"string\",\n  \"debtor_identifier\": \"string\",\n  \"postal_address\": {\n    \"city\": \"string\",\n    \"country_code\": \"string\",\n    \"postal_code\": \"string\",\n    \"region\": \"string\",\n    \"street_1\": \"string\",\n    \"street_2\": \"string\"\n  },\n  \"administration_id\": \"string\",\n  \"id\": \"string\",\n  \"updated_at\": \"2001-07-22T07:26:58.963Z\",\n  \"book_open_amount\": \"string\",\n  \"call_phone_number\": \"string\",\n  \"coc_number\": \"string\",\n  \"autogenerated_credit_limit_amount\": \"string\",\n  \"credit_limit_amount\": \"string\",\n  \"external_credit_limit_amount\": \"string\",\n  \"external_credit_limit_currency_code\": \"string\",\n  \"debtor_provided_email_address\": \"string\",\n  \"public_url\": \"string\",\n  \"deeplink_url\": \"string\",\n  \"primary_email_address\": \"string\",\n  \"invoice_bcc_email_address\": \"string\",\n  \"invoice_cc_email_address\": \"string\",\n  \"invoice_email_address\": \"string\",\n  \"internal_note_email_address\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\"\n    },\n    {\n      \"name\": \"string\"\n    }\n  ],\n  \"language_code\": \"string\",\n  \"payment_behaviour\": 8939,\n  \"peppol_identifier\": \"string\",\n  \"relation_manager\": \"string\",\n  \"remark\": \"string\",\n  \"reminder_bcc_email_address\": \"string\",\n  \"reminder_cc_email_address\": \"string\",\n  \"reminder_email_address\": \"string\",\n  \"sms_phone_number\": \"string\",\n  \"vat_number\": \"string\",\n  \"peppol_enabled\": false,\n  \"paused_at\": \"2021-11-29T08:06:16.451Z\",\n  \"reminding_paused_at\": \"1949-02-25T20:50:33.042Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c980c182-1079-40b5-8f57-606a383090e7",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Debtor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d30a728-ce03-49d3-8190-ba7cc04539d4",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "debtors",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Debtor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d4a7507a-b0f5-4e10-9db1-f46deccd0ce2",
+    "name": "API Endpoints administrations debtors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

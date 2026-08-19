@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations sign_up API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sign_up",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sign up a new Payt account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/sign_up",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration[city]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[commercial_registration_number]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[country_code]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[email_address]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[house_number]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[name]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[phone_number]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[postal_code]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[street_name]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[sender_email_address]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[bank_account_bic]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[bank_account_name]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[bank_account_number]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[contact_name]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[currency_code]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[timezone]",
+                  "value": ""
+                },
+                {
+                  "name": "administration[vat_number]",
+                  "value": ""
+                },
+                {
+                  "name": "user[first_name]",
+                  "value": ""
+                },
+                {
+                  "name": "user[last_name]",
+                  "value": ""
+                },
+                {
+                  "name": "user[email_address]",
+                  "value": ""
+                },
+                {
+                  "name": "user[locale]",
+                  "value": ""
+                },
+                {
+                  "name": "connection[resource_label]",
+                  "value": ""
+                },
+                {
+                  "name": "connection[resource_identifier]",
+                  "value": ""
+                },
+                {
+                  "name": "connection[credentials_label]",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "**NOTE:** This endpoint uses Basic authentication, just as the [token endpoints](https://docs.paytsoftware.com/authentication/tokens).\n\nCreates a Payt account containing a user, company and administration.\n\nAn OAuth authorization_code will be returned with which the first access_token can be created. This means that in order to complete the API authorization the confirm step must be made [as described here](https://docs.paytsoftware.com/authentication/authorization).\n\nIf connection parameters ar"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,182 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations tasks API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a comment to a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/tasks/:id/comment",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a comment to a task"
+        },
+        {
+          "info": {
+            "name": "Mark a task as completed",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/tasks/:id/mark_completed",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark a task as completed"
+        },
+        {
+          "info": {
+            "name": "Unmark a task as completed",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/tasks/:id/unmark_completed",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Unmark a task as completed"
+        },
+        {
+          "info": {
+            "name": "Get administration task by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Task identifier"
+              },
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              }
+            ]
+          },
+          "docs": "Get administration task by id"
+        },
+        {
+          "info": {
+            "name": "Get administration tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/tasks",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter tasks with a comma separated list of internal ids"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration tasks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

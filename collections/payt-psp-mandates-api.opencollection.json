@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations psp_mandates API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "psp_mandates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration PSP mandates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/psp_mandates",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP mandates with a comma separated list of internal ids"
+              },
+              {
+                "name": "debtor_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP mandates with a comma separated list of internal debtor ids"
+              },
+              {
+                "name": "debtor_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP mandates with a comma separated list of debtor numbers"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration PSP mandates"
+        },
+        {
+          "info": {
+            "name": "Create signed psp mandates, these need to be verified before creating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/psp_mandates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create signed psp mandates, these need to be verified before creating"
+        },
+        {
+          "info": {
+            "name": "Delete PSP mandates",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.paytsoftware.com/v1/psp_mandates",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "psp_mandate_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of psp_mandate_ids to revoke"
+              },
+              {
+                "name": "mandate_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "List of mandate identifiers to revoke"
+              },
+              {
+                "name": "mandate_references",
+                "value": "",
+                "type": "query",
+                "description": "List of mandate references to revoke"
+              },
+              {
+                "name": "debtor_numbers",
+                "value": "",
+                "type": "query",
+                "description": "List of debtor numbers to revoke"
+              }
+            ]
+          },
+          "docs": "Deactivate PSP mandates and schedule their revocation."
+        },
+        {
+          "info": {
+            "name": "Get PSP mandates deleted in the last 90 days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/psp_mandates/deleted",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted after it"
+              },
+              {
+                "name": "deleted_before",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get PSP mandates deleted in the last 90 days"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

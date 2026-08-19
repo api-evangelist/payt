@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations messages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/messages",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages with a comma separated list of internal ids"
+              },
+              {
+                "name": "debtor_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages with a comma separated list of internal debtor ids"
+              },
+              {
+                "name": "invoice_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages with a comma separated list of internal invoice ids"
+              },
+              {
+                "name": "credit_case_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages with a comma separated list of internal credit_case ids"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration messages"
+        },
+        {
+          "info": {
+            "name": "Send a message to a debtor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message to a debtor"
+        },
+        {
+          "info": {
+            "name": "Update messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update messages"
+        },
+        {
+          "info": {
+            "name": "Get administration message by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/messages/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Message identifier"
+              },
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              }
+            ]
+          },
+          "docs": "Get administration message by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

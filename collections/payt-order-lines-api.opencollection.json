@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations order_lines API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "order_lines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration order lines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/order_lines",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records created before it"
+              },
+              {
+                "name": "created_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records created after it"
+              },
+              {
+                "name": "order_line_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter order lines with a comma separated list of order line identifiers"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter order lines with a comma separated list of internal ids"
+              },
+              {
+                "name": "claim_status",
+                "value": "",
+                "type": "query",
+                "description": "Filter order lines by claim status"
+              },
+              {
+                "name": "invoice_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter order lines with a comma separated list of invoice identifiers"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration order lines"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

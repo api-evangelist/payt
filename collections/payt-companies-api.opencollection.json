@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations companies API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get companies connected to your application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/companies",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "**NOTE:** This endpoint uses [Basic authentication](https://docs.paytsoftware.com/authentication/basic-authorization).\n\nReturns a list of all companies with an active connection to your application."
+        },
+        {
+          "info": {
+            "name": "Get company by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/companies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Company identifier"
+              }
+            ]
+          },
+          "docs": "**NOTE:** This endpoint uses [Basic authentication](https://docs.paytsoftware.com/authentication/basic-authorization).\n\nGet company by id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

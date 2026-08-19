@@ -1,0 +1,2063 @@
+{
+  "item": [
+    {
+      "id": "8fcafde7-6c2f-4efb-9100-58ea83845dfb",
+      "name": "payment_plans",
+      "description": {
+        "content": "Operations about payment_plans",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6d201b59-c9a1-4091-a4f3-944f7f5919bb",
+          "name": "Approve a proposed payment plan",
+          "request": {
+            "name": "Approve a proposed payment plan",
+            "description": {
+              "content": "Approve a proposed payment plan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans",
+                ":id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment plan identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5d802e0f-828d-403d-be83-2ef75b336567",
+              "name": "Approve a proposed payment plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auto_activated\": true,\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"created_at\": \"2007-12-31T10:20:44.972Z\",\n  \"updated_at\": \"2009-09-29T18:51:17.218Z\",\n  \"payment_terms\": [\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    }\n  ],\n  \"active\": true,\n  \"reason\": \"string\",\n  \"rejected_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"approved_at\": \"1976-01-08T12:39:01.925Z\",\n  \"deactivated_at\": \"1996-09-12T04:51:42.826Z\",\n  \"proposed_at\": \"2002-03-12T10:41:49.796Z\",\n  \"rejected_at\": \"1985-07-31T09:28:04.469Z\",\n  \"public_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7322218f-ed52-4ab4-a73b-aadde643fc74",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34ff0789-9c91-422a-aa40-8ad9e0551538",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2844db09-b172-49a5-b079-a125d3d6778c",
+          "name": "Deactivate an active payment plan",
+          "request": {
+            "name": "Deactivate an active payment plan",
+            "description": {
+              "content": "Deactivate an active payment plan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans",
+                ":id",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment plan identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0dd670d1-d720-41e2-b6f8-9b5fc2c820a9",
+              "name": "Deactivate an active payment plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auto_activated\": false,\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"created_at\": \"1951-04-13T20:22:39.924Z\",\n  \"updated_at\": \"2023-06-05T18:07:15.527Z\",\n  \"payment_terms\": [\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    }\n  ],\n  \"active\": false,\n  \"reason\": \"string\",\n  \"rejected_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"approved_at\": \"2025-10-22T19:47:10.656Z\",\n  \"deactivated_at\": \"1973-11-26T03:41:23.101Z\",\n  \"proposed_at\": \"1999-10-30T20:41:06.741Z\",\n  \"rejected_at\": \"2018-07-31T11:06:32.140Z\",\n  \"public_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9caa8b35-accf-4935-a024-a68e4ee870a5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efda52b0-a4ff-43be-ba3d-eefb46989cf1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77dc4343-b39c-4522-ab94-2ece73e83e57",
+          "name": "Reject a proposed payment plan",
+          "request": {
+            "name": "Reject a proposed payment plan",
+            "description": {
+              "content": "Reject a proposed payment plan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans",
+                ":id",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment plan identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "830b3a12-91e1-4e99-b0de-06500cd29e72",
+              "name": "Reject a proposed payment plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auto_activated\": false,\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"created_at\": \"1951-04-13T20:22:39.924Z\",\n  \"updated_at\": \"2023-06-05T18:07:15.527Z\",\n  \"payment_terms\": [\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    }\n  ],\n  \"active\": false,\n  \"reason\": \"string\",\n  \"rejected_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"approved_at\": \"2025-10-22T19:47:10.656Z\",\n  \"deactivated_at\": \"1973-11-26T03:41:23.101Z\",\n  \"proposed_at\": \"1999-10-30T20:41:06.741Z\",\n  \"rejected_at\": \"2018-07-31T11:06:32.140Z\",\n  \"public_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0162d2a8-da30-49e8-bcaa-4613faa83863",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da0278d9-de68-42c7-8f9b-2813ea745424",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f24e52f5-c94e-4acd-bee6-e80f6525efa4",
+          "name": "Get administration payment plan by id",
+          "request": {
+            "name": "Get administration payment plan by id",
+            "description": {
+              "content": "Get administration payment plan by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Payment plan identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f751946-ad1c-4125-a4f0-2a5a95629f98",
+              "name": "Get administration payment plan by id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auto_activated\": false,\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"created_at\": \"1951-04-13T20:22:39.924Z\",\n  \"updated_at\": \"2023-06-05T18:07:15.527Z\",\n  \"payment_terms\": [\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    }\n  ],\n  \"active\": false,\n  \"reason\": \"string\",\n  \"rejected_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"approved_at\": \"2025-10-22T19:47:10.656Z\",\n  \"deactivated_at\": \"1973-11-26T03:41:23.101Z\",\n  \"proposed_at\": \"1999-10-30T20:41:06.741Z\",\n  \"rejected_at\": \"2018-07-31T11:06:32.140Z\",\n  \"public_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b19de9f9-c21b-4cb7-9c8a-c2821272dba0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5afd901-6e5a-445d-9362-8032f2c96a06",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Payment plan identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f07251fb-b485-48ea-ad7c-da6d129b4141",
+          "name": "Create an approved payment plan",
+          "request": {
+            "name": "Create an approved payment plan",
+            "description": {
+              "content": "Create an approved payment plan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "terms",
+                  "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}",
+                  "description": "(Required) List of terms for payment plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "terms",
+                  "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}",
+                  "description": "(Required) List of terms for payment plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "cc_email_address",
+                  "value": "<string>",
+                  "description": "Email address to send a copy of the payment plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "List of invoices by invoice_number to include in the payment plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "List of invoices by invoice_number to include in the payment plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "List of invoices by invoice_identifier to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "List of invoices by invoice_identifier to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_numbers",
+                  "value": "<string>",
+                  "description": "List of credit cases by credit_case_number to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_numbers",
+                  "value": "<string>",
+                  "description": "List of credit cases by credit_case_number to include"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ca4adc62-de89-4349-a959-4bfb094f0772",
+              "name": "Created payment plan",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Email address to send a copy of the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"auto_activated\": false,\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"created_at\": \"1951-04-13T20:22:39.924Z\",\n  \"updated_at\": \"2023-06-05T18:07:15.527Z\",\n  \"payment_terms\": [\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"total_amount\": \"string\",\n      \"amount_due\": \"string\",\n      \"due_date\": \"string\",\n      \"payment_date\": \"string\"\n    }\n  ],\n  \"active\": false,\n  \"reason\": \"string\",\n  \"rejected_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"email_address\": \"string\"\n  },\n  \"approved_at\": \"2025-10-22T19:47:10.656Z\",\n  \"deactivated_at\": \"1973-11-26T03:41:23.101Z\",\n  \"proposed_at\": \"1999-10-30T20:41:06.741Z\",\n  \"rejected_at\": \"2018-07-31T11:06:32.140Z\",\n  \"public_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4cf52e50-a613-4879-bc7c-55bd20a50631",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Email address to send a copy of the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14fca898-3e9c-4144-8e49-255442b4881a",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) List of terms for payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "terms",
+                      "value": "{\"amount\":\"<double>\",\"due_date\":\"<date>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Email address to send a copy of the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "cc_email_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_number to include in the payment plan",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of invoices by invoice_identifier to include",
+                        "type": "text/plain"
+                      },
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "List of credit cases by credit_case_number to include",
+                        "type": "text/plain"
+                      },
+                      "key": "credit_case_numbers",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de9c40b5-a224-41b3-978d-6f6ab95e1374",
+          "name": "Get administration payment plans",
+          "request": {
+            "name": "Get administration payment plans",
+            "description": {
+              "content": "Get administration payment plans",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter payment plans with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_numbers",
+                  "value": "<string>",
+                  "description": "Filter payment plans with a comma separated list of debtor numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_identifiers",
+                  "value": "<string>",
+                  "description": "Filter payment plans with a comma separated list of debtor identifiers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "973d50bf-29c4-4024-befd-d56355e74cc8",
+              "name": "Get administration payment plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"auto_activated\": true,\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"created_at\": \"1988-11-12T07:05:35.208Z\",\n      \"updated_at\": \"1995-02-15T12:08:12.317Z\",\n      \"payment_terms\": [\n        {\n          \"id\": \"string\",\n          \"total_amount\": \"string\",\n          \"amount_due\": \"string\",\n          \"due_date\": \"string\",\n          \"payment_date\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"total_amount\": \"string\",\n          \"amount_due\": \"string\",\n          \"due_date\": \"string\",\n          \"payment_date\": \"string\"\n        }\n      ],\n      \"active\": true,\n      \"reason\": \"string\",\n      \"rejected_by_user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"approved_at\": \"1999-11-23T02:57:23.910Z\",\n      \"deactivated_at\": \"2007-03-28T12:04:39.713Z\",\n      \"proposed_at\": \"2000-10-10T05:21:47.817Z\",\n      \"rejected_at\": \"2004-04-27T18:59:39.494Z\",\n      \"public_url\": \"string\"\n    },\n    {\n      \"auto_activated\": true,\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"created_at\": \"2025-10-21T10:17:32.006Z\",\n      \"updated_at\": \"1962-07-08T18:36:13.880Z\",\n      \"payment_terms\": [\n        {\n          \"id\": \"string\",\n          \"total_amount\": \"string\",\n          \"amount_due\": \"string\",\n          \"due_date\": \"string\",\n          \"payment_date\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"total_amount\": \"string\",\n          \"amount_due\": \"string\",\n          \"due_date\": \"string\",\n          \"payment_date\": \"string\"\n        }\n      ],\n      \"active\": true,\n      \"reason\": \"string\",\n      \"rejected_by_user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"approved_at\": \"1956-02-29T08:26:26.323Z\",\n      \"deactivated_at\": \"1976-07-08T01:04:03.221Z\",\n      \"proposed_at\": \"2008-06-04T01:16:45.224Z\",\n      \"rejected_at\": \"2007-01-15T02:42:35.226Z\",\n      \"public_url\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "598f59b7-7646-4420-9c55-a7b3e8aca658",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "654f8dc9-a9f6-4583-9aa3-777ab0e11ad9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "717d0fc3-bb23-4c00-b403-aa157330122c",
+          "name": "Get payment_plans deleted in the last 90 days",
+          "request": {
+            "name": "Get payment_plans deleted in the last 90 days",
+            "description": {
+              "content": "Get payment_plans deleted in the last 90 days",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payment_plans",
+                "deleted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_after",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO8601 UTC Timestamp to filter records deleted after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_before",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53e4623c-3095-4f36-b34b-0191bbf4c021",
+              "name": "List of deleted payment plans",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"deleted_at\": \"2015-07-27T07:13:56.699Z\",\n      \"debtor_id\": \"string\"\n    },\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"deleted_at\": \"2013-03-04T03:41:14.444Z\",\n      \"debtor_id\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48b888ec-35a8-40c9-a8af-adf29adb91c6",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62ee68ba-529e-42c9-92b3-82dd4d3e6ce8",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payment_plans",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99c9e2f9-4aec-4fd6-8a2b-a5edef2446b1",
+    "name": "API Endpoints administrations payment_plans API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

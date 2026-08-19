@@ -1,0 +1,2039 @@
+{
+  "item": [
+    {
+      "id": "ab470fc7-5a60-4a7a-a36b-6acfc130b3ed",
+      "name": "invoices",
+      "description": {
+        "content": "Operations about invoices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03baae82-1dc2-4c64-8a35-28ef6b757152",
+          "name": "Block invoices",
+          "request": {
+            "name": "Block invoices",
+            "description": {
+              "content": "Block invoices",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices",
+                "block"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Unique number from your invoicing software that is communicated to the debtor"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Unique number from your invoicing software that is communicated to the debtor"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Unique database identifier from your invoicing software"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Unique database identifier from your invoicing software"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "37677a64-d2cb-47e6-85dd-c8ebef9691bd",
+              "name": "Invoices blocked",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e19c1a7-f854-40cb-aa98-d9a148c00ee3",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29958df3-ae0b-4ae1-bf3a-67d53becbe3f",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2286dfd-6ffa-4c58-9f90-82218c66f580",
+          "name": "Upsert invoices in bulk",
+          "request": {
+            "name": "Upsert invoices in bulk",
+            "description": {
+              "content": "Upsert invoices in bulk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoices",
+                  "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "invoices",
+                  "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb7d906b-0997-418b-a65e-c78930784366",
+              "name": "List of created invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0947e74c-6377-4640-9376-de09696154c9",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "341279e8-b0f5-4876-b053-21b15ed5ba21",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"currency_code\":\"<string>\",\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"due_date\":\"<string>\",\"book_amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"invoice_identifier\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"description\":\"<string>\",\"category\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}],\"invoice_lines\":[{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"},{\"description\":\"<string>\",\"vat_rate_code\":\"<string>\",\"total_excl_tax_amount\":\"<string>\",\"total_incl_tax_amount\":\"<string>\",\"product_price\":\"<string>\",\"product_unit\":\"<string>\",\"product_quantity\":\"<string>\",\"vat_percentage\":\"<string>\",\"vat_amount\":\"<string>\",\"line_order\":\"<integer>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e8e5c70-e87d-4a53-a689-a0164016b33a",
+          "name": "Update administration invoices",
+          "request": {
+            "name": "Update administration invoices",
+            "description": {
+              "content": "Update administration invoices",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoices",
+                  "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "invoices",
+                  "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77466b1c-72bb-4eea-bb8f-2ad77a5c791d",
+              "name": "Invoices updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96660cde-5d20-4918-9ad0-a03fb65ef70e",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f7beed2-65bd-4463-82ee-4c0a17f02bea",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Administration identifier",
+                        "type": "text/plain"
+                      },
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "invoices",
+                      "value": "{\"invoice_number\":\"<string>\",\"invoice_date\":\"<string>\",\"amount_open\":\"<string>\",\"amount_total\":\"<string>\",\"book_amount_open\":\"<string>\",\"book_amount_total\":\"<string>\",\"category\":\"<string>\",\"currency_code\":\"<string>\",\"debtor_number\":\"<string>\",\"debtor_identifier\":\"<string>\",\"description\":\"<string>\",\"due_date\":\"<string>\",\"invoice_identifier\":\"<string>\",\"order_number\":\"<string>\",\"peppol_identifier\":\"<string>\",\"contact_identifier\":\"<string>\",\"payment_condition\":\"<string>\",\"payment_method\":\"<string>\",\"sent_at\":\"<dateTime>\",\"labels\":[\"<string>\",\"<string>\"],\"payment_term\":\"<integer>\",\"document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"ubl_document\":{\"checksum\":\"<string>\",\"filename\":\"<string>\",\"destroy\":\"<boolean>\"},\"payments\":[{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"},{\"amount\":\"<string>\",\"origin_identifier\":\"<string>\",\"cost_type\":\"principal\",\"payment_date\":\"<string>\",\"transaction_type\":\"<string>\",\"book_amount\":\"<string>\",\"description\":\"<string>\",\"payment_method\":\"<string>\",\"reversal_code\":\"<string>\"}]}"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1b68355-f47d-4406-a929-092d00d6a3aa",
+          "name": "Get administration invoices",
+          "request": {
+            "name": "Get administration invoices",
+            "description": {
+              "content": "Get administration invoices",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "paid",
+                  "value": "<boolean>",
+                  "description": "Whether returned invoices should be paid/unpaid"
+                },
+                {
+                  "disabled": false,
+                  "key": "book_amount_total_lte",
+                  "value": "<float>",
+                  "description": "Filter invoices with book_amount_total less than or equal to the provided amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "book_amount_total_gte",
+                  "value": "<float>",
+                  "description": "Filter invoices with book_amount_total greater than or equal to the provided amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of invoice numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of invoice identifiers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_ids",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of internal debtor ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_numbers",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of debtor numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_identifiers",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of debtor identifiers from your accounting software"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_ids",
+                  "value": "<string>",
+                  "description": "Filter invoices with a comma separated list of internal credit case ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Order the list of invoices"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7921f5e7-39a1-41eb-ba92-3bbe00e16ddb",
+              "name": "Paginated list of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "book_amount_total_lte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "book_amount_total_gte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"currency_code\": \"string\",\n      \"invoice_number\": \"string\",\n      \"payment_method\": \"none\",\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"due_date\": \"string\",\n      \"invoice_date\": \"string\",\n      \"administration_costs_total\": \"string\",\n      \"administration_costs_open\": \"string\",\n      \"total_amount\": \"string\",\n      \"open_amount\": \"string\",\n      \"book_open_amount\": \"string\",\n      \"book_total_amount\": \"string\",\n      \"updated_at\": \"2012-11-13T12:57:23.208Z\",\n      \"category\": \"string\",\n      \"description\": \"string\",\n      \"public_url\": \"string\",\n      \"deeplink_url\": \"string\",\n      \"flow_code\": \"string\",\n      \"document_url\": \"string\",\n      \"ubl_document_url\": \"string\",\n      \"internal_note_email_address\": \"string\",\n      \"invoice_lines\": [\n        {\n          \"description\": \"string\",\n          \"product_unit\": \"string\",\n          \"vat_percentage\": \"string\",\n          \"vat_rate_code\": \"string\",\n          \"product_quantity\": \"string\",\n          \"line_order\": 9714,\n          \"product_price\": \"string\",\n          \"total_excl_tax_amount\": \"string\",\n          \"total_incl_tax_amount\": \"string\",\n          \"vat_amount\": \"string\"\n        },\n        {\n          \"description\": \"string\",\n          \"product_unit\": \"string\",\n          \"vat_percentage\": \"string\",\n          \"vat_rate_code\": \"string\",\n          \"product_quantity\": \"string\",\n          \"line_order\": 3530,\n          \"product_price\": \"string\",\n          \"total_excl_tax_amount\": \"string\",\n          \"total_incl_tax_amount\": \"string\",\n          \"vat_amount\": \"string\"\n        }\n      ],\n      \"purchase_order_number\": \"string\",\n      \"labels\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"order_number\": \"string\",\n      \"invoice_identifier\": \"string\",\n      \"peppol_identifier\": \"string\",\n      \"credit_case_id\": \"string\",\n      \"active_credit_case_id\": \"string\",\n      \"debtor_number\": \"string\",\n      \"payment_plan_id\": \"string\",\n      \"active_payment_plan_id\": \"string\",\n      \"payment_date\": \"string\",\n      \"paused_by_user\": true,\n      \"bailiff_at\": \"1983-05-30T13:30:18.296Z\",\n      \"collectable_at\": \"1960-12-18T04:57:16.024Z\",\n      \"debt_collection_at\": \"2022-11-01T02:49:48.781Z\",\n      \"end_of_service_announcement_at\": \"2012-12-05T17:37:33.899Z\",\n      \"end_of_service_at\": \"1956-03-24T03:07:48.874Z\",\n      \"final_reminder_at\": \"1989-07-12T09:09:41.977Z\",\n      \"pre_reminder_at\": \"2012-11-15T21:34:46.142Z\",\n      \"first_reminder_at\": \"1983-03-03T04:39:12.232Z\",\n      \"reminder_1_at\": \"1947-02-17T03:49:08.969Z\",\n      \"reminder_2_at\": \"1971-05-06T06:01:47.750Z\",\n      \"reminder_3_at\": \"2015-07-17T08:41:25.466Z\",\n      \"reminder_4_at\": \"1974-11-25T19:15:44.680Z\",\n      \"latest_reminder_at\": \"1961-05-04T15:33:44.408Z\",\n      \"latest_summons_at\": \"1982-10-11T15:27:11.659Z\",\n      \"notice_of_default_at\": \"1993-04-06T06:53:47.259Z\",\n      \"paused_at\": \"2011-10-09T17:28:06.412Z\",\n      \"pre_judicial_at\": \"1992-10-04T12:35:51.576Z\",\n      \"pre_summons_at\": \"2005-03-17T15:14:58.812Z\",\n      \"sent_at\": \"1955-04-19T07:33:25.200Z\",\n      \"first_summons_at\": \"1980-08-09T17:39:53.160Z\",\n      \"summons_1_at\": \"1972-03-26T19:04:57.683Z\",\n      \"summons_2_at\": \"2014-10-16T21:11:20.866Z\",\n      \"summons_3_at\": \"1984-07-18T17:11:28.608Z\",\n      \"summons_4_at\": \"1968-07-22T06:24:22.994Z\"\n    },\n    {\n      \"currency_code\": \"string\",\n      \"invoice_number\": \"string\",\n      \"payment_method\": \"cash\",\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"id\": \"string\",\n      \"due_date\": \"string\",\n      \"invoice_date\": \"string\",\n      \"administration_costs_total\": \"string\",\n      \"administration_costs_open\": \"string\",\n      \"total_amount\": \"string\",\n      \"open_amount\": \"string\",\n      \"book_open_amount\": \"string\",\n      \"book_total_amount\": \"string\",\n      \"updated_at\": \"2009-08-16T00:10:09.590Z\",\n      \"category\": \"string\",\n      \"description\": \"string\",\n      \"public_url\": \"string\",\n      \"deeplink_url\": \"string\",\n      \"flow_code\": \"string\",\n      \"document_url\": \"string\",\n      \"ubl_document_url\": \"string\",\n      \"internal_note_email_address\": \"string\",\n      \"invoice_lines\": [\n        {\n          \"description\": \"string\",\n          \"product_unit\": \"string\",\n          \"vat_percentage\": \"string\",\n          \"vat_rate_code\": \"string\",\n          \"product_quantity\": \"string\",\n          \"line_order\": 7301,\n          \"product_price\": \"string\",\n          \"total_excl_tax_amount\": \"string\",\n          \"total_incl_tax_amount\": \"string\",\n          \"vat_amount\": \"string\"\n        },\n        {\n          \"description\": \"string\",\n          \"product_unit\": \"string\",\n          \"vat_percentage\": \"string\",\n          \"vat_rate_code\": \"string\",\n          \"product_quantity\": \"string\",\n          \"line_order\": 4944,\n          \"product_price\": \"string\",\n          \"total_excl_tax_amount\": \"string\",\n          \"total_incl_tax_amount\": \"string\",\n          \"vat_amount\": \"string\"\n        }\n      ],\n      \"purchase_order_number\": \"string\",\n      \"labels\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"order_number\": \"string\",\n      \"invoice_identifier\": \"string\",\n      \"peppol_identifier\": \"string\",\n      \"credit_case_id\": \"string\",\n      \"active_credit_case_id\": \"string\",\n      \"debtor_number\": \"string\",\n      \"payment_plan_id\": \"string\",\n      \"active_payment_plan_id\": \"string\",\n      \"payment_date\": \"string\",\n      \"paused_by_user\": true,\n      \"bailiff_at\": \"2013-03-09T19:32:54.525Z\",\n      \"collectable_at\": \"1967-12-28T15:58:37.305Z\",\n      \"debt_collection_at\": \"1973-05-23T10:23:45.066Z\",\n      \"end_of_service_announcement_at\": \"2014-04-25T02:57:22.697Z\",\n      \"end_of_service_at\": \"1989-10-04T13:48:11.590Z\",\n      \"final_reminder_at\": \"1979-06-12T01:31:34.659Z\",\n      \"pre_reminder_at\": \"2024-01-08T18:26:01.116Z\",\n      \"first_reminder_at\": \"1959-02-13T17:44:51.637Z\",\n      \"reminder_1_at\": \"2006-10-30T21:46:20.593Z\",\n      \"reminder_2_at\": \"1982-02-18T07:21:07.734Z\",\n      \"reminder_3_at\": \"1968-03-14T16:19:19.059Z\",\n      \"reminder_4_at\": \"1996-07-05T10:31:28.184Z\",\n      \"latest_reminder_at\": \"1975-06-21T23:35:18.191Z\",\n      \"latest_summons_at\": \"2007-11-21T19:35:33.440Z\",\n      \"notice_of_default_at\": \"1978-06-20T07:45:11.059Z\",\n      \"paused_at\": \"1989-10-31T12:52:21.624Z\",\n      \"pre_judicial_at\": \"2024-08-08T00:01:34.827Z\",\n      \"pre_summons_at\": \"1964-02-20T00:31:24.336Z\",\n      \"sent_at\": \"1976-04-04T06:15:26.213Z\",\n      \"first_summons_at\": \"2013-01-03T21:27:28.447Z\",\n      \"summons_1_at\": \"2021-10-12T15:56:42.728Z\",\n      \"summons_2_at\": \"1957-04-19T20:25:06.013Z\",\n      \"summons_3_at\": \"1962-12-21T17:11:36.777Z\",\n      \"summons_4_at\": \"2018-06-05T23:17:40.375Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0feb42ca-533d-424f-a0d4-495d7a607d53",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "book_amount_total_lte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "book_amount_total_gte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "312c09d8-078e-447e-9f3c-d6061d6be4ac",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "book_amount_total_lte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "book_amount_total_gte",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_numbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9ca0a29-7ffc-40ea-97f8-39f35142a492",
+          "name": "Get invoices deleted in the last 90 days",
+          "request": {
+            "name": "Get invoices deleted in the last 90 days",
+            "description": {
+              "content": "Get invoices deleted in the last 90 days",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices",
+                "deleted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_after",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO8601 UTC Timestamp to filter records deleted after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "deleted_before",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec83e3b2-a518-432f-ac2e-664a69d58fd0",
+              "name": "List of deleted invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"invoice_number\": \"string\",\n      \"origin_identifier\": \"string\",\n      \"id\": \"string\",\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"deleted_at\": \"1950-01-29T00:26:33.296Z\"\n    },\n    {\n      \"invoice_number\": \"string\",\n      \"origin_identifier\": \"string\",\n      \"id\": \"string\",\n      \"administration_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"deleted_at\": \"2005-04-15T09:24:52.755Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ce23418-4543-4faa-a128-e001f245ba3f",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e54adaec-9d8c-497b-acce-85f1aa88fdf6",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "deleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "deleted_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "deleted_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e719851-0482-40a3-a5ed-59cd7fd4ee0f",
+          "name": "Resume invoices that are blocked through the API",
+          "request": {
+            "name": "Resume invoices that are blocked through the API",
+            "description": {
+              "content": "Resume invoices that are blocked through the API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Unique number from your invoicing software that is communicated to the debtor"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_numbers",
+                  "value": "<string>",
+                  "description": "Unique number from your invoicing software that is communicated to the debtor"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Unique database identifier from your invoicing software"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Unique database identifier from your invoicing software"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "34030211-9402-4e37-a6ea-7b584c92d58b",
+              "name": "Invoices resumed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 98,\n  \"errors\": {\n    \"123456\": [\n      \"Validation error 1\",\n      \"Validation error 2\"\n    ],\n    \"123461\": [\n      \"Validation error\"\n    ]\n  },\n  \"warnings\": {\n    \"123457\": [\n      \"Warning message 1\",\n      \"Warning message 2\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad57c537-00d8-4141-9ce0-e1e563ba7203",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08a8dbf6-b264-4f7c-ae67-c9c9ac6355a4",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6c7858d-343c-4190-9bd2-5be6d50ab179",
+          "name": "Get administration invoice by id",
+          "request": {
+            "name": "Get administration invoice by id",
+            "description": {
+              "content": "Get administration invoice by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier_type",
+                  "value": "<string>",
+                  "description": "Type of invoice identifier to use (can be 'invoice_number', 'invoice_identifier' or left blank to use internal id)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Invoice identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18f6c015-d1a1-4370-a3de-a8e5f59331db",
+              "name": "Invoice",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency_code\": \"string\",\n  \"invoice_number\": \"string\",\n  \"payment_method\": \"unknown\",\n  \"administration_id\": \"string\",\n  \"debtor_id\": \"string\",\n  \"id\": \"string\",\n  \"due_date\": \"string\",\n  \"invoice_date\": \"string\",\n  \"administration_costs_total\": \"string\",\n  \"administration_costs_open\": \"string\",\n  \"total_amount\": \"string\",\n  \"open_amount\": \"string\",\n  \"book_open_amount\": \"string\",\n  \"book_total_amount\": \"string\",\n  \"updated_at\": \"1982-06-11T01:33:11.243Z\",\n  \"category\": \"string\",\n  \"description\": \"string\",\n  \"public_url\": \"string\",\n  \"deeplink_url\": \"string\",\n  \"flow_code\": \"string\",\n  \"document_url\": \"string\",\n  \"ubl_document_url\": \"string\",\n  \"internal_note_email_address\": \"string\",\n  \"invoice_lines\": [\n    {\n      \"description\": \"string\",\n      \"product_unit\": \"string\",\n      \"vat_percentage\": \"string\",\n      \"vat_rate_code\": \"string\",\n      \"product_quantity\": \"string\",\n      \"line_order\": 8511,\n      \"product_price\": \"string\",\n      \"total_excl_tax_amount\": \"string\",\n      \"total_incl_tax_amount\": \"string\",\n      \"vat_amount\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"product_unit\": \"string\",\n      \"vat_percentage\": \"string\",\n      \"vat_rate_code\": \"string\",\n      \"product_quantity\": \"string\",\n      \"line_order\": 2770,\n      \"product_price\": \"string\",\n      \"total_excl_tax_amount\": \"string\",\n      \"total_incl_tax_amount\": \"string\",\n      \"vat_amount\": \"string\"\n    }\n  ],\n  \"purchase_order_number\": \"string\",\n  \"labels\": [\n    {\n      \"name\": \"string\"\n    },\n    {\n      \"name\": \"string\"\n    }\n  ],\n  \"order_number\": \"string\",\n  \"invoice_identifier\": \"string\",\n  \"peppol_identifier\": \"string\",\n  \"credit_case_id\": \"string\",\n  \"active_credit_case_id\": \"string\",\n  \"debtor_number\": \"string\",\n  \"payment_plan_id\": \"string\",\n  \"active_payment_plan_id\": \"string\",\n  \"payment_date\": \"string\",\n  \"paused_by_user\": true,\n  \"bailiff_at\": \"1953-01-10T12:57:54.760Z\",\n  \"collectable_at\": \"2015-12-04T12:50:46.947Z\",\n  \"debt_collection_at\": \"1966-08-22T13:00:16.137Z\",\n  \"end_of_service_announcement_at\": \"1971-01-25T05:36:09.715Z\",\n  \"end_of_service_at\": \"1993-01-12T02:31:40.579Z\",\n  \"final_reminder_at\": \"1955-06-12T17:02:29.598Z\",\n  \"pre_reminder_at\": \"1949-06-29T16:59:49.768Z\",\n  \"first_reminder_at\": \"1983-08-24T16:29:14.617Z\",\n  \"reminder_1_at\": \"1960-07-21T12:14:58.701Z\",\n  \"reminder_2_at\": \"1992-12-07T00:23:12.945Z\",\n  \"reminder_3_at\": \"1999-05-03T21:35:42.276Z\",\n  \"reminder_4_at\": \"1963-10-06T21:44:50.011Z\",\n  \"latest_reminder_at\": \"2011-03-29T13:36:37.858Z\",\n  \"latest_summons_at\": \"1957-03-11T15:18:24.287Z\",\n  \"notice_of_default_at\": \"2006-01-07T03:01:02.854Z\",\n  \"paused_at\": \"1962-03-15T11:13:00.394Z\",\n  \"pre_judicial_at\": \"1972-05-14T20:27:32.140Z\",\n  \"pre_summons_at\": \"2018-02-12T21:03:03.090Z\",\n  \"sent_at\": \"1999-03-14T05:09:33.949Z\",\n  \"first_summons_at\": \"1998-11-08T06:56:24.563Z\",\n  \"summons_1_at\": \"1955-12-05T15:05:13.978Z\",\n  \"summons_2_at\": \"1990-11-18T12:58:26.649Z\",\n  \"summons_3_at\": \"2007-04-08T00:40:19.255Z\",\n  \"summons_4_at\": \"1967-06-23T09:10:29.143Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "670a3c0e-2449-4a26-8dfa-55024a003043",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23b1da71-d2c1-4b06-a25e-d05d3010e304",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "90aadf21-f626-450f-a94f-4963e95c3fc1",
+    "name": "API Endpoints administrations invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

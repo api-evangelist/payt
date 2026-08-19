@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get payments deleted in the last 90 days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/payments/deleted",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted after it"
+              },
+              {
+                "name": "deleted_before",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get payments deleted in the last 90 days"
+        },
+        {
+          "info": {
+            "name": "Get administration payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/payments",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter payments with a comma separated list of internal ids"
+              },
+              {
+                "name": "invoice_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter payments with a comma separated list of invoice identifiers from your accounting software"
+              },
+              {
+                "name": "invoice_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter payments with a comma separated list of invoice numbers from your accounting software"
+              },
+              {
+                "name": "credit_case_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter payments with a comma separated list of internal credit case ids"
+              },
+              {
+                "name": "credit_case_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter payments with a comma separated list of credit case numbers"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration payments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

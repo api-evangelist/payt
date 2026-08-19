@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations payment_plans API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "payment_plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Approve a proposed payment plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/payment_plans/:id/approve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment plan identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Approve a proposed payment plan"
+        },
+        {
+          "info": {
+            "name": "Deactivate an active payment plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/payment_plans/:id/deactivate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment plan identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Deactivate an active payment plan"
+        },
+        {
+          "info": {
+            "name": "Reject a proposed payment plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/payment_plans/:id/reject",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment plan identifier"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Reject a proposed payment plan"
+        },
+        {
+          "info": {
+            "name": "Get administration payment plan by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/payment_plans/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment plan identifier"
+              },
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              }
+            ]
+          },
+          "docs": "Get administration payment plan by id"
+        },
+        {
+          "info": {
+            "name": "Get administration payment plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/payment_plans",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter payment plans with a comma separated list of internal ids"
+              },
+              {
+                "name": "debtor_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter payment plans with a comma separated list of debtor numbers"
+              },
+              {
+                "name": "debtor_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter payment plans with a comma separated list of debtor identifiers from your accounting software"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration payment plans"
+        },
+        {
+          "info": {
+            "name": "Create an approved payment plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/payment_plans",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an approved payment plan"
+        },
+        {
+          "info": {
+            "name": "Get payment_plans deleted in the last 90 days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/payment_plans/deleted",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted after it"
+              },
+              {
+                "name": "deleted_before",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get payment_plans deleted in the last 90 days"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

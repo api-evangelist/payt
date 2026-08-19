@@ -1,0 +1,373 @@
+{
+  "item": [
+    {
+      "id": "d92ac4cb-7522-47f2-9ed6-c5867df3dab5",
+      "name": "notes",
+      "description": {
+        "content": "Operations about notes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3cc1bb8-0361-43d4-bbe1-75d6f24e6e1b",
+          "name": "Get administration notes",
+          "request": {
+            "name": "Get administration notes",
+            "description": {
+              "content": "Get administration notes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter notes with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "debtor_ids",
+                  "value": "<string>",
+                  "description": "Filter notes with a comma separated list of debtor internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_ids",
+                  "value": "<string>",
+                  "description": "Filter notes with a comma separated list of invoice internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "credit_case_ids",
+                  "value": "<string>",
+                  "description": "Filter notes with a comma separated list of credit case internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d4a6d59-0946-45c7-bfc9-0888b583c406",
+              "name": "Get administration notes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"content\": \"string\",\n      \"created_at\": \"2009-09-05T20:48:10.324Z\",\n      \"updated_at\": \"2009-11-01T08:42:44.087Z\",\n      \"credit_case_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"from_email_address\": \"string\",\n      \"invoice_id\": \"string\",\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"completed_at\": \"1985-11-13T21:46:04.420Z\"\n    },\n    {\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"content\": \"string\",\n      \"created_at\": \"1988-09-05T02:57:06.781Z\",\n      \"updated_at\": \"1969-03-26T09:32:28.524Z\",\n      \"credit_case_id\": \"string\",\n      \"debtor_id\": \"string\",\n      \"from_email_address\": \"string\",\n      \"invoice_id\": \"string\",\n      \"user\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email_address\": \"string\"\n      },\n      \"completed_at\": \"1979-08-22T13:03:13.179Z\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d13471d-7f74-4bf4-a463-baa8b40d6cf8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84f37cff-f959-4d38-93ab-c6b81bdf8bc3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "debtor_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "credit_case_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aee3d8b9-4934-4ead-a887-e59c48459f24",
+    "name": "API Endpoints administrations notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

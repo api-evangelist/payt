@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "d2866a59-84d9-4804-a811-7f14eeadb27d",
+      "name": "order_lines",
+      "description": {
+        "content": "Operations about order_lines",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1467bf48-94e5-4617-8fcb-49bdb172f0a3",
+          "name": "Get administration order lines",
+          "request": {
+            "name": "Get administration order lines",
+            "description": {
+              "content": "Get administration order lines",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "order_lines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "administration_id",
+                  "value": "<string>",
+                  "description": "(Required) Administration identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records created before it"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records created after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_line_identifiers",
+                  "value": "<string>",
+                  "description": "Filter order lines with a comma separated list of order line identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Filter order lines with a comma separated list of internal ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "claim_status",
+                  "value": "<string>",
+                  "description": "Filter order lines by claim status"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice_identifiers",
+                  "value": "<string>",
+                  "description": "Filter order lines with a comma separated list of invoice identifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<dateTime>",
+                  "description": "ISO8601 UTC Timestamp to filter records updated after it"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The record identifier after which to start the page"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "100",
+                  "description": "How many records will be returned per page, (1..500), defaults to 100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da9552f7-4aee-4db8-a139-cde9d343a0f1",
+              "name": "Paginated list of order lines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_lines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "order_line_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "claim_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"claim\": false,\n      \"claim_status\": \"string\",\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"order_line_identifier\": \"string\",\n      \"amount\": \"string\",\n      \"credited_amount\": \"string\",\n      \"credited_reimbursed_amount\": \"string\",\n      \"rejected_amount\": \"string\",\n      \"created_at\": \"2008-08-08T02:21:17.186Z\",\n      \"updated_at\": \"2002-12-11T16:43:33.407Z\",\n      \"claim_response_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deeplink_url\": \"string\",\n      \"customer\": {\n        \"email_address\": \"string\"\n      },\n      \"product_identifier\": \"string\",\n      \"invoice_identifier\": \"string\",\n      \"credit_invoice_identifier\": \"string\",\n      \"reimbursed_amount\": \"string\"\n    },\n    {\n      \"claim\": false,\n      \"claim_status\": \"string\",\n      \"administration_id\": \"string\",\n      \"id\": \"string\",\n      \"order_line_identifier\": \"string\",\n      \"amount\": \"string\",\n      \"credited_amount\": \"string\",\n      \"credited_reimbursed_amount\": \"string\",\n      \"rejected_amount\": \"string\",\n      \"created_at\": \"1949-06-21T13:31:36.008Z\",\n      \"updated_at\": \"2004-12-18T21:48:32.449Z\",\n      \"claim_response_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"deeplink_url\": \"string\",\n      \"customer\": {\n        \"email_address\": \"string\"\n      },\n      \"product_identifier\": \"string\",\n      \"invoice_identifier\": \"string\",\n      \"credit_invoice_identifier\": \"string\",\n      \"reimbursed_amount\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"cursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3115fa7-d206-47ae-b52c-e4ea44ac17c2",
+              "name": "Not authenticated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_lines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "order_line_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "claim_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "001d27d3-b513-41ae-b009-905191484542",
+              "name": "Access not authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order_lines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "administration_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "order_line_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "claim_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "invoice_identifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.paytsoftware.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6021a73d-5a7c-4d6e-b6e0-37a2c13f6f2c",
+    "name": "API Endpoints administrations order_lines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).",
+      "type": "text/plain"
+    }
+  }
+}

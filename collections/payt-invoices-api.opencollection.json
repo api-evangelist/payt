@@ -1,0 +1,307 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations invoices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Block invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/invoices/block",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                },
+                {
+                  "name": "invoice_numbers",
+                  "value": ""
+                },
+                {
+                  "name": "invoice_identifiers",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Block invoices"
+        },
+        {
+          "info": {
+            "name": "Get administration invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/invoices",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "paid",
+                "value": "",
+                "type": "query",
+                "description": "Whether returned invoices should be paid/unpaid"
+              },
+              {
+                "name": "book_amount_total_lte",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with book_amount_total less than or equal to the provided amount"
+              },
+              {
+                "name": "book_amount_total_gte",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with book_amount_total greater than or equal to the provided amount"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of internal ids"
+              },
+              {
+                "name": "invoice_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of invoice numbers"
+              },
+              {
+                "name": "invoice_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of invoice identifiers from your accounting software"
+              },
+              {
+                "name": "debtor_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of internal debtor ids"
+              },
+              {
+                "name": "debtor_numbers",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of debtor numbers"
+              },
+              {
+                "name": "debtor_identifiers",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of debtor identifiers from your accounting software"
+              },
+              {
+                "name": "credit_case_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter invoices with a comma separated list of internal credit case ids"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order the list of invoices"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration invoices"
+        },
+        {
+          "info": {
+            "name": "Upsert invoices in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.paytsoftware.com/v1/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert invoices in bulk"
+        },
+        {
+          "info": {
+            "name": "Update administration invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update administration invoices"
+        },
+        {
+          "info": {
+            "name": "Get invoices deleted in the last 90 days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/invoices/deleted",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "deleted_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted after it"
+              },
+              {
+                "name": "deleted_before",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records deleted before it"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get invoices deleted in the last 90 days"
+        },
+        {
+          "info": {
+            "name": "Resume invoices that are blocked through the API",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.paytsoftware.com/v1/invoices/resume",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "administration_id",
+                  "value": ""
+                },
+                {
+                  "name": "fields",
+                  "value": ""
+                },
+                {
+                  "name": "invoice_numbers",
+                  "value": ""
+                },
+                {
+                  "name": "invoice_identifiers",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Resume invoices that are blocked through the API"
+        },
+        {
+          "info": {
+            "name": "Get administration invoice by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice identifier"
+              },
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "identifier_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of invoice identifier to use (can be 'invoice_number', 'invoice_identifier' or left blank to use internal id)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              }
+            ]
+          },
+          "docs": "Get administration invoice by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints administrations psp_transactions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "psp_transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get administration PSP transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/psp_transactions",
+            "params": [
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP transactions with a comma separated list of internal ids"
+              },
+              {
+                "name": "payment_methods",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP transactions with a comma separated list of payment methods,  possible values: afterpay, alipay, amazonpay, applepay, bancomatpay, bacs_direct_debit, bancontact, banktransfer, belfius, billink, bitcoin, capayable, cashly, creditcard, creditclick, direct_debit, eps, focum, giropay, googlepay, ideal, in3, inghomepay, kbc, klarnapaylater, klarnasliceit, maestro, minitix, multibanco, mybank, paybybank, payconiq, payto, paypal, paysafecard, phone_payment, przelewy24, sofort, spraypay, trustly, twikey, unknown, voucher, wechat"
+              },
+              {
+                "name": "statuses",
+                "value": "",
+                "type": "query",
+                "description": "Filter PSP transactions with a comma separated list of statuses, possible values: cancelled, charged_back, failed, paid, pending, processing, refunded"
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 UTC Timestamp to filter records updated after it"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The record identifier after which to start the page"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "How many records will be returned per page, (1..500), defaults to 100"
+              }
+            ]
+          },
+          "docs": "Get administration PSP transactions"
+        },
+        {
+          "info": {
+            "name": "Get administration PSP transaction by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.paytsoftware.com/v1/psp_transactions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "PSP transaction identifier"
+              },
+              {
+                "name": "administration_id",
+                "value": "",
+                "type": "query",
+                "description": "Administration identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "JSON object defining fields to receive (e.g {\"only\": [\"field1\", {\"field2\": [\"field3\"]}]})"
+              }
+            ]
+          },
+          "docs": "Get administration PSP transaction by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
