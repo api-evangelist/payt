@@ -34,6 +34,17 @@ modified: '2026-07-20'
 image: https://paytsoftware.nl/wp-content/uploads/2024/06/Logo-background-white-1.png
 tags:
 - Company
+- Applicative Saas
+- Accounts Receivable
+- Order-to-Cash
+- Invoicing
+- Debt Collection
+- Payments
+- Fintech
+- Credit Management
+- Netherlands
+tags_raw:
+- Company
 - Applicative SaaS
 - Accounts Receivable
 - Order to Cash
@@ -71,6 +82,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Companies
+  tags_raw:
   - companies
   properties:
   - type: OpenAPI
@@ -87,6 +100,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Contacts
+  tags_raw:
   - contacts
   properties:
   - type: OpenAPI
@@ -102,7 +117,8 @@ apis:
   description: Operations about credit_cases
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags:
+  tags: []
+  tags_raw:
   - credit_cases
   properties:
   - type: OpenAPI
@@ -119,6 +135,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Debtors
+  tags_raw:
   - debtors
   properties:
   - type: OpenAPI
@@ -135,6 +153,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - File
+  tags_raw:
   - files
   properties:
   - type: OpenAPI
@@ -151,6 +171,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Invoices
+  tags_raw:
   - invoices
   properties:
   - type: OpenAPI
@@ -167,6 +189,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Message
+  tags_raw:
   - messages
   properties:
   - type: OpenAPI
@@ -183,6 +207,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Notes
+  tags_raw:
   - notes
   properties:
   - type: OpenAPI
@@ -199,6 +225,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Notification
+  tags_raw:
   - notifications
   properties:
   - type: OpenAPI
@@ -214,7 +242,8 @@ apis:
   description: Operations about order_lines
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags:
+  tags: []
+  tags_raw:
   - order_lines
   properties:
   - type: OpenAPI
@@ -231,6 +260,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Order
+  tags_raw:
   - orders
   properties:
   - type: OpenAPI
@@ -246,7 +277,8 @@ apis:
   description: Operations about payment_conditions
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags:
+  tags: []
+  tags_raw:
   - payment_conditions
   properties:
   - type: OpenAPI
@@ -263,6 +295,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Payment Plans
+  tags_raw:
   - payment_plans
   properties:
   - type: OpenAPI
@@ -279,6 +313,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Payments
+  tags_raw:
   - payments
   properties:
   - type: OpenAPI
@@ -294,7 +330,8 @@ apis:
   description: Operations about psp_mandates
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags:
+  tags: []
+  tags_raw:
   - psp_mandates
   properties:
   - type: OpenAPI
@@ -310,7 +347,8 @@ apis:
   description: Operations about psp_transactions
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags:
+  tags: []
+  tags_raw:
   - psp_transactions
   properties:
   - type: OpenAPI
@@ -327,6 +365,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Sign Up
+  tags_raw:
   - sign_up
   properties:
   - type: OpenAPI
@@ -343,6 +383,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
@@ -359,6 +401,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - VAT Rates
+  tags_raw:
   - vat_rates
   properties:
   - type: OpenAPI
