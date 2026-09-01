@@ -46,9 +46,9 @@ modified: '2026-07-20'
 image: https://paytsoftware.nl/wp-content/uploads/2024/06/Logo-background-white-1.png
 tags:
 - Company
-- Applicative SaaS
+- Applicative Saas
 - Accounts Receivable
-- Order to Cash
+- Order-to-Cash
 - Invoicing
 - Debt Collection
 - Payments
@@ -147,7 +147,7 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
-  - debtors
+  - Debtors
   tags_raw:
   - debtors
   properties:
@@ -254,7 +254,8 @@ apis:
   description: Operations about order_lines
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags: []
+  tags:
+  - Order Lines
   tags_raw:
   - order_lines
   properties:
@@ -306,7 +307,8 @@ apis:
   description: Operations about payment_plans
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags: []
+  tags:
+  - Payment Plans
   tags_raw:
   - payment_plans
   properties:
@@ -375,7 +377,8 @@ apis:
   description: Operations about sign_ups
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags: []
+  tags:
+  - Sign Up
   tags_raw:
   - sign_up
   properties:
@@ -410,7 +413,8 @@ apis:
   description: Operations about vat_rates
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
-  tags: []
+  tags:
+  - VAT Rates
   tags_raw:
   - vat_rates
   properties:
