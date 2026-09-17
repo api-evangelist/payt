@@ -372,24 +372,6 @@ apis:
     url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
-- aid: payt:payt-sign-up-api
-  name: Payt sign_up API
-  description: Operations about sign_ups
-  humanURL: https://docs.paytsoftware.com/api/overview
-  baseURL: https://api.paytsoftware.com
-  tags:
-  - Sign Up
-  tags_raw:
-  - sign_up
-  properties:
-  - type: OpenAPI
-    url: openapi/payt-sign-up-api-openapi.yml
-  - type: Documentation
-    url: https://docs.paytsoftware.com
-  - type: APIReference
-    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
-  - type: GettingStarted
-    url: https://docs.paytsoftware.com/index
 - aid: payt:payt-tasks-api
   name: Payt tasks API
   description: Operations about tasks
@@ -420,6 +402,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/payt-vat-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.paytsoftware.com
+  - type: APIReference
+    url: https://docs.paytsoftware.com/api-reference/administrations/get-administrations
+  - type: GettingStarted
+    url: https://docs.paytsoftware.com/index
+- aid: payt:payt-signup-api
+  name: Payt Signup API
+  description: Operations about sign_ups
+  humanURL: https://docs.paytsoftware.com/api/overview
+  baseURL: https://api.paytsoftware.com
+  tags:
+  - Signup
+  properties:
+  - type: OpenAPI
+    url: openapi/payt-signup-api-openapi.yml
   - type: Documentation
     url: https://docs.paytsoftware.com
   - type: APIReference
