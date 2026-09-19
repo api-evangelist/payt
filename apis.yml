@@ -414,6 +414,8 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
+  - Sign Up
+  tags_raw:
   - Signup
   properties:
   - type: OpenAPI
