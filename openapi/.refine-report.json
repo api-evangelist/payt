@@ -1,26 +1,7 @@
 {
   "provider": "payt",
   "sources": [
-    "payt-administrations-api-openapi.yml",
-    "payt-companies-api-openapi.yml",
-    "payt-contacts-api-openapi.yml",
-    "payt-credit-cases-api-openapi.yml",
-    "payt-debtors-api-openapi.yml",
-    "payt-files-api-openapi.yml",
-    "payt-invoices-api-openapi.yml",
-    "payt-messages-api-openapi.yml",
-    "payt-notes-api-openapi.yml",
-    "payt-notifications-api-openapi.yml",
-    "payt-order-lines-api-openapi.yml",
-    "payt-orders-api-openapi.yml",
-    "payt-payment-conditions-api-openapi.yml",
-    "payt-payment-plans-api-openapi.yml",
-    "payt-payments-api-openapi.yml",
-    "payt-psp-mandates-api-openapi.yml",
-    "payt-psp-transactions-api-openapi.yml",
-    "payt-sign-up-api-openapi.yml",
-    "payt-tasks-api-openapi.yml",
-    "payt-vat-rates-api-openapi.yml"
+    "_original/payt-openapi-original.json"
   ],
   "outputs": [
     "payt-administrations-api-openapi.yml",
@@ -44,9 +25,37 @@
     "payt-tasks-api-openapi.yml",
     "payt-vat-rates-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "payt-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: payt-signup-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 20 total)"
+  ],
+  "skipped": [
+    "payt-administrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-credit-cases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-debtors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-notes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-order-lines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-payment-conditions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-payment-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-psp-mandates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-psp-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-signup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "payt-vat-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

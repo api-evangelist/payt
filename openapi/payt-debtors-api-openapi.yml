@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: API Endpoints administrations debtors API
-  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  title: Endpoints Debtors API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see Authentication.
   version: 1.0.0
 servers:
 - url: https://api.paytsoftware.com
@@ -11,12 +11,11 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: debtors
+- name: Debtors
   description: Operations about debtors
 paths:
   /v1/debtors:
     post:
-      description: Create or update administration debtors
       requestBody:
         content:
           application/json:
@@ -46,11 +45,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - debtors
+      - Debtors
       operationId: postV1Debtors
       summary: Create or update administration debtors
     get:
-      description: Get administration debtors
       parameters:
       - in: query
         name: administration_id
@@ -125,12 +123,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - debtors
+      - Debtors
       operationId: getV1Debtors
       summary: Get administration debtors
   /v1/debtors/{id}:
     get:
-      description: Get administration debtor by id
       parameters:
       - in: path
         name: id
@@ -176,47 +173,35 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - debtors
+      - Debtors
       operationId: getV1DebtorsId
       summary: Get administration debtor by id
 components:
   schemas:
-    CustomerApi_V1_LabelEntity:
+    CustomerApi_V1_AddressEntity:
       type: object
       properties:
-        name:
+        city:
           type: string
-          description: Label name
-      required:
-      - name
-    CustomerApi_DebtorsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DebtorEntity'
-          description: Debtor
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DebtorsPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
+          description: City
+        country_code:
           type: string
-          description: Error code
-        message:
+          description: ISO 3166 Alpha-2 country code
+        postal_code:
           type: string
-          description: Error message
+          description: Postal code
+        region:
+          type: string
+          description: Region
+        street_1:
+          type: string
+          description: Streetname and housenumber
+        street_2:
+          type: string
+          description: Additional address details
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - city
+      - country_code
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -257,6 +242,104 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
+    CustomerApi_DebtorsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DebtorEntity'
+          description: Debtor
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DebtorsPageEntity model
+    postV1Debtors:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        debtors:
+          type: array
+          items:
+            type: object
+            properties:
+              debtor_number:
+                type: string
+                description: Unique code used to identify debtor
+              name:
+                type: string
+                description: Name of debtor
+              debtor_identifier:
+                type: string
+                description: Unique external identifier used to identify debtor
+              bank_account_name:
+                type: string
+                description: Name of bank account
+              bank_account_number:
+                type: string
+                description: Number of bank account
+              category:
+                type: string
+                description: Category of debtor
+              coc_number:
+                type: string
+                description: Chamber of commerce number of debtor
+              contact_identifier:
+                type: string
+                description: Unique external identifier used to identify contact
+              country_code:
+                type: string
+                description: ISO 3166 Alpha-2 country code of debtor
+              language_code:
+                type: string
+                description: Language code of debtor
+              oin_number:
+                type: string
+                description: OIN number of debtor
+              peppol_identifier:
+                type: string
+                description: Peppol identifier of debtor
+              relation_manager:
+                type: string
+                description: Relation manager of debtor
+              remark:
+                type: string
+                description: Remark
+              vat_number:
+                type: string
+                description: VAT number of debtor
+              is_company:
+                type: boolean
+                description: Whether debtor is a company
+              peppol_enabled:
+                type: boolean
+                description: Enable or disable Peppol for debtor. Use null to use administration setting
+              labels:
+                type: array
+                description: Labels of the debtor. Providing labels replaces all existing debtor labels; omitting labels leaves existing labels unchanged.
+                items:
+                  type: string
+            required:
+            - debtor_number
+            - name
+            - debtor_identifier
+      required:
+      - administration_id
+      - debtors
+      description: Create or update administration debtors
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
     CustomerApi_V1_DebtorEntity:
       type: object
       properties:
@@ -384,105 +467,19 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_DebtorEntity model
-    CustomerApi_V1_AddressEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        city:
+        code:
           type: string
-          description: City
-        country_code:
+          description: Error code
+        message:
           type: string
-          description: ISO 3166 Alpha-2 country code
-        postal_code:
-          type: string
-          description: Postal code
-        region:
-          type: string
-          description: Region
-        street_1:
-          type: string
-          description: Streetname and housenumber
-        street_2:
-          type: string
-          description: Additional address details
+          description: Error message
       required:
-      - city
-      - country_code
-    postV1Debtors:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        debtors:
-          type: array
-          items:
-            type: object
-            properties:
-              debtor_number:
-                type: string
-                description: Unique code used to identify debtor
-              name:
-                type: string
-                description: Name of debtor
-              debtor_identifier:
-                type: string
-                description: Unique external identifier used to identify debtor
-              bank_account_name:
-                type: string
-                description: Name of bank account
-              bank_account_number:
-                type: string
-                description: Number of bank account
-              category:
-                type: string
-                description: Category of debtor
-              coc_number:
-                type: string
-                description: Chamber of commerce number of debtor
-              contact_identifier:
-                type: string
-                description: Unique external identifier used to identify contact
-              country_code:
-                type: string
-                description: ISO 3166 Alpha-2 country code of debtor
-              language_code:
-                type: string
-                description: Language code of debtor
-              oin_number:
-                type: string
-                description: OIN number of debtor
-              peppol_identifier:
-                type: string
-                description: Peppol identifier of debtor
-              relation_manager:
-                type: string
-                description: Relation manager of debtor
-              remark:
-                type: string
-                description: Remark
-              vat_number:
-                type: string
-                description: VAT number of debtor
-              is_company:
-                type: boolean
-                description: Whether debtor is a company
-              peppol_enabled:
-                type: boolean
-                description: Enable or disable Peppol for debtor. Use null to use administration setting
-              labels:
-                type: array
-                description: Labels of the debtor. Providing labels replaces all existing debtor labels; omitting labels leaves existing labels unchanged.
-                items:
-                  type: string
-            required:
-            - debtor_number
-            - name
-            - debtor_identifier
-      required:
-      - administration_id
-      - debtors
-      description: Create or update administration debtors
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

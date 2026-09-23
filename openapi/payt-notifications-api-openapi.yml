@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: API Endpoints administrations notifications API
-  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  title: Endpoints Notifications API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see Authentication.
   version: 1.0.0
 servers:
 - url: https://api.paytsoftware.com
@@ -11,12 +11,11 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: notifications
+- name: Notifications
   description: Operations about notifications
 paths:
   /v1/notifications:
     get:
-      description: Get administration notifications
       parameters:
       - in: query
         name: administration_id
@@ -97,12 +96,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - notifications
+      - Notifications
       operationId: getV1Notifications
       summary: Get administration notifications
   /v1/notifications/{id}:
     get:
-      description: Get administration notification by id
       parameters:
       - in: path
         name: id
@@ -142,30 +140,56 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - notifications
+      - Notifications
       operationId: getV1NotificationsId
       summary: Get administration notification by id
 components:
   schemas:
+    CustomerApi_NotificationsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_NotificationEntity'
+          description: Notification
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_NotificationsPageEntity model
     CustomerApi_V1_NotificationDetailsEntity:
       type: object
       properties:
         bounce_reason:
           type: string
           description: Reason for a bounced mail (only for mail_bounced notification_type)
-    CustomerApi_ErrorEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        code:
+        cursor:
           type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+          description: Cursor for fetching the next page
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - cursor
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
     CustomerApi_V1_NotificationEntity:
       type: object
       properties:
@@ -219,45 +243,19 @@ components:
       - id
       - created_at
       description: CustomerApi_V1_NotificationEntity model
-    CustomerApi_V1_UserEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        id:
+        code:
           type: string
-          description: Unique identifier
-        name:
+          description: Error code
+        message:
           type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
+          description: Error message
       required:
-      - id
-      - name
-      - email_address
-    CustomerApi_NotificationsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_NotificationEntity'
-          description: Notification
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_NotificationsPageEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

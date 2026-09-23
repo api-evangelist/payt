@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: API Endpoints administrations vat_rates API
-  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  title: Endpoints Vat Rates API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see Authentication.
   version: 1.0.0
 servers:
 - url: https://api.paytsoftware.com
@@ -11,12 +11,11 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: vat_rates
+- name: VAT Rates
   description: Operations about vat_rates
 paths:
   /v1/vat_rates:
     post:
-      description: Create or update vat rates
       requestBody:
         content:
           application/json:
@@ -46,11 +45,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - vat_rates
+      - VAT Rates
       operationId: postV1VatRates
       summary: Create or update vat rates
     get:
-      description: Get administration vat rates
       parameters:
       - in: query
         name: administration_id
@@ -86,24 +84,26 @@ paths:
         '403':
           description: Forbidden
       tags:
-      - vat_rates
+      - VAT Rates
       operationId: getV1VatRates
       summary: Get administration vat rates
 components:
   schemas:
-    CustomerApi_ErrorEntity:
+    CustomerApi_VatRatesPageEntity:
       type: object
       properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_VatRateEntity'
+          description: VAT rate
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - data
+      description: CustomerApi_VatRatesPageEntity model
     postV1VatRates:
       type: object
       properties:
@@ -172,21 +172,6 @@ components:
       - count
       - errors
       description: CustomerApi_SuccessEntity model
-    CustomerApi_VatRatesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_VatRateEntity'
-          description: VAT rate
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_VatRatesPageEntity model
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -195,6 +180,19 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_VatRateEntity:
       type: object
       properties:

@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: API Endpoints administrations messages API
-  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see [Authentication](/authentication/authorization).
+  title: Endpoints Messages API
+  description: This page allows you to explore the available API endpoints. Select a resource (e.g. debtors) and an endpoint (e.g. /v1/debtors) to inspect an example response and available parameters. An authorization header containing a Bearer token is required, see Authentication.
   version: 1.0.0
 servers:
 - url: https://api.paytsoftware.com
@@ -11,12 +11,11 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: messages
+- name: Messages
   description: Operations about messages
 paths:
   /v1/messages:
     post:
-      description: Send a message to a debtor
       requestBody:
         content:
           application/json:
@@ -58,11 +57,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - messages
+      - Messages
       operationId: postV1Messages
       summary: Send a message to a debtor
     patch:
-      description: Update messages
       requestBody:
         content:
           application/json:
@@ -92,11 +90,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - messages
+      - Messages
       operationId: patchV1Messages
       summary: Update messages
     get:
-      description: Get administration messages
       parameters:
       - in: query
         name: administration_id
@@ -177,12 +174,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - messages
+      - Messages
       operationId: getV1Messages
       summary: Get administration messages
   /v1/messages/{id}:
     get:
-      description: Get administration message by id
       parameters:
       - in: path
         name: id
@@ -222,11 +218,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerApi_ErrorEntity'
       tags:
-      - messages
+      - Messages
       operationId: getV1MessagesId
       summary: Get administration message by id
 components:
   schemas:
+    CustomerApi_MessagesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
+          description: Message
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_MessagesPageEntity model
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
     postV1Messages:
       type: object
       properties:
@@ -279,19 +322,38 @@ components:
       - administration_id
       - message
       description: Send a message to a debtor
-    CustomerApi_ErrorEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        code:
+        cursor:
           type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+          description: Cursor for fetching the next page
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - cursor
+    patchV1Messages:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Message identifier
+              read:
+                type: boolean
+                description: Whether the message is read
+            required:
+            - id
+            - read
+      required:
+      - administration_id
+      - messages
+      description: Update messages
     CustomerApi_V1_UserEntity:
       type: object
       properties:
@@ -308,38 +370,6 @@ components:
       - id
       - name
       - email_address
-    CustomerApi_SuccessEntity:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Request was handled successfully
-        count:
-          type: integer
-          format: int32
-          example: 98
-          description: Number of records processed, those without errors
-        errors:
-          type: object
-          example:
-            '123456':
-            - Validation error 1
-            - Validation error 2
-            '123461':
-            - Validation error
-          description: List of records that could not be processed and for which reasons
-        warnings:
-          type: object
-          example:
-            '123457':
-            - Warning message 1
-            - Warning message 2
-          description: List of records that were partially processed, the messages contain warnings
-      required:
-      - success
-      - count
-      - errors
-      description: CustomerApi_SuccessEntity model
     CustomerApi_V1_MessageEntity:
       type: object
       properties:
@@ -393,53 +423,19 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_MessageEntity model
-    CustomerApi_PaginationEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        cursor:
+        code:
           type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    patchV1Messages:
-      type: object
-      properties:
-        administration_id:
+          description: Error code
+        message:
           type: string
-          description: Administration identifier
-        messages:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Message identifier
-              read:
-                type: boolean
-                description: Whether the message is read
-            required:
-            - id
-            - read
+          description: Error message
       required:
-      - administration_id
-      - messages
-      description: Update messages
-    CustomerApi_MessagesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
-          description: Message
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_MessagesPageEntity model
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

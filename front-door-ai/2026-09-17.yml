@@ -1,0 +1,30 @@
+# Front Door AI Index — payt — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: payt
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.paytsoftware.com
+  final_host: paytsoftware.com
+  ownership: own
+  owner: payt
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 16
+  host_score: 16
+  density: 10.8
+  words: 1481
+  tiers:
+    agentic: 2
+    core: 14
+    model: 0
+  ambiguous: 14
+  top_terms:
+    AI: 7
+    artificial intelligence: 7
+    intelligence: 7
+    smart: 6
+    copilot: 2
+    automation: 1
