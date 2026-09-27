@@ -73,7 +73,7 @@ maintainers:
   email: info@apis.io
 apis:
 - aid: payt:payt-administrations-api
-  name: Payt administrations API
+  name: Payt Administrations API
   description: Operations about administrations
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -89,7 +89,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-companies-api
-  name: Payt companies API
+  name: Payt Companies API
   description: Operations about companies
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -107,7 +107,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-contacts-api
-  name: Payt contacts API
+  name: Payt Contacts API
   description: Operations about contacts
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -125,7 +125,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-credit-cases-api
-  name: Payt credit_cases API
+  name: Payt Credit Cases API
   description: Operations about credit_cases
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -142,7 +142,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-debtors-api
-  name: Payt debtors API
+  name: Payt Debtors API
   description: Operations about debtors
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -160,7 +160,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-files-api
-  name: Payt files API
+  name: Payt Files API
   description: Operations about files
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -178,7 +178,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-invoices-api
-  name: Payt invoices API
+  name: Payt Invoices API
   description: Operations about invoices
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -196,7 +196,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-messages-api
-  name: Payt messages API
+  name: Payt Messages API
   description: Operations about messages
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -214,7 +214,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-notes-api
-  name: Payt notes API
+  name: Payt Notes API
   description: Operations about notes
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -232,7 +232,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-notifications-api
-  name: Payt notifications API
+  name: Payt Notifications API
   description: Operations about notifications
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -250,7 +250,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-order-lines-api
-  name: Payt order_lines API
+  name: Payt Order Lines API
   description: Operations about order_lines
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -268,7 +268,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-orders-api
-  name: Payt orders API
+  name: Payt Orders API
   description: Operations about orders
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -286,7 +286,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-payment-conditions-api
-  name: Payt payment_conditions API
+  name: Payt Payment Conditions API
   description: Operations about payment_conditions
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -303,7 +303,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-payment-plans-api
-  name: Payt payment_plans API
+  name: Payt Payment Plans API
   description: Operations about payment_plans
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -321,7 +321,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-payments-api
-  name: Payt payments API
+  name: Payt Payments API
   description: Operations about payments
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -339,7 +339,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-psp-mandates-api
-  name: Payt psp_mandates API
+  name: Payt Psp Mandates API
   description: Operations about psp_mandates
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -356,7 +356,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-psp-transactions-api
-  name: Payt psp_transactions API
+  name: Payt Psp Transactions API
   description: Operations about psp_transactions
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -373,7 +373,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-tasks-api
-  name: Payt tasks API
+  name: Payt Tasks API
   description: Operations about tasks
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -391,7 +391,7 @@ apis:
   - type: GettingStarted
     url: https://docs.paytsoftware.com/index
 - aid: payt:payt-vat-rates-api
-  name: Payt vat_rates API
+  name: Payt Vat Rates API
   description: Operations about vat_rates
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
@@ -414,8 +414,6 @@ apis:
   humanURL: https://docs.paytsoftware.com/api/overview
   baseURL: https://api.paytsoftware.com
   tags:
-  - Sign Up
-  tags_raw:
   - Signup
   properties:
   - type: OpenAPI

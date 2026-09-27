@@ -64,13 +64,6 @@ paths:
       summary: Create an order
 components:
   schemas:
-    CustomerApi_V1_OrderEntity:
-      type: object
-      properties:
-        deeplink_url:
-          type: string
-          description: URL to the order in the debtor management interface
-      description: CustomerApi_V1_OrderEntity model
     CustomerApi_ErrorEntity:
       type: object
       properties:
@@ -84,6 +77,13 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_OrderEntity:
+      type: object
+      properties:
+        deeplink_url:
+          type: string
+          description: URL to the order in the debtor management interface
+      description: CustomerApi_V1_OrderEntity model
   securitySchemes:
     bearerAuth:
       type: http

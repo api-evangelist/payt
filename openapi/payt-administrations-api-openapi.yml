@@ -135,6 +135,129 @@ paths:
       summary: Get administrations
 components:
   schemas:
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_AdministrationsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+          description: Administration
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_AdministrationsPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    postV1Administrations:
+      type: object
+      properties:
+        administration:
+          type: object
+          properties:
+            city:
+              type: string
+              description: Part of the administration address
+            commercial_registration_number:
+              type: string
+              description: Official national commercial registration number
+            contact_name:
+              type: string
+              description: The name of the contact person for this administration
+            country_code:
+              type: string
+              description: ISO 3166 Alpha-2 country code, Part of the administration address
+            email_address:
+              type: string
+              description: Email address of the administration
+            house_number:
+              type: string
+              description: Part of the administration address
+            name:
+              type: string
+              description: Name of the administration
+            postal_code:
+              type: string
+              description: Part of the administration address
+            street_name:
+              type: string
+              description: Part of the administration address
+            sender_email_address:
+              type: string
+              description: Sender email address which will be used for outgoing communication
+            bank_account_bic:
+              type: string
+              description: BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.
+            bank_account_name:
+              type: string
+              description: Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.
+            bank_account_number:
+              type: string
+              description: Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.
+            currency_code:
+              type: string
+              description: The accounting or reporting currency, ISO 4217
+              default: EUR
+            timezone:
+              type: string
+              description: Timezone in which the administration primarily operates, canonical tz name
+              default: Europe/Amsterdam
+            vat_number:
+              type: string
+              description: VAT number of the administration
+          required:
+          - city
+          - commercial_registration_number
+          - contact_name
+          - country_code
+          - email_address
+          - house_number
+          - name
+          - postal_code
+          - street_name
+        connection:
+          type: object
+          properties:
+            resource_label:
+              type: string
+              description: Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.
+            resource_identifier:
+              type: string
+              description: The unique identifier of the connected resource. This identifier will be used to query your API.
+            credentials:
+              type: object
+              description: All keys and/or tokens required to establish a connection back to your application for the newly created administration. Which parameters are required depends on your application. Send a request and check the validation error messages to find out which parameters are expected.
+            credentials_label:
+              type: string
+              description: Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.
+          required:
+          - resource_label
+          - resource_identifier
+      required:
+      - administration
+      description: Creates an administration
     CustomerApi_V1_AdministrationEntity:
       type: object
       properties:
@@ -232,129 +355,6 @@ components:
       - currency_code
       - administration_url
       description: CustomerApi_V1_AdministrationEntity model
-    postV1Administrations:
-      type: object
-      properties:
-        administration:
-          type: object
-          properties:
-            city:
-              type: string
-              description: Part of the administration address
-            commercial_registration_number:
-              type: string
-              description: Official national commercial registration number
-            contact_name:
-              type: string
-              description: The name of the contact person for this administration
-            country_code:
-              type: string
-              description: ISO 3166 Alpha-2 country code, Part of the administration address
-            email_address:
-              type: string
-              description: Email address of the administration
-            house_number:
-              type: string
-              description: Part of the administration address
-            name:
-              type: string
-              description: Name of the administration
-            postal_code:
-              type: string
-              description: Part of the administration address
-            street_name:
-              type: string
-              description: Part of the administration address
-            sender_email_address:
-              type: string
-              description: Sender email address which will be used for outgoing communication
-            bank_account_bic:
-              type: string
-              description: BIC of the bank. The BIC must match the bank_account_number. If it is not then the bank_account properties will be ignored.
-            bank_account_name:
-              type: string
-              description: Name of the bank account holder. The name must be as it is registered by the bank. If it is not then the bank_account properties will be ignored.
-            bank_account_number:
-              type: string
-              description: Number of the bank account. This must be an existing organizational bank account. If it is not then the bank_account properties will be ignored.
-            currency_code:
-              type: string
-              description: The accounting or reporting currency, ISO 4217
-              default: EUR
-            timezone:
-              type: string
-              description: Timezone in which the administration primarily operates, canonical tz name
-              default: Europe/Amsterdam
-            vat_number:
-              type: string
-              description: VAT number of the administration
-          required:
-          - city
-          - commercial_registration_number
-          - contact_name
-          - country_code
-          - email_address
-          - house_number
-          - name
-          - postal_code
-          - street_name
-        connection:
-          type: object
-          properties:
-            resource_label:
-              type: string
-              description: Description of the resource in your app with which the administration is connected. This can be a code, name or combination thereof. It should be uniquely recognizable for the enduser.
-            resource_identifier:
-              type: string
-              description: The unique identifier of the connected resource. This identifier will be used to query your API.
-            credentials:
-              type: object
-              description: All keys and/or tokens required to establish a connection back to your application for the newly created administration. Which parameters are required depends on your application. Send a request and check the validation error messages to find out which parameters are expected.
-            credentials_label:
-              type: string
-              description: Description of the owner of the credentials. This can be a code, number or name and should be uniquely recognizable by the enduser. This field becomes required if the credentials owner is not the resource itself.
-          required:
-          - resource_label
-          - resource_identifier
-      required:
-      - administration
-      description: Creates an administration
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_AdministrationsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
-          description: Administration
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_AdministrationsPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

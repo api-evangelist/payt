@@ -262,53 +262,35 @@ paths:
       summary: Get PSP mandates deleted in the last 90 days
 components:
   schemas:
-    CustomerApi_Deleted_PspMandatesPageEntity:
+    CustomerApi_V1_Deleted_PspMandateEntity:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PspMandateEntity'
-          description: Deleted PSP mandate
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Internal identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+        mandate_identifier:
+          type: string
+          description: Identifier from provider
+        provider:
+          type: string
+          description: Provider where mandate is registered
       required:
-      - data
-      description: CustomerApi_Deleted_PspMandatesPageEntity model
-    CustomerApi_SuccessEntity:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Request was handled successfully
-        count:
-          type: integer
-          format: int32
-          example: 98
-          description: Number of records processed, those without errors
-        errors:
-          type: object
-          example:
-            '123456':
-            - Validation error 1
-            - Validation error 2
-            '123461':
-            - Validation error
-          description: List of records that could not be processed and for which reasons
-        warnings:
-          type: object
-          example:
-            '123457':
-            - Warning message 1
-            - Warning message 2
-          description: List of records that were partially processed, the messages contain warnings
-      required:
-      - success
-      - count
-      - errors
-      description: CustomerApi_SuccessEntity model
+      - administration_id
+      - id
+      - deleted_at
+      - debtor_id
+      - mandate_identifier
+      - provider
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -365,35 +347,81 @@ components:
       - provider
       - updated_at
       description: CustomerApi_V1_PspMandateEntity model
-    CustomerApi_V1_Deleted_PspMandateEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        administration_id:
+        code:
           type: string
-          description: Owning administration identifier
-        id:
+          description: Error code
+        message:
           type: string
-          description: Internal identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-        debtor_id:
-          type: string
-          description: Internal debtor identifier
-        mandate_identifier:
-          type: string
-          description: Identifier from provider
-        provider:
-          type: string
-          description: Provider where mandate is registered
+          description: Error message
       required:
-      - administration_id
-      - id
-      - deleted_at
-      - debtor_id
-      - mandate_identifier
-      - provider
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_PspMandatePageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PspMandateEntity'
+          description: Psp mandate
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_PspMandatePageEntity model
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    CustomerApi_Deleted_PspMandatesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PspMandateEntity'
+          description: Deleted PSP mandate
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_Deleted_PspMandatesPageEntity model
     postV1PspMandates:
       type: object
       properties:
@@ -443,34 +471,6 @@ components:
       - administration_id
       - psp_mandates
       description: Create signed psp mandates, these need to be verified before creating
-    CustomerApi_PspMandatePageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PspMandateEntity'
-          description: Psp mandate
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_PspMandatePageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

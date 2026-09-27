@@ -124,112 +124,6 @@ paths:
       summary: Get administration contacts
 components:
   schemas:
-    CustomerApi_ContactsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_ContactEntity'
-          description: Contact
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_ContactsPageEntity model
-    postV1Contacts:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        contacts:
-          type: array
-          items:
-            type: object
-            properties:
-              contact_identifier:
-                type: string
-                description: Unique external code used to identify contact
-              id:
-                type: string
-                description: Internal identifier used to identify contact
-              birth_date:
-                type: string
-                description: Birth date of the contact
-              call_phone_number:
-                type: string
-                description: Phone number used for calls
-              default_email_address:
-                type: string
-                description: Default email address
-              firstname:
-                type: string
-                description: First name
-              gender:
-                type: string
-                description: Gender
-                enum:
-                - - female
-                  - male
-                  - male_female
-              infix:
-                type: string
-                description: Infix of the contact name
-              invoice_email_address:
-                type: string
-                description: Email address used for invoicing
-              invoice_cc_email_address:
-                type: string
-                description: CC Email address used for invoicing
-              invoice_bcc_email_address:
-                type: string
-                description: BCC Email address used for invoicing
-              lastname:
-                type: string
-                description: Last name of contact
-              middlename:
-                type: string
-                description: Middle name of contact
-              postal_address_street_1:
-                type: string
-                description: Street address
-              postal_address_street_2:
-                type: string
-                description: Street address (Second line)
-              postal_address_postal_code:
-                type: string
-                description: Postal Code
-              postal_address_city:
-                type: string
-                description: City
-              postal_address_country_code:
-                type: string
-                description: Country Code
-              postal_address_region:
-                type: string
-                description: Region
-              prefix:
-                type: string
-                description: Prefix of the contact name
-              reminder_email_address:
-                type: string
-                description: Email address used for reminders
-              reminder_cc_email_address:
-                type: string
-                description: CC Email address used for reminders
-              reminder_bcc_email_address:
-                type: string
-                description: BCC Email address used for reminders
-              sms_phone_number:
-                type: string
-                description: Phone number used for sms
-      required:
-      - administration_id
-      - contacts
-      description: Create or update administration contacts
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -339,6 +233,112 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
+    postV1Contacts:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        contacts:
+          type: array
+          items:
+            type: object
+            properties:
+              contact_identifier:
+                type: string
+                description: Unique external code used to identify contact
+              id:
+                type: string
+                description: Internal identifier used to identify contact
+              birth_date:
+                type: string
+                description: Birth date of the contact
+              call_phone_number:
+                type: string
+                description: Phone number used for calls
+              default_email_address:
+                type: string
+                description: Default email address
+              firstname:
+                type: string
+                description: First name
+              gender:
+                type: string
+                description: Gender
+                enum:
+                - - female
+                  - male
+                  - male_female
+              infix:
+                type: string
+                description: Infix of the contact name
+              invoice_email_address:
+                type: string
+                description: Email address used for invoicing
+              invoice_cc_email_address:
+                type: string
+                description: CC Email address used for invoicing
+              invoice_bcc_email_address:
+                type: string
+                description: BCC Email address used for invoicing
+              lastname:
+                type: string
+                description: Last name of contact
+              middlename:
+                type: string
+                description: Middle name of contact
+              postal_address_street_1:
+                type: string
+                description: Street address
+              postal_address_street_2:
+                type: string
+                description: Street address (Second line)
+              postal_address_postal_code:
+                type: string
+                description: Postal Code
+              postal_address_city:
+                type: string
+                description: City
+              postal_address_country_code:
+                type: string
+                description: Country Code
+              postal_address_region:
+                type: string
+                description: Region
+              prefix:
+                type: string
+                description: Prefix of the contact name
+              reminder_email_address:
+                type: string
+                description: Email address used for reminders
+              reminder_cc_email_address:
+                type: string
+                description: CC Email address used for reminders
+              reminder_bcc_email_address:
+                type: string
+                description: BCC Email address used for reminders
+              sms_phone_number:
+                type: string
+                description: Phone number used for sms
+      required:
+      - administration_id
+      - contacts
+      description: Create or update administration contacts
+    CustomerApi_ContactsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_ContactEntity'
+          description: Contact
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_ContactsPageEntity model
   securitySchemes:
     bearerAuth:
       type: http

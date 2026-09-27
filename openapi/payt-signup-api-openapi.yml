@@ -154,27 +154,37 @@ paths:
       operationId: postV1SignUp
 components:
   schemas:
-    CustomerApi_V1_AccessGrantEntity:
+    CustomerApi_V1_CompanyEntity:
       type: object
       properties:
-        code:
+        id:
           type: string
-          description: The code that can be used to created the first access_token.
-        expires_in:
-          type: integer
-          format: int32
-          description: The number of seconds the access_grant is valid.
-        created_at:
+          description: Unique identifier
+        name:
           type: string
-          description: The UNIX time at which the token was created.
-        grant_type:
+          description: Name
+        status:
           type: string
-          description: The OAuth flow the code can be used for, will always be 'authorization_code'.
+          enum:
+          - active
+          - implementation
+          - inactive
+          - deleted
+          - unconfirmed
+          description: Status
+        trial_ends_on:
+          type: string
+          description: The date at which the trial ends
+        trial:
+          type: boolean
+          description: Whether the Company is still in the trial period.
       required:
-      - code
-      - expires_in
-      - created_at
-      - grant_type
+      - id
+      - name
+      - status
+      - trial_ends_on
+      - trial
+      description: CustomerApi_V1_CompanyEntity model
     CustomerApi_V1_AdministrationEntity:
       type: object
       properties:
@@ -272,37 +282,19 @@ components:
       - currency_code
       - administration_url
       description: CustomerApi_V1_AdministrationEntity model
-    CustomerApi_V1_CompanyEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        id:
+        code:
           type: string
-          description: Unique identifier
-        name:
+          description: Error code
+        message:
           type: string
-          description: Name
-        status:
-          type: string
-          enum:
-          - active
-          - implementation
-          - inactive
-          - deleted
-          - unconfirmed
-          description: Status
-        trial_ends_on:
-          type: string
-          description: The date at which the trial ends
-        trial:
-          type: boolean
-          description: Whether the Company is still in the trial period.
+          description: Error message
       required:
-      - id
-      - name
-      - status
-      - trial_ends_on
-      - trial
-      description: CustomerApi_V1_CompanyEntity model
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_SignUpEntity:
       type: object
       properties:
@@ -342,19 +334,27 @@ components:
       - id
       - name
       - email_address
-    CustomerApi_ErrorEntity:
+    CustomerApi_V1_AccessGrantEntity:
       type: object
       properties:
         code:
           type: string
-          description: Error code
-        message:
+          description: The code that can be used to created the first access_token.
+        expires_in:
+          type: integer
+          format: int32
+          description: The number of seconds the access_grant is valid.
+        created_at:
           type: string
-          description: Error message
+          description: The UNIX time at which the token was created.
+        grant_type:
+          type: string
+          description: The OAuth flow the code can be used for, will always be 'authorization_code'.
       required:
       - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - expires_in
+      - created_at
+      - grant_type
   securitySchemes:
     bearerAuth:
       type: http

@@ -63,6 +63,24 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UploadableFileEntity:
+      type: object
+      properties:
+        checksum:
+          type: string
+          description: File checksum
+        url:
+          type: string
+          description: URL to upload the file to
+        expires_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the URL expires
+      required:
+      - checksum
+      - url
+      - expires_at
+      description: CustomerApi_V1_UploadableFileEntity model
     postV1Files:
       type: object
       properties:
@@ -92,24 +110,6 @@ components:
       - administration_id
       - files
       description: Create files to upload
-    CustomerApi_V1_UploadableFileEntity:
-      type: object
-      properties:
-        checksum:
-          type: string
-          description: File checksum
-        url:
-          type: string
-          description: URL to upload the file to
-        expires_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the URL expires
-      required:
-      - checksum
-      - url
-      - expires_at
-      description: CustomerApi_V1_UploadableFileEntity model
   securitySchemes:
     bearerAuth:
       type: http

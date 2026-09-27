@@ -238,6 +238,120 @@ components:
       required:
       - data
       description: CustomerApi_MessagesPageEntity model
+    patchV1Messages:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Message identifier
+              read:
+                type: boolean
+                description: Whether the message is read
+            required:
+            - id
+            - read
+      required:
+      - administration_id
+      - messages
+      description: Update messages
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_MessageEntity:
+      type: object
+      properties:
+        sender_type:
+          type: string
+          description: Sender type (creditor|debtor)
+        subject:
+          type: string
+          description: Message subject
+        read_by_user:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
+          description: User who marked the message as read
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        credit_case_id:
+          type: string
+          description: Associated credit_case identifier
+        debtor_id:
+          type: string
+          description: Associated debtor identifier
+        id:
+          type: string
+          description: Unique identifier
+        invoice_id:
+          type: string
+          description: Associated invoice identifier
+        content:
+          type: string
+          description: The content of the message (request with the 'fields' parameter)
+        sent_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was sent
+        received_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was received
+        read_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was first read (please note that for some mail clients this field is not filled when an email is read)
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the message was last updated
+      required:
+      - sender_type
+      - administration_id
+      - id
+      - updated_at
+      description: CustomerApi_V1_MessageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -322,120 +436,6 @@ components:
       - administration_id
       - message
       description: Send a message to a debtor
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    patchV1Messages:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        messages:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Message identifier
-              read:
-                type: boolean
-                description: Whether the message is read
-            required:
-            - id
-            - read
-      required:
-      - administration_id
-      - messages
-      description: Update messages
-    CustomerApi_V1_UserEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
-      required:
-      - id
-      - name
-      - email_address
-    CustomerApi_V1_MessageEntity:
-      type: object
-      properties:
-        sender_type:
-          type: string
-          description: Sender type (creditor|debtor)
-        subject:
-          type: string
-          description: Message subject
-        read_by_user:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_V1_UserEntity'
-          description: User who marked the message as read
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        credit_case_id:
-          type: string
-          description: Associated credit_case identifier
-        debtor_id:
-          type: string
-          description: Associated debtor identifier
-        id:
-          type: string
-          description: Unique identifier
-        invoice_id:
-          type: string
-          description: Associated invoice identifier
-        content:
-          type: string
-          description: The content of the message (request with the 'fields' parameter)
-        sent_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the message was sent
-        received_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the message was received
-        read_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the message was first read (please note that for some mail clients this field is not filled when an email is read)
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the message was last updated
-      required:
-      - sender_type
-      - administration_id
-      - id
-      - updated_at
-      description: CustomerApi_V1_MessageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

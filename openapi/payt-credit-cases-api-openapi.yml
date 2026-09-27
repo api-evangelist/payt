@@ -189,29 +189,6 @@ paths:
       summary: Get administration credit case by id
 components:
   schemas:
-    CustomerApi_DeletedCreditCasesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DeletedCreditCaseEntity'
-          description: Deleted Credit Case
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DeletedCreditCasesPageEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
     CustomerApi_V1_CreditCaseEntity:
       type: object
       properties:
@@ -342,21 +319,29 @@ components:
       - started_at
       - updated_at
       description: CustomerApi_V1_CreditCaseEntity model
-    CustomerApi_CreditCasesPageEntity:
+    CustomerApi_DeletedCreditCasesPageEntity:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/CustomerApi_V1_CreditCaseEntity'
-          description: Credit case
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedCreditCaseEntity'
+          description: Deleted Credit Case
         pagination:
           allOf:
           - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
           description: Pagination details
       required:
       - data
-      description: CustomerApi_CreditCasesPageEntity model
+      description: CustomerApi_DeletedCreditCasesPageEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
     CustomerApi_V1_DeletedCreditCaseEntity:
       type: object
       properties:
@@ -378,14 +363,21 @@ components:
       - administration_id
       - debtor_id
       - deleted_at
-    CustomerApi_V1_LabelEntity:
+    CustomerApi_CreditCasesPageEntity:
       type: object
       properties:
-        name:
-          type: string
-          description: Label name
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_CreditCaseEntity'
+          description: Credit case
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - name
+      - data
+      description: CustomerApi_CreditCasesPageEntity model
     CustomerApi_ErrorEntity:
       type: object
       properties:
@@ -399,6 +391,14 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
   securitySchemes:
     bearerAuth:
       type: http

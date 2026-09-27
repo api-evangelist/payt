@@ -169,6 +169,42 @@ paths:
       summary: Get administration payments
 components:
   schemas:
+    CustomerApi_DeletedPaymentsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedPaymentEntity'
+          description: Deleted Payment
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedPaymentsPageEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_BankTransactionEntity:
       type: object
       properties:
@@ -209,31 +245,21 @@ components:
       - book_amount
       - id
       - book_date
-    CustomerApi_V1_DeletedPaymentEntity:
+    CustomerApi_PaymentsPageEntity:
       type: object
       properties:
-        id:
-          type: string
-          description: Internal identifier
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        origin_identifier:
-          type: string
-          description: External identifier
-        invoice_id:
-          type: string
-          description: Associated internal invoice identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PaymentEntity'
+          description: Payment
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - id
-      - administration_id
-      - origin_identifier
-      - invoice_id
-      - deleted_at
+      - data
+      description: CustomerApi_PaymentsPageEntity model
     CustomerApi_V1_PspTransactionEntity:
       type: object
       properties:
@@ -295,29 +321,31 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_PspTransactionEntity model
-    CustomerApi_PaginationEntity:
+    CustomerApi_V1_DeletedPaymentEntity:
       type: object
       properties:
-        cursor:
+        id:
           type: string
-          description: Cursor for fetching the next page
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        origin_identifier:
+          type: string
+          description: External identifier
+        invoice_id:
+          type: string
+          description: Associated internal invoice identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
       required:
-      - cursor
-    CustomerApi_PaymentsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PaymentEntity'
-          description: Payment
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_PaymentsPageEntity model
+      - id
+      - administration_id
+      - origin_identifier
+      - invoice_id
+      - deleted_at
     CustomerApi_V1_PaymentEntity:
       type: object
       properties:
@@ -377,34 +405,6 @@ components:
       - total_amount
       - total_book_amount
       - payment_date
-    CustomerApi_DeletedPaymentsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DeletedPaymentEntity'
-          description: Deleted Payment
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DeletedPaymentsPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

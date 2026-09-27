@@ -50,6 +50,43 @@ paths:
       summary: Create payment conditions
 components:
   schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    postV1PaymentConditions:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        payment_conditions:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Code of the payment condition
+              name:
+                type: string
+                description: Name of the payment condition
+            required:
+            - code
+            - name
+      required:
+      - administration_id
+      - payment_conditions
+      description: Create payment conditions
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -82,43 +119,6 @@ components:
       - count
       - errors
       description: CustomerApi_SuccessEntity model
-    postV1PaymentConditions:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        payment_conditions:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-                description: Code of the payment condition
-              name:
-                type: string
-                description: Name of the payment condition
-            required:
-            - code
-            - name
-      required:
-      - administration_id
-      - payment_conditions
-      description: Create payment conditions
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

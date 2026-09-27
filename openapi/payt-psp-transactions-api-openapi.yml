@@ -139,14 +139,19 @@ paths:
       summary: Get administration PSP transaction by id
 components:
   schemas:
-    CustomerApi_PaginationEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        cursor:
+        code:
           type: string
-          description: Cursor for fetching the next page
+          description: Error code
+        message:
+          type: string
+          description: Error message
       required:
-      - cursor
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_PspTransactionEntity:
       type: object
       properties:
@@ -208,19 +213,14 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_PspTransactionEntity model
-    CustomerApi_ErrorEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        code:
+        cursor:
           type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+          description: Cursor for fetching the next page
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - cursor
     CustomerApi_PspTransactionsPageEntity:
       type: object
       properties:

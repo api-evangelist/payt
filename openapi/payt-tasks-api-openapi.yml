@@ -273,83 +273,14 @@ paths:
       summary: Get administration tasks
 components:
   schemas:
-    CustomerApi_TasksPageEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
-          description: Task
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
       required:
-      - data
-      description: CustomerApi_TasksPageEntity model
-    postV1TasksIdComment:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        comment:
-          type: string
-          description: Comment to add to the task
-      required:
-      - administration_id
-      - comment
-      description: Add a comment to a task
-    CustomerApi_V1_CommentEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        content:
-          type: string
-          description: Content of the comment
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the comment was created
-      required:
-      - id
-      - content
-      - created_at
-    CustomerApi_SuccessEntity:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Request was handled successfully
-        count:
-          type: integer
-          format: int32
-          example: 98
-          description: Number of records processed, those without errors
-        errors:
-          type: object
-          example:
-            '123456':
-            - Validation error 1
-            - Validation error 2
-            '123461':
-            - Validation error
-          description: List of records that could not be processed and for which reasons
-        warnings:
-          type: object
-          example:
-            '123457':
-            - Warning message 1
-            - Warning message 2
-          description: List of records that were partially processed, the messages contain warnings
-      required:
-      - success
-      - count
-      - errors
-      description: CustomerApi_SuccessEntity model
+      - cursor
     CustomerApi_V1_TaskEntity:
       type: object
       properties:
@@ -405,6 +336,97 @@ components:
       - updated_at
       - created_at
       description: CustomerApi_V1_TaskEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    postV1TasksIdComment:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        comment:
+          type: string
+          description: Comment to add to the task
+      required:
+      - administration_id
+      - comment
+      description: Add a comment to a task
+    CustomerApi_V1_CommentEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        content:
+          type: string
+          description: Content of the comment
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the comment was created
+      required:
+      - id
+      - content
+      - created_at
     patchV1TasksIdMarkCompleted:
       type: object
       properties:
@@ -429,43 +451,21 @@ components:
       required:
       - administration_id
       description: Mark a task as completed
-    CustomerApi_PaginationEntity:
+    CustomerApi_TasksPageEntity:
       type: object
       properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+          description: Task
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - cursor
-    CustomerApi_V1_UserEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
-      required:
-      - id
-      - name
-      - email_address
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - data
+      description: CustomerApi_TasksPageEntity model
   requestBodies:
     patchV1PaymentPlansIdApprove:
       content:
