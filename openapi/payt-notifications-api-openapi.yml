@@ -198,14 +198,21 @@ components:
       - id
       - created_at
       description: CustomerApi_V1_NotificationEntity model
-    CustomerApi_PaginationEntity:
+    CustomerApi_NotificationsPageEntity:
       type: object
       properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_NotificationEntity'
+          description: Notification
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - cursor
+      - data
+      description: CustomerApi_NotificationsPageEntity model
     CustomerApi_ErrorEntity:
       type: object
       properties:
@@ -235,21 +242,14 @@ components:
       - id
       - name
       - email_address
-    CustomerApi_NotificationsPageEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_NotificationEntity'
-          description: Notification
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
       required:
-      - data
-      description: CustomerApi_NotificationsPageEntity model
+      - cursor
     CustomerApi_V1_NotificationDetailsEntity:
       type: object
       properties:

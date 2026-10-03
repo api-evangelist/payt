@@ -154,7 +154,24 @@ paths:
       operationId: postV1SignUp
 components:
   schemas:
-    CustomerApi_V1_CompanyEntity:
+    CustomerApi_V1_SignUpEntity:
+      type: object
+      properties:
+        administration:
+          $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+        company:
+          $ref: '#/components/schemas/CustomerApi_V1_CompanyEntity'
+        user:
+          $ref: '#/components/schemas/CustomerApi_V1_SignUpUserEntity'
+        access_grant:
+          $ref: '#/components/schemas/CustomerApi_V1_AccessGrantEntity'
+      required:
+      - administration
+      - company
+      - user
+      - access_grant
+      description: CustomerApi_V1_SignUpEntity model
+    CustomerApi_V1_SignUpUserEntity:
       type: object
       properties:
         id:
@@ -163,28 +180,32 @@ components:
         name:
           type: string
           description: Name
-        status:
+        email_address:
           type: string
-          enum:
-          - active
-          - implementation
-          - inactive
-          - deleted
-          - unconfirmed
-          description: Status
-        trial_ends_on:
+          description: Email address
+        sign_up_token:
           type: string
-          description: The date at which the trial ends
-        trial:
-          type: boolean
-          description: Whether the Company is still in the trial period.
+          description: One time token used for in-app sign up
+        sign_up_url:
+          type: string
+          description: The url the user can be redirected to in order to complete the sign up.
       required:
       - id
       - name
-      - status
-      - trial_ends_on
-      - trial
-      description: CustomerApi_V1_CompanyEntity model
+      - email_address
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_AdministrationEntity:
       type: object
       properties:
@@ -282,58 +303,6 @@ components:
       - currency_code
       - administration_url
       description: CustomerApi_V1_AdministrationEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_V1_SignUpEntity:
-      type: object
-      properties:
-        administration:
-          $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
-        company:
-          $ref: '#/components/schemas/CustomerApi_V1_CompanyEntity'
-        user:
-          $ref: '#/components/schemas/CustomerApi_V1_SignUpUserEntity'
-        access_grant:
-          $ref: '#/components/schemas/CustomerApi_V1_AccessGrantEntity'
-      required:
-      - administration
-      - company
-      - user
-      - access_grant
-      description: CustomerApi_V1_SignUpEntity model
-    CustomerApi_V1_SignUpUserEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
-        sign_up_token:
-          type: string
-          description: One time token used for in-app sign up
-        sign_up_url:
-          type: string
-          description: The url the user can be redirected to in order to complete the sign up.
-      required:
-      - id
-      - name
-      - email_address
     CustomerApi_V1_AccessGrantEntity:
       type: object
       properties:
@@ -355,6 +324,37 @@ components:
       - expires_in
       - created_at
       - grant_type
+    CustomerApi_V1_CompanyEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        status:
+          type: string
+          enum:
+          - active
+          - implementation
+          - inactive
+          - deleted
+          - unconfirmed
+          description: Status
+        trial_ends_on:
+          type: string
+          description: The date at which the trial ends
+        trial:
+          type: boolean
+          description: Whether the Company is still in the trial period.
+      required:
+      - id
+      - name
+      - status
+      - trial_ends_on
+      - trial
+      description: CustomerApi_V1_CompanyEntity model
   securitySchemes:
     bearerAuth:
       type: http

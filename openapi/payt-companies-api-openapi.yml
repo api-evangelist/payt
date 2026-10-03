@@ -104,19 +104,14 @@ paths:
       operationId: getV1CompaniesId
 components:
   schemas:
-    CustomerApi_ErrorEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        code:
+        cursor:
           type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+          description: Cursor for fetching the next page
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - cursor
     CustomerApi_CompaniesPageEntity:
       type: object
       properties:
@@ -132,6 +127,19 @@ components:
       required:
       - data
       description: CustomerApi_CompaniesPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_CompanyEntity:
       type: object
       properties:
@@ -163,14 +171,6 @@ components:
       - trial_ends_on
       - trial
       description: CustomerApi_V1_CompanyEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
   securitySchemes:
     bearerAuth:
       type: http

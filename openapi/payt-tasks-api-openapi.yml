@@ -273,14 +273,38 @@ paths:
       summary: Get administration tasks
 components:
   schemas:
-    CustomerApi_PaginationEntity:
+    CustomerApi_V1_CommentEntity:
       type: object
       properties:
-        cursor:
+        id:
           type: string
-          description: Cursor for fetching the next page
+          description: Unique identifier
+        content:
+          type: string
+          description: Content of the comment
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the comment was created
       required:
-      - cursor
+      - id
+      - content
+      - created_at
+    CustomerApi_TasksPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
+          description: Task
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_TasksPageEntity model
     CustomerApi_V1_TaskEntity:
       type: object
       properties:
@@ -336,35 +360,6 @@ components:
       - updated_at
       - created_at
       description: CustomerApi_V1_TaskEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_V1_UserEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
-      required:
-      - id
-      - name
-      - email_address
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -397,6 +392,30 @@ components:
       - count
       - errors
       description: CustomerApi_SuccessEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
     postV1TasksIdComment:
       type: object
       properties:
@@ -410,23 +429,19 @@ components:
       - administration_id
       - comment
       description: Add a comment to a task
-    CustomerApi_V1_CommentEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        id:
+        code:
           type: string
-          description: Unique identifier
-        content:
+          description: Error code
+        message:
           type: string
-          description: Content of the comment
-        created_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the comment was created
+          description: Error message
       required:
-      - id
-      - content
-      - created_at
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     patchV1TasksIdMarkCompleted:
       type: object
       properties:
@@ -451,21 +466,6 @@ components:
       required:
       - administration_id
       description: Mark a task as completed
-    CustomerApi_TasksPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_TaskEntity'
-          description: Task
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_TasksPageEntity model
   requestBodies:
     patchV1PaymentPlansIdApprove:
       content:

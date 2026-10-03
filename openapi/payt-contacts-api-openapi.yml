@@ -124,6 +124,19 @@ paths:
       summary: Get administration contacts
 components:
   schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -132,6 +145,21 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
+    CustomerApi_ContactsPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_ContactEntity'
+          description: Contact
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_ContactsPageEntity model
     CustomerApi_V1_ContactEntity:
       type: object
       properties:
@@ -220,19 +248,6 @@ components:
       - id
       - validation_errors
       - updated_at
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     postV1Contacts:
       type: object
       properties:
@@ -324,21 +339,6 @@ components:
       - administration_id
       - contacts
       description: Create or update administration contacts
-    CustomerApi_ContactsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_ContactEntity'
-          description: Contact
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_ContactsPageEntity model
   securitySchemes:
     bearerAuth:
       type: http

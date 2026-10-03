@@ -189,6 +189,71 @@ paths:
       summary: Get administration credit case by id
 components:
   schemas:
+    CustomerApi_V1_DeletedCreditCaseEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated internal debtor identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+      required:
+      - id
+      - administration_id
+      - debtor_id
+      - deleted_at
+    CustomerApi_DeletedCreditCasesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedCreditCaseEntity'
+          description: Deleted Credit Case
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedCreditCasesPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
     CustomerApi_V1_CreditCaseEntity:
       type: object
       properties:
@@ -319,50 +384,6 @@ components:
       - started_at
       - updated_at
       description: CustomerApi_V1_CreditCaseEntity model
-    CustomerApi_DeletedCreditCasesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DeletedCreditCaseEntity'
-          description: Deleted Credit Case
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DeletedCreditCasesPageEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_V1_DeletedCreditCaseEntity:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Internal identifier
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        debtor_id:
-          type: string
-          description: Associated internal debtor identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-      required:
-      - id
-      - administration_id
-      - debtor_id
-      - deleted_at
     CustomerApi_CreditCasesPageEntity:
       type: object
       properties:
@@ -378,27 +399,6 @@ components:
       required:
       - data
       description: CustomerApi_CreditCasesPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_V1_LabelEntity:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Label name
-      required:
-      - name
   securitySchemes:
     bearerAuth:
       type: http

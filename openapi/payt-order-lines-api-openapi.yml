@@ -122,6 +122,21 @@ paths:
       summary: Get administration order lines
 components:
   schemas:
+    CustomerApi_OrderLinesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_OrderLineEntity'
+          description: Order line
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_OrderLinesPageEntity model
     CustomerApi_V1_OrderLineEntity:
       type: object
       properties:
@@ -200,6 +215,14 @@ components:
       - rejected_amount
       - created_at
       - updated_at
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
     CustomerApi_ErrorEntity:
       type: object
       properties:
@@ -213,29 +236,6 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_OrderLinesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_OrderLineEntity'
-          description: Order line
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_OrderLinesPageEntity model
   securitySchemes:
     bearerAuth:
       type: http

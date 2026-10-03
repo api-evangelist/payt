@@ -262,151 +262,6 @@ paths:
       summary: Get PSP mandates deleted in the last 90 days
 components:
   schemas:
-    CustomerApi_V1_Deleted_PspMandateEntity:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        id:
-          type: string
-          description: Internal identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-        debtor_id:
-          type: string
-          description: Internal debtor identifier
-        mandate_identifier:
-          type: string
-          description: Identifier from provider
-        provider:
-          type: string
-          description: Provider where mandate is registered
-      required:
-      - administration_id
-      - id
-      - deleted_at
-      - debtor_id
-      - mandate_identifier
-      - provider
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_V1_PspMandateEntity:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        bank_account_name:
-          type: string
-          description: Bank account name
-        bank_account_number:
-          type: string
-          description: Bank account number
-        debtor_id:
-          type: string
-          description: Internal debtor identifier
-        id:
-          type: string
-          description: Internal identifier
-        mandate_identifier:
-          type: string
-          description: Identifier from provider
-        mandate_reference:
-          type: string
-          description: Customer-supplied mandate reference
-        provider:
-          type: string
-          description: Provider where mandate is registered
-        debtor_number:
-          type: string
-          description: Debtor number (request with the 'fields' parameter)
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the psp_mandate was last updated
-        deactivated_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the psp_mandate was deactivated
-      required:
-      - administration_id
-      - bank_account_name
-      - bank_account_number
-      - debtor_id
-      - id
-      - mandate_identifier
-      - provider
-      - updated_at
-      description: CustomerApi_V1_PspMandateEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_PspMandatePageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PspMandateEntity'
-          description: Psp mandate
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_PspMandatePageEntity model
-    CustomerApi_SuccessEntity:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Request was handled successfully
-        count:
-          type: integer
-          format: int32
-          example: 98
-          description: Number of records processed, those without errors
-        errors:
-          type: object
-          example:
-            '123456':
-            - Validation error 1
-            - Validation error 2
-            '123461':
-            - Validation error
-          description: List of records that could not be processed and for which reasons
-        warnings:
-          type: object
-          example:
-            '123457':
-            - Warning message 1
-            - Warning message 2
-          description: List of records that were partially processed, the messages contain warnings
-      required:
-      - success
-      - count
-      - errors
-      description: CustomerApi_SuccessEntity model
     CustomerApi_Deleted_PspMandatesPageEntity:
       type: object
       properties:
@@ -471,6 +326,151 @@ components:
       - administration_id
       - psp_mandates
       description: Create signed psp mandates, these need to be verified before creating
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_Deleted_PspMandateEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Internal identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+        mandate_identifier:
+          type: string
+          description: Identifier from provider
+        provider:
+          type: string
+          description: Provider where mandate is registered
+      required:
+      - administration_id
+      - id
+      - deleted_at
+      - debtor_id
+      - mandate_identifier
+      - provider
+    CustomerApi_V1_PspMandateEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        bank_account_name:
+          type: string
+          description: Bank account name
+        bank_account_number:
+          type: string
+          description: Bank account number
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+        id:
+          type: string
+          description: Internal identifier
+        mandate_identifier:
+          type: string
+          description: Identifier from provider
+        mandate_reference:
+          type: string
+          description: Customer-supplied mandate reference
+        provider:
+          type: string
+          description: Provider where mandate is registered
+        debtor_number:
+          type: string
+          description: Debtor number (request with the 'fields' parameter)
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the psp_mandate was last updated
+        deactivated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the psp_mandate was deactivated
+      required:
+      - administration_id
+      - bank_account_name
+      - bank_account_number
+      - debtor_id
+      - id
+      - mandate_identifier
+      - provider
+      - updated_at
+      description: CustomerApi_V1_PspMandateEntity model
+    CustomerApi_PspMandatePageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PspMandateEntity'
+          description: Psp mandate
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_PspMandatePageEntity model
   securitySchemes:
     bearerAuth:
       type: http

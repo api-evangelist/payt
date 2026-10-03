@@ -382,6 +382,21 @@ paths:
       summary: Get administration invoice by id
 components:
   schemas:
+    CustomerApi_InvoicesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_InvoiceEntity'
+          description: Invoice
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_InvoicesPageEntity model
     CustomerApi_V1_InvoiceEntity:
       type: object
       properties:
@@ -631,6 +646,127 @@ components:
       - book_total_amount
       - updated_at
       description: CustomerApi_V1_InvoiceEntity model
+    CustomerApi_DeletedInvoicesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DeletedInvoiceEntity'
+          description: Deleted Invoice
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_DeletedInvoicesPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_SuccessEntity:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Request was handled successfully
+        count:
+          type: integer
+          format: int32
+          example: 98
+          description: Number of records processed, those without errors
+        errors:
+          type: object
+          example:
+            '123456':
+            - Validation error 1
+            - Validation error 2
+            '123461':
+            - Validation error
+          description: List of records that could not be processed and for which reasons
+        warnings:
+          type: object
+          example:
+            '123457':
+            - Warning message 1
+            - Warning message 2
+          description: List of records that were partially processed, the messages contain warnings
+      required:
+      - success
+      - count
+      - errors
+      description: CustomerApi_SuccessEntity model
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_InvoiceLineEntity:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description
+        product_unit:
+          type: string
+          description: Product unit
+        vat_percentage:
+          type: string
+          description: VAT percentage
+        vat_rate_code:
+          type: string
+          description: VAT rate code
+        product_quantity:
+          type: string
+          description: Product quantity
+        line_order:
+          type: integer
+          format: int32
+          description: Line order
+        product_price:
+          type: string
+          description: Product price
+        total_excl_tax_amount:
+          type: string
+          description: Total excl tax amount
+        total_incl_tax_amount:
+          type: string
+          description: Total incl tax amount
+        vat_amount:
+          type: string
+          description: Product tax amount
+      required:
+      - description
+      - product_unit
+      - vat_percentage
+      - vat_rate_code
+      - product_quantity
+      - line_order
+      - product_price
+      - total_excl_tax_amount
+      - total_incl_tax_amount
+      - vat_amount
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
     patchV1Invoices:
       type: object
       properties:
@@ -796,171 +932,6 @@ components:
       - administration_id
       - invoices
       description: Update administration invoices
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_V1_DeletedInvoiceEntity:
-      type: object
-      properties:
-        invoice_number:
-          type: string
-          description: Invoice number
-        origin_identifier:
-          type: string
-          description: Invoice identifier from accounting software
-        id:
-          type: string
-          description: Internal identifier
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        debtor_id:
-          type: string
-          description: Associated internal debtor identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-      required:
-      - invoice_number
-      - origin_identifier
-      - id
-      - administration_id
-      - debtor_id
-      - deleted_at
-    CustomerApi_SuccessEntity:
-      type: object
-      properties:
-        success:
-          type: boolean
-          description: Request was handled successfully
-        count:
-          type: integer
-          format: int32
-          example: 98
-          description: Number of records processed, those without errors
-        errors:
-          type: object
-          example:
-            '123456':
-            - Validation error 1
-            - Validation error 2
-            '123461':
-            - Validation error
-          description: List of records that could not be processed and for which reasons
-        warnings:
-          type: object
-          example:
-            '123457':
-            - Warning message 1
-            - Warning message 2
-          description: List of records that were partially processed, the messages contain warnings
-      required:
-      - success
-      - count
-      - errors
-      description: CustomerApi_SuccessEntity model
-    CustomerApi_InvoicesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_InvoiceEntity'
-          description: Invoice
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_InvoicesPageEntity model
-    CustomerApi_V1_LabelEntity:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Label name
-      required:
-      - name
-    CustomerApi_V1_InvoiceLineEntity:
-      type: object
-      properties:
-        description:
-          type: string
-          description: Description
-        product_unit:
-          type: string
-          description: Product unit
-        vat_percentage:
-          type: string
-          description: VAT percentage
-        vat_rate_code:
-          type: string
-          description: VAT rate code
-        product_quantity:
-          type: string
-          description: Product quantity
-        line_order:
-          type: integer
-          format: int32
-          description: Line order
-        product_price:
-          type: string
-          description: Product price
-        total_excl_tax_amount:
-          type: string
-          description: Total excl tax amount
-        total_incl_tax_amount:
-          type: string
-          description: Total incl tax amount
-        vat_amount:
-          type: string
-          description: Product tax amount
-      required:
-      - description
-      - product_unit
-      - vat_percentage
-      - vat_rate_code
-      - product_quantity
-      - line_order
-      - product_price
-      - total_excl_tax_amount
-      - total_incl_tax_amount
-      - vat_amount
-    CustomerApi_DeletedInvoicesPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DeletedInvoiceEntity'
-          description: Deleted Invoice
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DeletedInvoicesPageEntity model
     postV1Invoices:
       type: object
       properties:
@@ -1173,6 +1144,35 @@ components:
       - administration_id
       - invoices
       description: Upsert invoices in bulk
+    CustomerApi_V1_DeletedInvoiceEntity:
+      type: object
+      properties:
+        invoice_number:
+          type: string
+          description: Invoice number
+        origin_identifier:
+          type: string
+          description: Invoice identifier from accounting software
+        id:
+          type: string
+          description: Internal identifier
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        debtor_id:
+          type: string
+          description: Associated internal debtor identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+      required:
+      - invoice_number
+      - origin_identifier
+      - id
+      - administration_id
+      - debtor_id
+      - deleted_at
   requestBodies:
     patchV1InvoicesBlock:
       content:
