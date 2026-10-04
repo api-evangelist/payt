@@ -50,19 +50,6 @@ paths:
       summary: Create payment conditions
 components:
   schemas:
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     postV1PaymentConditions:
       type: object
       properties:
@@ -87,6 +74,19 @@ components:
       - administration_id
       - payment_conditions
       description: Create payment conditions
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_SuccessEntity:
       type: object
       properties:

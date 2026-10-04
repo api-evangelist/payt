@@ -122,6 +122,27 @@ paths:
       summary: Get administration order lines
 components:
   schemas:
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_OrderLinesPageEntity:
       type: object
       properties:
@@ -215,27 +236,6 @@ components:
       - rejected_amount
       - created_at
       - updated_at
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

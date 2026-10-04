@@ -382,6 +382,239 @@ paths:
       summary: Get administration invoice by id
 components:
   schemas:
+    postV1Invoices:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Administration identifier
+        invoices:
+          type: array
+          items:
+            type: object
+            properties:
+              currency_code:
+                type: string
+                description: Currency code of the invoice
+              invoice_number:
+                type: string
+                description: Unique number from your invoicing software that is communicated to the debtor
+              invoice_date:
+                type: string
+                description: Date at which the invoice becomes payable
+              invoice_identifier:
+                type: string
+                description: Unique database identifier from your invoicing software
+              debtor_number:
+                type: string
+                description: Number of the debtor
+              debtor_identifier:
+                type: string
+                description: Identifier of the debtor
+              order_number:
+                type: string
+                description: Order number of the invoice
+              peppol_identifier:
+                type: string
+                description: Peppol identifier of the invoice
+              description:
+                type: string
+              category:
+                type: string
+                description: Category of the invoice
+              contact_identifier:
+                type: string
+                description: Identifier of the invoice contact, when not provided the debtor contact is used
+              payment_condition:
+                type: string
+                description: Payment condition of the invoice
+              due_date:
+                type: string
+                description: Date at which the invoice must have been paid
+              book_amount_total:
+                type: string
+                description: Total amount in the currency of the administration
+              book_amount_open:
+                type: string
+                description: Open amount in the currency of the administration
+              amount_open:
+                type: string
+                description: Open amount in the currency of the invoice
+              amount_total:
+                type: string
+                description: Total amount in the currency of the invoice
+              payment_method:
+                type: string
+                description: Payment method of the invoice
+                enum:
+                - bank_transfer
+                - direct_debit
+                - cash
+                - none
+                - unknown
+              sent_at:
+                type: string
+                format: date-time
+                description: ISO8601 UTC Timestamp when the invoice was sent. If provided the invoice will not be sent to the debtor, can only be changed if the invoice is not sent yet
+              labels:
+                type: array
+                description: Labels of the invoice. If labels are provided then all must be provided, any labels not in the request are removed from the invoice.
+                items:
+                  type: string
+              payment_term:
+                type: integer
+                format: int32
+                description: Payment term of the invoice
+              document:
+                type: object
+                description: Invoice PDF document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              ubl_document:
+                type: object
+                description: UBL document
+                properties:
+                  checksum:
+                    type: string
+                    description: Checksum of the document file content in SHA3-512 Base64
+                  filename:
+                    type: string
+                    description: Filename of the document
+                  destroy:
+                    type: boolean
+                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
+              payments:
+                type: array
+                description: If payments are provided then all payments for an invoice must be provided and these must be ordered chronological with the oldest first. If the open_amount of the invoice is changed, but no payments are  provided, then Payt will create a payment for the changed amount.
+                items:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the invoice.
+                    origin_identifier:
+                      type: string
+                      description: Origin identifier of the payment, should be unique in the administration
+                    cost_type:
+                      type: string
+                      description: Indicates whether payment is for the principal amount of the invoice of for one of the cost types added by Payt
+                      enum:
+                      - principal
+                      - administration_costs
+                      - interest_costs
+                      - debt_collection_costs
+                      default: principal
+                    payment_date:
+                      type: string
+                      description: Date of the payment. If not provided the current date is used.
+                    transaction_type:
+                      type: string
+                      description: Indicates whether it was an actual payment or if there was a different reason to change the open amount of the invoice.
+                      enum:
+                      - credit
+                      - payment
+                      - reversal
+                      - revaluation
+                      - settlement
+                      - write_off
+                      - ''
+                    book_amount:
+                      type: string
+                      description: The amount that was paid, in the currency of the administration. If not provided the book_amount is calculated based on the exchange rate of the invoice.
+                    description:
+                      type: string
+                      description: Description of the payment
+                    payment_method:
+                      type: string
+                      description: The method that was used to perform the payment. This is only relevant when the transaction_type is `payment`.
+                    reversal_code:
+                      type: string
+                      description: The code provided by the bank which indicates the reason why the direct debit transaction was reversed. This is only relevant when the transaction_type is `reversal`
+                  required:
+                  - amount
+                  - origin_identifier
+              invoice_lines:
+                type: array
+                description: If invoice lines are provided then all lines for an invoice must be provided.
+                items:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                      description: Text that describes the product or service that is invoiced.
+                    vat_rate_code:
+                      type: string
+                      description: The code of the vat rate applied to the invoice line. This vat rate must be present in the administration.
+                    total_excl_tax_amount:
+                      type: string
+                      description: The amount invoiced excluding VAT. If this amount is absent it will be calculated from the total_incl_tax_amount and vat_amount. Either total_excl_tax_amount, total_incl_tax_amount or both must be provided.
+                    total_incl_tax_amount:
+                      type: string
+                      description: The amount invoiced including VAT. If this amount is absent it will be calculated from the total_excl_tax_amount and vat_amount. Either total_incl_tax_amount, total_excl_tax_amount or both must be provided.
+                    product_price:
+                      type: string
+                      description: The price for a single unit of product.
+                    product_unit:
+                      type: string
+                      description: The unit in which the quantity of the invoiced products are counted. Default value is "piece".
+                    product_quantity:
+                      type: string
+                      description: The amount of product that is invoiced, in the unit as provided in product_unit. Default value is "1".
+                    vat_percentage:
+                      type: string
+                      description: The percentage of VAT applied. This percentage must match the percentage that is associated with the vat_rate_code. If not supplied the percentage that is associated with the vat_rate_code is used.
+                    vat_amount:
+                      type: string
+                      description: The amount of VAT charged. If not provided it is calculated from the other values.
+                    line_order:
+                      type: integer
+                      format: int32
+                      description: The position of the invoice_line within the set of invoice_lines of the invoice. If the line_order is not provided than the order in which the lines are provided will be used. If line_order is provided than each invoice_line must have a unique integer.
+                  required:
+                  - description
+                  - vat_rate_code
+            required:
+            - currency_code
+            - invoice_number
+            - invoice_date
+            - due_date
+            - book_amount_total
+            - book_amount_open
+            - amount_open
+            - amount_total
+      required:
+      - administration_id
+      - invoices
+      description: Upsert invoices in bulk
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
     CustomerApi_InvoicesPageEntity:
       type: object
       properties:
@@ -661,19 +894,6 @@ components:
       required:
       - data
       description: CustomerApi_DeletedInvoicesPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -714,59 +934,6 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
-    CustomerApi_V1_InvoiceLineEntity:
-      type: object
-      properties:
-        description:
-          type: string
-          description: Description
-        product_unit:
-          type: string
-          description: Product unit
-        vat_percentage:
-          type: string
-          description: VAT percentage
-        vat_rate_code:
-          type: string
-          description: VAT rate code
-        product_quantity:
-          type: string
-          description: Product quantity
-        line_order:
-          type: integer
-          format: int32
-          description: Line order
-        product_price:
-          type: string
-          description: Product price
-        total_excl_tax_amount:
-          type: string
-          description: Total excl tax amount
-        total_incl_tax_amount:
-          type: string
-          description: Total incl tax amount
-        vat_amount:
-          type: string
-          description: Product tax amount
-      required:
-      - description
-      - product_unit
-      - vat_percentage
-      - vat_rate_code
-      - product_quantity
-      - line_order
-      - product_price
-      - total_excl_tax_amount
-      - total_incl_tax_amount
-      - vat_amount
-    CustomerApi_V1_LabelEntity:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Label name
-      required:
-      - name
     patchV1Invoices:
       type: object
       properties:
@@ -932,218 +1099,6 @@ components:
       - administration_id
       - invoices
       description: Update administration invoices
-    postV1Invoices:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        invoices:
-          type: array
-          items:
-            type: object
-            properties:
-              currency_code:
-                type: string
-                description: Currency code of the invoice
-              invoice_number:
-                type: string
-                description: Unique number from your invoicing software that is communicated to the debtor
-              invoice_date:
-                type: string
-                description: Date at which the invoice becomes payable
-              invoice_identifier:
-                type: string
-                description: Unique database identifier from your invoicing software
-              debtor_number:
-                type: string
-                description: Number of the debtor
-              debtor_identifier:
-                type: string
-                description: Identifier of the debtor
-              order_number:
-                type: string
-                description: Order number of the invoice
-              peppol_identifier:
-                type: string
-                description: Peppol identifier of the invoice
-              description:
-                type: string
-              category:
-                type: string
-                description: Category of the invoice
-              contact_identifier:
-                type: string
-                description: Identifier of the invoice contact, when not provided the debtor contact is used
-              payment_condition:
-                type: string
-                description: Payment condition of the invoice
-              due_date:
-                type: string
-                description: Date at which the invoice must have been paid
-              book_amount_total:
-                type: string
-                description: Total amount in the currency of the administration
-              book_amount_open:
-                type: string
-                description: Open amount in the currency of the administration
-              amount_open:
-                type: string
-                description: Open amount in the currency of the invoice
-              amount_total:
-                type: string
-                description: Total amount in the currency of the invoice
-              payment_method:
-                type: string
-                description: Payment method of the invoice
-                enum:
-                - bank_transfer
-                - direct_debit
-                - cash
-                - none
-                - unknown
-              sent_at:
-                type: string
-                format: date-time
-                description: ISO8601 UTC Timestamp when the invoice was sent. If provided the invoice will not be sent to the debtor, can only be changed if the invoice is not sent yet
-              labels:
-                type: array
-                description: Labels of the invoice. If labels are provided then all must be provided, any labels not in the request are removed from the invoice.
-                items:
-                  type: string
-              payment_term:
-                type: integer
-                format: int32
-                description: Payment term of the invoice
-              document:
-                type: object
-                description: Invoice PDF document
-                properties:
-                  checksum:
-                    type: string
-                    description: Checksum of the document file content in SHA3-512 Base64
-                  filename:
-                    type: string
-                    description: Filename of the document
-                  destroy:
-                    type: boolean
-                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
-              ubl_document:
-                type: object
-                description: UBL document
-                properties:
-                  checksum:
-                    type: string
-                    description: Checksum of the document file content in SHA3-512 Base64
-                  filename:
-                    type: string
-                    description: Filename of the document
-                  destroy:
-                    type: boolean
-                    description: If provided the document will be removed from the invoice, can be combined with checksum to remove a specific document
-              payments:
-                type: array
-                description: If payments are provided then all payments for an invoice must be provided and these must be ordered chronological with the oldest first. If the open_amount of the invoice is changed, but no payments are  provided, then Payt will create a payment for the changed amount.
-                items:
-                  type: object
-                  properties:
-                    amount:
-                      type: string
-                      description: The amount that was paid, in the currency of the invoice.
-                    origin_identifier:
-                      type: string
-                      description: Origin identifier of the payment, should be unique in the administration
-                    cost_type:
-                      type: string
-                      description: Indicates whether payment is for the principal amount of the invoice of for one of the cost types added by Payt
-                      enum:
-                      - principal
-                      - administration_costs
-                      - interest_costs
-                      - debt_collection_costs
-                      default: principal
-                    payment_date:
-                      type: string
-                      description: Date of the payment. If not provided the current date is used.
-                    transaction_type:
-                      type: string
-                      description: Indicates whether it was an actual payment or if there was a different reason to change the open amount of the invoice.
-                      enum:
-                      - credit
-                      - payment
-                      - reversal
-                      - revaluation
-                      - settlement
-                      - write_off
-                      - ''
-                    book_amount:
-                      type: string
-                      description: The amount that was paid, in the currency of the administration. If not provided the book_amount is calculated based on the exchange rate of the invoice.
-                    description:
-                      type: string
-                      description: Description of the payment
-                    payment_method:
-                      type: string
-                      description: The method that was used to perform the payment. This is only relevant when the transaction_type is `payment`.
-                    reversal_code:
-                      type: string
-                      description: The code provided by the bank which indicates the reason why the direct debit transaction was reversed. This is only relevant when the transaction_type is `reversal`
-                  required:
-                  - amount
-                  - origin_identifier
-              invoice_lines:
-                type: array
-                description: If invoice lines are provided then all lines for an invoice must be provided.
-                items:
-                  type: object
-                  properties:
-                    description:
-                      type: string
-                      description: Text that describes the product or service that is invoiced.
-                    vat_rate_code:
-                      type: string
-                      description: The code of the vat rate applied to the invoice line. This vat rate must be present in the administration.
-                    total_excl_tax_amount:
-                      type: string
-                      description: The amount invoiced excluding VAT. If this amount is absent it will be calculated from the total_incl_tax_amount and vat_amount. Either total_excl_tax_amount, total_incl_tax_amount or both must be provided.
-                    total_incl_tax_amount:
-                      type: string
-                      description: The amount invoiced including VAT. If this amount is absent it will be calculated from the total_excl_tax_amount and vat_amount. Either total_incl_tax_amount, total_excl_tax_amount or both must be provided.
-                    product_price:
-                      type: string
-                      description: The price for a single unit of product.
-                    product_unit:
-                      type: string
-                      description: The unit in which the quantity of the invoiced products are counted. Default value is "piece".
-                    product_quantity:
-                      type: string
-                      description: The amount of product that is invoiced, in the unit as provided in product_unit. Default value is "1".
-                    vat_percentage:
-                      type: string
-                      description: The percentage of VAT applied. This percentage must match the percentage that is associated with the vat_rate_code. If not supplied the percentage that is associated with the vat_rate_code is used.
-                    vat_amount:
-                      type: string
-                      description: The amount of VAT charged. If not provided it is calculated from the other values.
-                    line_order:
-                      type: integer
-                      format: int32
-                      description: The position of the invoice_line within the set of invoice_lines of the invoice. If the line_order is not provided than the order in which the lines are provided will be used. If line_order is provided than each invoice_line must have a unique integer.
-                  required:
-                  - description
-                  - vat_rate_code
-            required:
-            - currency_code
-            - invoice_number
-            - invoice_date
-            - due_date
-            - book_amount_total
-            - book_amount_open
-            - amount_open
-            - amount_total
-      required:
-      - administration_id
-      - invoices
-      description: Upsert invoices in bulk
     CustomerApi_V1_DeletedInvoiceEntity:
       type: object
       properties:
@@ -1173,6 +1128,51 @@ components:
       - administration_id
       - debtor_id
       - deleted_at
+    CustomerApi_V1_InvoiceLineEntity:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description
+        product_unit:
+          type: string
+          description: Product unit
+        vat_percentage:
+          type: string
+          description: VAT percentage
+        vat_rate_code:
+          type: string
+          description: VAT rate code
+        product_quantity:
+          type: string
+          description: Product quantity
+        line_order:
+          type: integer
+          format: int32
+          description: Line order
+        product_price:
+          type: string
+          description: Product price
+        total_excl_tax_amount:
+          type: string
+          description: Total excl tax amount
+        total_incl_tax_amount:
+          type: string
+          description: Total incl tax amount
+        vat_amount:
+          type: string
+          description: Product tax amount
+      required:
+      - description
+      - product_unit
+      - vat_percentage
+      - vat_rate_code
+      - product_quantity
+      - line_order
+      - product_price
+      - total_excl_tax_amount
+      - total_incl_tax_amount
+      - vat_amount
   requestBodies:
     patchV1InvoicesBlock:
       content:

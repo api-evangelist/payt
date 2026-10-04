@@ -137,14 +137,6 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
     CustomerApi_ContactsPageEntity:
       type: object
       properties:
@@ -248,6 +240,14 @@ components:
       - id
       - validation_errors
       - updated_at
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
     postV1Contacts:
       type: object
       properties:

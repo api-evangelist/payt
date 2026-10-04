@@ -127,19 +127,6 @@ components:
       required:
       - data
       description: CustomerApi_CompaniesPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_CompanyEntity:
       type: object
       properties:
@@ -171,6 +158,19 @@ components:
       - trial_ends_on
       - trial
       description: CustomerApi_V1_CompanyEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

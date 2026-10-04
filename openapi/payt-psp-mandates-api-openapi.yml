@@ -262,21 +262,19 @@ paths:
       summary: Get PSP mandates deleted in the last 90 days
 components:
   schemas:
-    CustomerApi_Deleted_PspMandatesPageEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PspMandateEntity'
-          description: Deleted PSP mandate
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
       required:
-      - data
-      description: CustomerApi_Deleted_PspMandatesPageEntity model
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     postV1PspMandates:
       type: object
       properties:
@@ -326,6 +324,21 @@ components:
       - administration_id
       - psp_mandates
       description: Create signed psp mandates, these need to be verified before creating
+    CustomerApi_Deleted_PspMandatesPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PspMandateEntity'
+          description: Deleted PSP mandate
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_Deleted_PspMandatesPageEntity model
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -358,19 +371,6 @@ components:
       - count
       - errors
       description: CustomerApi_SuccessEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -379,35 +379,6 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
-    CustomerApi_V1_Deleted_PspMandateEntity:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Owning administration identifier
-        id:
-          type: string
-          description: Internal identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-        debtor_id:
-          type: string
-          description: Internal debtor identifier
-        mandate_identifier:
-          type: string
-          description: Identifier from provider
-        provider:
-          type: string
-          description: Provider where mandate is registered
-      required:
-      - administration_id
-      - id
-      - deleted_at
-      - debtor_id
-      - mandate_identifier
-      - provider
     CustomerApi_V1_PspMandateEntity:
       type: object
       properties:
@@ -456,6 +427,35 @@ components:
       - provider
       - updated_at
       description: CustomerApi_V1_PspMandateEntity model
+    CustomerApi_V1_Deleted_PspMandateEntity:
+      type: object
+      properties:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Internal identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
+        mandate_identifier:
+          type: string
+          description: Identifier from provider
+        provider:
+          type: string
+          description: Provider where mandate is registered
+      required:
+      - administration_id
+      - id
+      - deleted_at
+      - debtor_id
+      - mandate_identifier
+      - provider
     CustomerApi_PspMandatePageEntity:
       type: object
       properties:

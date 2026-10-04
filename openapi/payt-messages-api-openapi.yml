@@ -223,82 +223,21 @@ paths:
       summary: Get administration message by id
 components:
   schemas:
-    patchV1Messages:
+    CustomerApi_MessagesPageEntity:
       type: object
       properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        messages:
+        data:
           type: array
           items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Message identifier
-              read:
-                type: boolean
-                description: Whether the message is read
-            required:
-            - id
-            - read
+            $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
+          description: Message
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - administration_id
-      - messages
-      description: Update messages
-    postV1Messages:
-      type: object
-      properties:
-        administration_id:
-          type: string
-          description: Administration identifier
-        debtor_number:
-          type: string
-          description: Number of the debtor to send a message to
-        debtor_identifier:
-          type: string
-          description: Identifier of the debtor to send a message to
-        invoice_number:
-          type: string
-          description: Number of the invoice to send a message to
-        invoice_identifier:
-          type: string
-          description: Identifier of the invoice to send a message to
-        credit_case_number:
-          type: string
-          description: Number of the credit case to send a message to
-        message:
-          type: object
-          properties:
-            body:
-              type: string
-              description: Message body
-            subject:
-              type: string
-              description: Subject of message
-            email:
-              type: string
-              description: "Email address the message is sent to. When not provided,\n                                                               the message will be sent to the debtor email address,\n                                                               if present"
-            cc_email:
-              type: string
-              description: CC email addresses separated by commas
-            bcc_email:
-              type: string
-              description: BCC email addresses separated by commas
-            attachments:
-              type: array
-              description: Multipart files containing message attachments
-              items:
-                type: string
-                format: binary
-          required:
-          - body
-          - subject
-      required:
-      - administration_id
-      - message
-      description: Send a message to a debtor
+      - data
+      description: CustomerApi_MessagesPageEntity model
     CustomerApi_ErrorEntity:
       type: object
       properties:
@@ -312,6 +251,22 @@ components:
       - code
       - message
       description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UserEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        name:
+          type: string
+          description: Name
+        email_address:
+          type: string
+          description: Email address
+      required:
+      - id
+      - name
+      - email_address
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -352,22 +307,30 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
-    CustomerApi_V1_UserEntity:
+    patchV1Messages:
       type: object
       properties:
-        id:
+        administration_id:
           type: string
-          description: Unique identifier
-        name:
-          type: string
-          description: Name
-        email_address:
-          type: string
-          description: Email address
+          description: Administration identifier
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Message identifier
+              read:
+                type: boolean
+                description: Whether the message is read
+            required:
+            - id
+            - read
       required:
-      - id
-      - name
-      - email_address
+      - administration_id
+      - messages
+      description: Update messages
     CustomerApi_V1_MessageEntity:
       type: object
       properties:
@@ -421,21 +384,58 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_MessageEntity model
-    CustomerApi_MessagesPageEntity:
+    postV1Messages:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_MessageEntity'
-          description: Message
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+        administration_id:
+          type: string
+          description: Administration identifier
+        debtor_number:
+          type: string
+          description: Number of the debtor to send a message to
+        debtor_identifier:
+          type: string
+          description: Identifier of the debtor to send a message to
+        invoice_number:
+          type: string
+          description: Number of the invoice to send a message to
+        invoice_identifier:
+          type: string
+          description: Identifier of the invoice to send a message to
+        credit_case_number:
+          type: string
+          description: Number of the credit case to send a message to
+        message:
+          type: object
+          properties:
+            body:
+              type: string
+              description: Message body
+            subject:
+              type: string
+              description: Subject of message
+            email:
+              type: string
+              description: "Email address the message is sent to. When not provided,\n                                                               the message will be sent to the debtor email address,\n                                                               if present"
+            cc_email:
+              type: string
+              description: CC email addresses separated by commas
+            bcc_email:
+              type: string
+              description: BCC email addresses separated by commas
+            attachments:
+              type: array
+              description: Multipart files containing message attachments
+              items:
+                type: string
+                format: binary
+          required:
+          - body
+          - subject
       required:
-      - data
-      description: CustomerApi_MessagesPageEntity model
+      - administration_id
+      - message
+      description: Send a message to a debtor
   securitySchemes:
     bearerAuth:
       type: http

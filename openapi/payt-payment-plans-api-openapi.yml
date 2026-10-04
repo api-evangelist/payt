@@ -336,42 +336,64 @@ paths:
       summary: Get payment_plans deleted in the last 90 days
 components:
   schemas:
-    CustomerApi_PaymentPlansPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
-          description: Payment plan
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_PaymentPlansPageEntity model
-    CustomerApi_V1_Deleted_PaymentPlanEntity:
+    postV1PaymentPlans:
       type: object
       properties:
         administration_id:
           type: string
-          description: Owning administration identifier
-        id:
+          description: Administration identifier
+        cc_email_address:
           type: string
-          description: Internal identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
-        debtor_id:
-          type: string
-          description: Internal debtor identifier
+          description: Email address to send a copy of the payment plan
+        invoice_numbers:
+          type: array
+          description: List of invoices by invoice_number to include in the payment plan
+          items:
+            type: string
+        invoice_identifiers:
+          type: array
+          description: List of invoices by invoice_identifier to include
+          items:
+            type: string
+        credit_case_numbers:
+          type: array
+          description: List of credit cases by credit_case_number to include
+          items:
+            type: string
+        terms:
+          type: array
+          description: List of terms for payment plan
+          items:
+            type: object
+            properties:
+              amount:
+                type: number
+                format: double
+                description: Amount to pay
+              due_date:
+                type: string
+                format: date
+                description: Due date of the payment
+            required:
+            - amount
+            - due_date
       required:
       - administration_id
-      - id
-      - deleted_at
-      - debtor_id
+      - terms
+      description: Create an approved payment plan
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_PaymentPlanEntity:
       type: object
       properties:
@@ -437,42 +459,6 @@ components:
       - created_at
       - updated_at
       description: CustomerApi_V1_PaymentPlanEntity model
-    CustomerApi_Deleted_PaymentPlansPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PaymentPlanEntity'
-          description: Deleted payment plan
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_Deleted_PaymentPlansPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_PaginationEntity:
-      type: object
-      properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
-      required:
-      - cursor
     CustomerApi_V1_UserEntity:
       type: object
       properties:
@@ -489,6 +475,21 @@ components:
       - id
       - name
       - email_address
+    CustomerApi_Deleted_PaymentPlansPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_Deleted_PaymentPlanEntity'
+          description: Deleted payment plan
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_Deleted_PaymentPlansPageEntity model
     CustomerApi_V1_PlannedPaymentEntity:
       type: object
       properties:
@@ -513,51 +514,50 @@ components:
       - amount_due
       - due_date
       - payment_date
-    postV1PaymentPlans:
+    CustomerApi_PaginationEntity:
+      type: object
+      properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_PaymentPlansPageEntity:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PaymentPlanEntity'
+          description: Payment plan
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
+      required:
+      - data
+      description: CustomerApi_PaymentPlansPageEntity model
+    CustomerApi_V1_Deleted_PaymentPlanEntity:
       type: object
       properties:
         administration_id:
           type: string
-          description: Administration identifier
-        cc_email_address:
+          description: Owning administration identifier
+        id:
           type: string
-          description: Email address to send a copy of the payment plan
-        invoice_numbers:
-          type: array
-          description: List of invoices by invoice_number to include in the payment plan
-          items:
-            type: string
-        invoice_identifiers:
-          type: array
-          description: List of invoices by invoice_identifier to include
-          items:
-            type: string
-        credit_case_numbers:
-          type: array
-          description: List of credit cases by credit_case_number to include
-          items:
-            type: string
-        terms:
-          type: array
-          description: List of terms for payment plan
-          items:
-            type: object
-            properties:
-              amount:
-                type: number
-                format: double
-                description: Amount to pay
-              due_date:
-                type: string
-                format: date
-                description: Due date of the payment
-            required:
-            - amount
-            - due_date
+          description: Internal identifier
+        deleted_at:
+          type: string
+          format: date-time
+          description: Deletion timestamp
+        debtor_id:
+          type: string
+          description: Internal debtor identifier
       required:
       - administration_id
-      - terms
-      description: Create an approved payment plan
+      - id
+      - deleted_at
+      - debtor_id
   requestBodies:
     patchV1PaymentPlansIdApprove:
       content:

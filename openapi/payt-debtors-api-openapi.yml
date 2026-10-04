@@ -178,6 +178,27 @@ paths:
       summary: Get administration debtor by id
 components:
   schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_LabelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Label name
+      required:
+      - name
     postV1Debtors:
       type: object
       properties:
@@ -253,30 +274,21 @@ components:
       - administration_id
       - debtors
       description: Create or update administration debtors
-    CustomerApi_V1_AddressEntity:
+    CustomerApi_DebtorsPageEntity:
       type: object
       properties:
-        city:
-          type: string
-          description: City
-        country_code:
-          type: string
-          description: ISO 3166 Alpha-2 country code
-        postal_code:
-          type: string
-          description: Postal code
-        region:
-          type: string
-          description: Region
-        street_1:
-          type: string
-          description: Streetname and housenumber
-        street_2:
-          type: string
-          description: Additional address details
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_DebtorEntity'
+          description: Debtor
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - city
-      - country_code
+      - data
+      description: CustomerApi_DebtorsPageEntity model
     CustomerApi_SuccessEntity:
       type: object
       properties:
@@ -309,19 +321,6 @@ components:
       - count
       - errors
       description: CustomerApi_SuccessEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     CustomerApi_PaginationEntity:
       type: object
       properties:
@@ -330,29 +329,6 @@ components:
           description: Cursor for fetching the next page
       required:
       - cursor
-    CustomerApi_DebtorsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_DebtorEntity'
-          description: Debtor
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_DebtorsPageEntity model
-    CustomerApi_V1_LabelEntity:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Label name
-      required:
-      - name
     CustomerApi_V1_DebtorEntity:
       type: object
       properties:
@@ -480,6 +456,30 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_DebtorEntity model
+    CustomerApi_V1_AddressEntity:
+      type: object
+      properties:
+        city:
+          type: string
+          description: City
+        country_code:
+          type: string
+          description: ISO 3166 Alpha-2 country code
+        postal_code:
+          type: string
+          description: Postal code
+        region:
+          type: string
+          description: Region
+        street_1:
+          type: string
+          description: Streetname and housenumber
+        street_2:
+          type: string
+          description: Additional address details
+      required:
+      - city
+      - country_code
   securitySchemes:
     bearerAuth:
       type: http

@@ -50,6 +50,37 @@ paths:
       summary: Create files to upload
 components:
   schemas:
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
+    CustomerApi_V1_UploadableFileEntity:
+      type: object
+      properties:
+        checksum:
+          type: string
+          description: File checksum
+        url:
+          type: string
+          description: URL to upload the file to
+        expires_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the URL expires
+      required:
+      - checksum
+      - url
+      - expires_at
+      description: CustomerApi_V1_UploadableFileEntity model
     postV1Files:
       type: object
       properties:
@@ -79,37 +110,6 @@ components:
       - administration_id
       - files
       description: Create files to upload
-    CustomerApi_V1_UploadableFileEntity:
-      type: object
-      properties:
-        checksum:
-          type: string
-          description: File checksum
-        url:
-          type: string
-          description: URL to upload the file to
-        expires_at:
-          type: string
-          format: date-time
-          description: Timestamp at which the URL expires
-      required:
-      - checksum
-      - url
-      - expires_at
-      description: CustomerApi_V1_UploadableFileEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
   securitySchemes:
     bearerAuth:
       type: http

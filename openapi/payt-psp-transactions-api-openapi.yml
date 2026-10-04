@@ -139,14 +139,34 @@ paths:
       summary: Get administration PSP transaction by id
 components:
   schemas:
-    CustomerApi_PaginationEntity:
+    CustomerApi_PspTransactionsPageEntity:
       type: object
       properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PspTransactionEntity'
+          description: Psp transaction
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - cursor
+      - data
+      description: CustomerApi_PspTransactionsPageEntity model
+    CustomerApi_ErrorEntity:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
+      required:
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_PspTransactionEntity:
       type: object
       properties:
@@ -208,34 +228,14 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_PspTransactionEntity model
-    CustomerApi_ErrorEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
-        code:
+        cursor:
           type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
+          description: Cursor for fetching the next page
       required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
-    CustomerApi_PspTransactionsPageEntity:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PspTransactionEntity'
-          description: Psp transaction
-        pagination:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
-      required:
-      - data
-      description: CustomerApi_PspTransactionsPageEntity model
+      - cursor
   securitySchemes:
     bearerAuth:
       type: http

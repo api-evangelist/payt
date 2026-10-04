@@ -169,31 +169,19 @@ paths:
       summary: Get administration payments
 components:
   schemas:
-    CustomerApi_V1_DeletedPaymentEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        id:
+        code:
           type: string
-          description: Internal identifier
-        administration_id:
+          description: Error code
+        message:
           type: string
-          description: Owning administration identifier
-        origin_identifier:
-          type: string
-          description: External identifier
-        invoice_id:
-          type: string
-          description: Associated internal invoice identifier
-        deleted_at:
-          type: string
-          format: date-time
-          description: Deletion timestamp
+          description: Error message
       required:
-      - id
-      - administration_id
-      - origin_identifier
-      - invoice_id
-      - deleted_at
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_DeletedPaymentsPageEntity:
       type: object
       properties:
@@ -209,34 +197,65 @@ components:
       required:
       - data
       description: CustomerApi_DeletedPaymentsPageEntity model
-    CustomerApi_PaymentsPageEntity:
+    CustomerApi_V1_PaymentEntity:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerApi_V1_PaymentEntity'
-          description: Payment
-        pagination:
+        administration_id:
+          type: string
+          description: Owning administration identifier
+        id:
+          type: string
+          description: Unique identifier
+        cost_type:
+          type: string
+          description: Cost type
+        description:
+          type: string
+          description: Description
+        reason:
+          type: string
+          description: Reason
+        reversal_code:
+          type: string
+          description: Reversal code
+        transaction_type:
+          type: string
+          description: Transaction type
+        invoice_id:
+          type: string
+          description: Internal unique invoice identifier
+        payment_method:
+          type: string
+          description: Payment method
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp at which the payment was last updated
+        total_amount:
+          type: string
+          description: Total amount in invoice currency
+        total_book_amount:
+          type: string
+          description: Total amount in administration currency
+        payment_date:
+          type: string
+          description: Date the payment was made
+        psp_transaction:
           allOf:
-          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
-          description: Pagination details
+          - $ref: '#/components/schemas/CustomerApi_V1_PspTransactionEntity'
+          description: The psp transaction associated with the payment (request with the 'fields' parameter)
+        bank_transaction:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_V1_BankTransactionEntity'
+          description: The bank transaction associated with the payment (request with the 'fields' parameter)
       required:
-      - data
-      description: CustomerApi_PaymentsPageEntity model
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
+      - administration_id
+      - id
+      - invoice_id
+      - updated_at
+      - total_amount
+      - total_book_amount
+      - payment_date
     CustomerApi_V1_PspTransactionEntity:
       type: object
       properties:
@@ -298,14 +317,21 @@ components:
       - id
       - updated_at
       description: CustomerApi_V1_PspTransactionEntity model
-    CustomerApi_PaginationEntity:
+    CustomerApi_PaymentsPageEntity:
       type: object
       properties:
-        cursor:
-          type: string
-          description: Cursor for fetching the next page
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerApi_V1_PaymentEntity'
+          description: Payment
+        pagination:
+          allOf:
+          - $ref: '#/components/schemas/CustomerApi_PaginationEntity'
+          description: Pagination details
       required:
-      - cursor
+      - data
+      description: CustomerApi_PaymentsPageEntity model
     CustomerApi_V1_BankTransactionEntity:
       type: object
       properties:
@@ -346,65 +372,39 @@ components:
       - book_amount
       - id
       - book_date
-    CustomerApi_V1_PaymentEntity:
+    CustomerApi_PaginationEntity:
       type: object
       properties:
+        cursor:
+          type: string
+          description: Cursor for fetching the next page
+      required:
+      - cursor
+    CustomerApi_V1_DeletedPaymentEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Internal identifier
         administration_id:
           type: string
           description: Owning administration identifier
-        id:
+        origin_identifier:
           type: string
-          description: Unique identifier
-        cost_type:
-          type: string
-          description: Cost type
-        description:
-          type: string
-          description: Description
-        reason:
-          type: string
-          description: Reason
-        reversal_code:
-          type: string
-          description: Reversal code
-        transaction_type:
-          type: string
-          description: Transaction type
+          description: External identifier
         invoice_id:
           type: string
-          description: Internal unique invoice identifier
-        payment_method:
-          type: string
-          description: Payment method
-        updated_at:
+          description: Associated internal invoice identifier
+        deleted_at:
           type: string
           format: date-time
-          description: Timestamp at which the payment was last updated
-        total_amount:
-          type: string
-          description: Total amount in invoice currency
-        total_book_amount:
-          type: string
-          description: Total amount in administration currency
-        payment_date:
-          type: string
-          description: Date the payment was made
-        psp_transaction:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_V1_PspTransactionEntity'
-          description: The psp transaction associated with the payment (request with the 'fields' parameter)
-        bank_transaction:
-          allOf:
-          - $ref: '#/components/schemas/CustomerApi_V1_BankTransactionEntity'
-          description: The bank transaction associated with the payment (request with the 'fields' parameter)
+          description: Deletion timestamp
       required:
-      - administration_id
       - id
+      - administration_id
+      - origin_identifier
       - invoice_id
-      - updated_at
-      - total_amount
-      - total_book_amount
-      - payment_date
+      - deleted_at
   securitySchemes:
     bearerAuth:
       type: http

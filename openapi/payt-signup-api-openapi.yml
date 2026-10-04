@@ -154,23 +154,19 @@ paths:
       operationId: postV1SignUp
 components:
   schemas:
-    CustomerApi_V1_SignUpEntity:
+    CustomerApi_ErrorEntity:
       type: object
       properties:
-        administration:
-          $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
-        company:
-          $ref: '#/components/schemas/CustomerApi_V1_CompanyEntity'
-        user:
-          $ref: '#/components/schemas/CustomerApi_V1_SignUpUserEntity'
-        access_grant:
-          $ref: '#/components/schemas/CustomerApi_V1_AccessGrantEntity'
+        code:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Error message
       required:
-      - administration
-      - company
-      - user
-      - access_grant
-      description: CustomerApi_V1_SignUpEntity model
+      - code
+      - message
+      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_SignUpUserEntity:
       type: object
       properties:
@@ -193,19 +189,6 @@ components:
       - id
       - name
       - email_address
-    CustomerApi_ErrorEntity:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Error message
-      required:
-      - code
-      - message
-      description: CustomerApi_ErrorEntity model
     CustomerApi_V1_AdministrationEntity:
       type: object
       properties:
@@ -303,6 +286,23 @@ components:
       - currency_code
       - administration_url
       description: CustomerApi_V1_AdministrationEntity model
+    CustomerApi_V1_SignUpEntity:
+      type: object
+      properties:
+        administration:
+          $ref: '#/components/schemas/CustomerApi_V1_AdministrationEntity'
+        company:
+          $ref: '#/components/schemas/CustomerApi_V1_CompanyEntity'
+        user:
+          $ref: '#/components/schemas/CustomerApi_V1_SignUpUserEntity'
+        access_grant:
+          $ref: '#/components/schemas/CustomerApi_V1_AccessGrantEntity'
+      required:
+      - administration
+      - company
+      - user
+      - access_grant
+      description: CustomerApi_V1_SignUpEntity model
     CustomerApi_V1_AccessGrantEntity:
       type: object
       properties:
