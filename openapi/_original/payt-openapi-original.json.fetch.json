@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.paytsoftware.com/openapi3.json",
+ "requested_url": "https://docs.paytsoftware.com/openapi3.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 312511,
+ "sha256": "dd474dd6023572eeefdd85d2c7ad12af7535b29c3f1e9e253d32bc035dba1d24",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.915), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
