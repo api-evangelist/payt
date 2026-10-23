@@ -89,3 +89,9 @@ components:
       type: http
       scheme: bearer
       description: OAuth2 access token or static API token. See [Authorization](/authentication/authorization) for how to obtain one.
+x-provenance:
+  method: harvested
+  publisher: Payt
+  source: https://docs.paytsoftware.com/openapi3.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
