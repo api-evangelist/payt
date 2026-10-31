@@ -64,6 +64,163 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Payt is a company surfaced as a portfolio company of partech and added to the API Evangelist network as a stub for enrichment. Sector: Applicative SaaS. This profile is a lead awaiting the enrichment pipeline.
+Payt (Payt B.V.) is a Netherlands-based accounts receivable management platform that automates invoice follow-up and payment collection while keeping personal contact with customers. It syncs invoices and debtor data from accounting and ERP systems, then runs the collections workflow: automated reminders, flexible payment plans, debt-collection cases, creditworthiness checks, electronic (UBL/Peppol) invoicing, a self-service debtor portal, and payment reconciliation. Payt exposes a REST Customer API (api.paytsoftware.com, v1) with OAuth 2.0 authorization, cursor pagination and incremental sync, a rich signed-webhook event surface, and bulk CSV/XML/JSON imports. Surfaced as a portfolio company of Partech and enriched into the API Evangelist network.
 
-Backed by: partech — https://www.paytsoftware.com/
+**Areas:** Company · Applicative Saas · Accounts Receivable · Order-to-Cash · Invoicing · Debt Collection · Payments · Fintech · Credit Management · Netherlands
+
+## Payt on APIs.io
+
+Everything profiled for Payt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/payt/](https://apis.io/providers/payt/)** — or go straight to one of the APIs or properties below.
+
+### APIs (20)
+
+- [Payt Administrations API](https://apis.io/apis/payt/payt-administrations-api/) — Operations about administrations
+- [Payt Companies API](https://apis.io/apis/payt/payt-companies-api/) — Operations about companies
+- [Payt Contacts API](https://apis.io/apis/payt/payt-contacts-api/) — Operations about contacts
+- [Payt Credit Cases API](https://apis.io/apis/payt/payt-credit-cases-api/) — Operations about credit_cases
+- [Payt Debtors API](https://apis.io/apis/payt/payt-debtors-api/) — Operations about debtors
+- [Payt Files API](https://apis.io/apis/payt/payt-files-api/) — Operations about files
+- [Payt Invoices API](https://apis.io/apis/payt/payt-invoices-api/) — Operations about invoices
+- [Payt Messages API](https://apis.io/apis/payt/payt-messages-api/) — Operations about messages
+- [Payt Notes API](https://apis.io/apis/payt/payt-notes-api/) — Operations about notes
+- [Payt Notifications API](https://apis.io/apis/payt/payt-notifications-api/) — Operations about notifications
+- [Payt Order Lines API](https://apis.io/apis/payt/payt-order-lines-api/) — Operations about order_lines
+- [Payt Orders API](https://apis.io/apis/payt/payt-orders-api/) — Operations about orders
+- [Payt Payment Conditions API](https://apis.io/apis/payt/payt-payment-conditions-api/) — Operations about payment_conditions
+- [Payt Payment Plans API](https://apis.io/apis/payt/payt-payment-plans-api/) — Operations about payment_plans
+- [Payt Payments API](https://apis.io/apis/payt/payt-payments-api/) — Operations about payments
+- [Payt Psp Mandates API](https://apis.io/apis/payt/payt-psp-mandates-api/) — Operations about psp_mandates
+- [Payt Psp Transactions API](https://apis.io/apis/payt/payt-psp-transactions-api/) — Operations about psp_transactions
+- [Payt Tasks API](https://apis.io/apis/payt/payt-tasks-api/) — Operations about tasks
+- [Payt Vat Rates API](https://apis.io/apis/payt/payt-vat-rates-api/) — Operations about vat_rates
+- [Payt Signup API](https://apis.io/apis/payt/payt-signup-api/) — Operations about sign_ups
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [payt-mcp.yml](https://apis.io/servers/payt/payt-mcp-yml/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Payt Agentic Access](https://apis.io/agentic-access/payt/payt-agentic-access/)
+
+#### Collections (20)
+
+Postman and Open Collection request collections.
+
+- [API Endpoints administrations API](https://apis.io/collections/payt/open-payt-administrations-api/)
+- [API Endpoints administrations companies API](https://apis.io/collections/payt/open-payt-companies-api/)
+- [API Endpoints administrations contacts API](https://apis.io/collections/payt/open-payt-contacts-api/)
+- [API Endpoints administrations credit_cases API](https://apis.io/collections/payt/open-payt-credit-cases-api/)
+- [API Endpoints administrations debtors API](https://apis.io/collections/payt/open-payt-debtors-api/)
+- [API Endpoints administrations files API](https://apis.io/collections/payt/open-payt-files-api/)
+- [API Endpoints administrations invoices API](https://apis.io/collections/payt/open-payt-invoices-api/)
+- [API Endpoints administrations messages API](https://apis.io/collections/payt/open-payt-messages-api/)
+- [API Endpoints administrations notes API](https://apis.io/collections/payt/open-payt-notes-api/)
+- [API Endpoints administrations notifications API](https://apis.io/collections/payt/open-payt-notifications-api/)
+- [API Endpoints administrations order_lines API](https://apis.io/collections/payt/open-payt-order-lines-api/)
+- [API Endpoints administrations orders API](https://apis.io/collections/payt/open-payt-orders-api/)
+- [API Endpoints administrations payment_conditions API](https://apis.io/collections/payt/open-payt-payment-conditions-api/)
+- [API Endpoints administrations payment_plans API](https://apis.io/collections/payt/open-payt-payment-plans-api/)
+- [API Endpoints administrations payments API](https://apis.io/collections/payt/open-payt-payments-api/)
+- [API Endpoints administrations psp_mandates API](https://apis.io/collections/payt/open-payt-psp-mandates-api/)
+- [API Endpoints administrations psp_transactions API](https://apis.io/collections/payt/open-payt-psp-transactions-api/)
+- [API Endpoints administrations sign_up API](https://apis.io/collections/payt/open-payt-sign-up-api/)
+- [API Endpoints administrations tasks API](https://apis.io/collections/payt/open-payt-tasks-api/)
+- [API Endpoints administrations vat_rates API](https://apis.io/collections/payt/open-payt-vat-rates-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Payt Openapi Original Overlay](https://apis.io/overlays/payt/payt-openapi-original-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Payt Authentication](https://apis.io/security/payt/payt-authentication/)
+- [Payt Domain Security](https://apis.io/security/payt/payt-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Payt Scopes](https://apis.io/scopes/payt/payt-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.paytsoftware.com/)
+- [Documentation](https://docs.paytsoftware.com)
+- [API reference](https://docs.paytsoftware.com/api-reference/administrations/get-administrations)
+- [Pricing](https://paytsoftware.com/pricing/)
+- [Sign up](https://app.paytsoftware.com)
+- [Support](https://support.paytsoftware.com)
+- [Blog](https://paytsoftware.com/blogs/)
+- [Terms of service](https://paytsoftware.com/terms-and-conditions/)
+- [Privacy policy](https://paytsoftware.com/privacy-and-cookies/)
+- [Status](https://status.paytsoftware.com)
+
+## API Evangelist rating
+
+**Kin Score 45.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 45.1 |
+| Contract governance | 18.2 |
+| Operational transparency | 47.4 |
+| Developer ergonomics | 64.9 |
+| Access clarity | 15.8 |
+
+**Agent readiness 34.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | unknown |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/payt/](https://apis.io/providers/payt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Payt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/payt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
